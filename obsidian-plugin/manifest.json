@@ -1,0 +1,10 @@
+{
+  "id": "sspa-research-lab",
+  "name": "SSPA Research Lab",
+  "version": "1.0.0",
+  "minAppVersion": "1.4.0",
+  "description": "Sync Obsidian notes with the Aural-Syncro Research Lab platform.",
+  "author": "Aural-Syncro",
+  "authorUrl": "https://aural-syncro.com.ar",
+  "isDesktopOnly": false
+}

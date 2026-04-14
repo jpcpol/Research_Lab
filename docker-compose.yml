@@ -1,0 +1,48 @@
+name: sspa-research-lab
+
+# ==============================================================================
+# SSPA Research Lab — docker-compose.yml
+# Plataforma de investigación interna (FastAPI + PostgreSQL)
+# Puerto: 8004
+# ==============================================================================
+
+services:
+  research-lab:
+    build:
+      context: .
+      dockerfile: Dockerfile
+
+    image: sspa/research-lab:1.0.0
+    container_name: sspa_research_lab
+    restart: unless-stopped
+
+    networks:
+      - sspa_infra
+
+    ports:
+      - "127.0.0.1:8004:8004"
+
+    volumes:
+      - ./app:/app/app          # app code from host — cambios reflejados sin rebuild (requiere restart)
+      - ./static:/app/static    # static files from host (live edits) + persist avatars
+
+    env_file:
+      - .env
+
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "50m"
+        max-file: "5"
+
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8004/api/docs')"]
+      interval: 30s
+      timeout: 10s
+      start_period: 20s
+      retries: 3
+
+networks:
+  sspa_infra:
+    external: true
+    name: infraestructura_soc_sspa_infra

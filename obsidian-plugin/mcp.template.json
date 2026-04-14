@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "lab-obsidian": {
+      "command": "node",
+      "args": ["<ABSOLUTE_PATH_TO>/obsidian-plugin/mcp-lab-bridge.mjs"],
+      "env": {
+        "VAULT_PATH":      "<ABSOLUTE_PATH_TO_YOUR_OBSIDIAN_VAULT>",
+        "LAB_URL":         "https://lab.aural-syncro.com.ar",
+        "LAB_TOKEN":       "<YOUR_JWT_TOKEN_FROM_LAB_PROFILE>",
+        "LAB_PROJECT_ID":  "<YOUR_PROJECT_UUID>"
+      }
+    }
+  }
+}
