@@ -9,7 +9,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "${SCRIPT_DIR}/.." && pwd)"
 PLUGIN_DIR="${SCRIPT_DIR}"
-TARGET_DIR="${REPO_ROOT}/investigacion/static/plugin"
+TARGET_DIR="${REPO_ROOT}/static/plugin"
 VERSION_FILE="${TARGET_DIR}/plugin_version.json"
 MANIFEST="${PLUGIN_DIR}/manifest.json"
 
