@@ -5,7 +5,7 @@ from fastapi.responses import FileResponse
 import os
 
 from app.database import engine, Base
-from app.routers import auth, projects, journal, hypotheses, milestones, notes, references, graph, github, documents, plugin
+from app.routers import auth, projects, journal, hypotheses, milestones, notes, references, graph, github, documents, plugin, project_config, ai_chat
 
 # Create all tables on startup
 Base.metadata.create_all(bind=engine)
@@ -55,6 +55,34 @@ def _run_migrations() -> None:
             resolution   VARCHAR,
             created_at   TIMESTAMP WITH TIME ZONE
         )""",
+        # DT-RL-014 / Points 1-4 — Project feature config + member features
+        """CREATE TABLE IF NOT EXISTS project_feature_configs (
+            id               VARCHAR PRIMARY KEY,
+            project_id       VARCHAR UNIQUE REFERENCES projects(id) ON DELETE CASCADE,
+            feat_obsidian    BOOLEAN DEFAULT FALSE,
+            feat_ai_local    BOOLEAN DEFAULT FALSE,
+            feat_ai_web      BOOLEAN DEFAULT FALSE,
+            feat_github_push BOOLEAN DEFAULT FALSE,
+            feat_wiki        BOOLEAN DEFAULT FALSE,
+            ai_provider      VARCHAR,
+            ai_model         VARCHAR,
+            ai_api_key_enc   TEXT,
+            ai_instructions  TEXT,
+            ai_mcp_enabled   BOOLEAN DEFAULT FALSE,
+            updated_at       TIMESTAMP WITH TIME ZONE
+        )""",
+        """CREATE TABLE IF NOT EXISTS project_member_features (
+            id               VARCHAR PRIMARY KEY,
+            project_id       VARCHAR REFERENCES projects(id) ON DELETE CASCADE,
+            user_id          VARCHAR REFERENCES users(id)    ON DELETE CASCADE,
+            feat_obsidian    BOOLEAN DEFAULT FALSE,
+            feat_ai_local    BOOLEAN DEFAULT FALSE,
+            feat_ai_web      BOOLEAN DEFAULT FALSE,
+            feat_github_push BOOLEAN DEFAULT FALSE,
+            feat_wiki        BOOLEAN DEFAULT FALSE,
+            updated_at       TIMESTAMP WITH TIME ZONE,
+            UNIQUE (project_id, user_id)
+        )""",
     ]
     with engine.begin() as conn:
         for stmt in stmts:
@@ -87,8 +115,10 @@ app.include_router(notes.router,       prefix="/api/v1")
 app.include_router(references.router,  prefix="/api/v1")
 app.include_router(graph.router,       prefix="/api/v1")
 app.include_router(github.router,      prefix="/api/v1")
-app.include_router(documents.router,   prefix="/api/v1")
-app.include_router(plugin.router,      prefix="/api/v1")
+app.include_router(documents.router,      prefix="/api/v1")
+app.include_router(plugin.router,         prefix="/api/v1")
+app.include_router(project_config.router, prefix="/api/v1")
+app.include_router(ai_chat.router,        prefix="/api/v1")
 
 # Serve SPA
 static_dir = os.path.join(os.path.dirname(__file__), "..", "static")

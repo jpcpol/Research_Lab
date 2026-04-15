@@ -71,14 +71,16 @@ class Project(Base):
     github_app_id                = Column(String, nullable=True)   # GitHub App ID
     github_app_private_key_enc   = Column(Text,   nullable=True)   # PEM cifrado AES-256-GCM
 
-    members      = relationship("ProjectMember", back_populates="project")
-    journal      = relationship("JournalEntry", back_populates="project")
-    hypotheses   = relationship("Hypothesis", back_populates="project")
-    milestones   = relationship("Milestone", back_populates="project")
-    notes        = relationship("Note", back_populates="project")
-    references   = relationship("Reference", back_populates="project")
-    relations    = relationship("Relation", back_populates="project", cascade="all, delete-orphan")
-    documents    = relationship("Document", back_populates="project", cascade="all, delete-orphan")
+    members         = relationship("ProjectMember", back_populates="project")
+    journal         = relationship("JournalEntry", back_populates="project")
+    hypotheses      = relationship("Hypothesis", back_populates="project")
+    milestones      = relationship("Milestone", back_populates="project")
+    notes           = relationship("Note", back_populates="project")
+    references      = relationship("Reference", back_populates="project")
+    relations       = relationship("Relation", back_populates="project", cascade="all, delete-orphan")
+    documents       = relationship("Document", back_populates="project", cascade="all, delete-orphan")
+    feature_config  = relationship("ProjectFeatureConfig", uselist=False, cascade="all, delete-orphan")
+    member_features = relationship("ProjectMemberFeature", cascade="all, delete-orphan")
 
 
 class ProjectMember(Base):
@@ -283,6 +285,57 @@ class DocConflict(Base):
     document  = relationship("Document", back_populates="conflicts")
     submitter = relationship("User", foreign_keys=[submitted_by])
     resolver  = relationship("User", foreign_keys=[resolved_by])
+
+
+# ─── Knowledge Graph ─────────────────────────────────────────────────────────
+
+# ─── Project Feature Config & Member Features ────────────────────────────────
+
+class ProjectFeatureConfig(Base):
+    """Per-project feature toggles and AI assistant configuration (managed by PI)."""
+    __tablename__ = "project_feature_configs"
+
+    id         = Column(String, primary_key=True, default=new_uuid)
+    project_id = Column(String, ForeignKey("projects.id", ondelete="CASCADE"), unique=True)
+
+    # Feature toggles (project-level enablement)
+    feat_obsidian    = Column(Boolean, default=False)   # Obsidian plugin allowed
+    feat_ai_local    = Column(Boolean, default=False)   # MCP / Claude Code local AI
+    feat_ai_web      = Column(Boolean, default=False)   # Web AI chat assistant
+    feat_github_push = Column(Boolean, default=False)   # GitHub propose/push allowed
+    feat_wiki        = Column(Boolean, default=False)   # Wiki publish allowed
+
+    # AI assistant config
+    ai_provider     = Column(String,  nullable=True)   # "claude" | None
+    ai_model        = Column(String,  nullable=True)   # e.g. "claude-sonnet-4-6"
+    ai_api_key_enc  = Column(Text,    nullable=True)   # AES-256-GCM encrypted API key
+    ai_instructions = Column(Text,    nullable=True)   # Project-level system prompt
+    ai_mcp_enabled  = Column(Boolean, default=False)
+
+    updated_at = Column(DateTime(timezone=True), default=now_utc, onupdate=now_utc)
+
+    project = relationship("Project", back_populates="feature_config")
+
+
+class ProjectMemberFeature(Base):
+    """Per-user feature authorization within a project (granted by PI)."""
+    __tablename__ = "project_member_features"
+    __table_args__ = (UniqueConstraint("project_id", "user_id"),)
+
+    id         = Column(String, primary_key=True, default=new_uuid)
+    project_id = Column(String, ForeignKey("projects.id", ondelete="CASCADE"))
+    user_id    = Column(String, ForeignKey("users.id",    ondelete="CASCADE"))
+
+    feat_obsidian    = Column(Boolean, default=False)
+    feat_ai_local    = Column(Boolean, default=False)
+    feat_ai_web      = Column(Boolean, default=False)
+    feat_github_push = Column(Boolean, default=False)
+    feat_wiki        = Column(Boolean, default=False)
+
+    updated_at = Column(DateTime(timezone=True), default=now_utc, onupdate=now_utc)
+
+    project = relationship("Project", back_populates="member_features")
+    user    = relationship("User")
 
 
 # ─── Knowledge Graph ─────────────────────────────────────────────────────────

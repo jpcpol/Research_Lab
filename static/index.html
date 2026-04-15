@@ -194,6 +194,58 @@ button{font-family:inherit;cursor:pointer}
 .lang-opt{display:flex;align-items:center;gap:8px;width:100%;background:transparent;border:none;color:var(--muted2);font-size:12px;font-weight:500;padding:7px 10px;border-radius:5px;cursor:pointer;transition:all .15s;text-align:left}
 .lang-opt:hover{background:rgba(77,217,172,.08);color:var(--text)}
 .lang-opt.active{color:var(--teal);font-weight:700}
+/* ── Feature toggles (config tab) ── */
+.feat-toggle-row{display:flex;align-items:center;justify-content:space-between;padding:10px 0;border-bottom:0.5px solid var(--border)}
+.feat-toggle-row:last-child{border-bottom:none}
+.feat-toggle-label{font-size:12px;font-weight:500;color:var(--text)}
+.feat-toggle-sublabel{font-size:11px;color:var(--muted);margin-top:2px}
+.toggle-switch{position:relative;width:34px;height:18px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute}
+.toggle-slider{position:absolute;inset:0;background:var(--border2);border-radius:18px;cursor:pointer;transition:.2s}
+.toggle-slider::before{content:'';position:absolute;width:12px;height:12px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}
+.toggle-switch input:checked + .toggle-slider{background:var(--teal)}
+.toggle-switch input:checked + .toggle-slider::before{transform:translateX(16px)}
+/* ── Permission matrix ── */
+.perm-matrix{width:100%;border-collapse:collapse;font-size:11px}
+.perm-matrix th{font-size:10px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em;padding:6px 8px;text-align:center;border-bottom:0.5px solid var(--border)}
+.perm-matrix th:first-child{text-align:left}
+.perm-matrix td{padding:7px 8px;text-align:center;border-bottom:0.5px solid var(--border)}
+.perm-matrix td:first-child{text-align:left;font-weight:500;color:var(--text)}
+.perm-matrix tr:last-child td{border-bottom:none}
+.perm-matrix input[type=checkbox]{accent-color:var(--teal);width:14px;height:14px;cursor:pointer}
+.perm-matrix .role-badge{font-size:9px;padding:1px 5px;border-radius:3px;background:var(--surface2);color:var(--muted2);margin-left:5px}
+.perm-matrix .role-badge.pi{background:rgba(77,217,172,.15);color:var(--teal)}
+/* ── AI chat widget ── */
+.ai-chat-widget{position:fixed;bottom:24px;right:24px;z-index:400;display:none}
+.ai-chat-widget.visible{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
+.ai-chat-fab{width:44px;height:44px;border-radius:50%;background:var(--teal);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.45);transition:transform .15s,box-shadow .15s;flex-shrink:0}
+.ai-chat-fab:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(77,217,172,.4)}
+.ai-chat-fab svg{color:#0a0f14}
+.ai-chat-panel{width:340px;background:var(--surface);border:0.5px solid var(--border2);border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.6);display:none;flex-direction:column;overflow:hidden;max-height:480px}
+.ai-chat-panel.open{display:flex}
+.ai-chat-panel-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:0.5px solid var(--border);background:var(--surface2)}
+.ai-chat-panel-title{font-size:12px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:7px}
+.ai-chat-messages{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px;min-height:160px}
+.ai-msg{max-width:88%;padding:8px 12px;border-radius:10px;font-size:12px;line-height:1.6;white-space:pre-wrap}
+.ai-msg.user{align-self:flex-end;background:var(--teal);color:#0a0f14;border-bottom-right-radius:3px}
+.ai-msg.assistant{align-self:flex-start;background:var(--surface2);color:var(--text);border-bottom-left-radius:3px}
+.ai-msg.thinking{opacity:.6;font-style:italic}
+.ai-chat-input-row{display:flex;gap:8px;padding:10px 12px;border-top:0.5px solid var(--border)}
+.ai-chat-input{flex:1;background:var(--surface2);border:0.5px solid var(--border2);border-radius:8px;padding:7px 10px;color:var(--text);font-size:12px;outline:none;resize:none;min-height:34px;max-height:100px;line-height:1.5;font-family:inherit}
+.ai-chat-input:focus{border-color:var(--teal)}
+.ai-chat-send{background:var(--teal);border:none;border-radius:8px;padding:7px 12px;cursor:pointer;color:#0a0f14;font-size:11px;font-weight:700;flex-shrink:0;transition:opacity .15s}
+.ai-chat-send:hover{opacity:.85}
+/* ── Config / Tools tabs ── */
+.config-section-title{font-size:11px;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:.08em;margin:1.25rem 0 .75rem}
+.config-section-title:first-child{margin-top:0}
+.tools-card{background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:1rem}
+.tools-card-title{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:8px}
+.tools-card-desc{font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:12px}
+.tools-code-block{background:var(--bg);border:0.5px solid var(--border2);border-radius:6px;padding:10px 12px;font-family:monospace;font-size:10px;color:var(--muted2);white-space:pre-wrap;word-break:break-all;margin-bottom:8px;position:relative}
+.tools-copy-btn{position:absolute;top:6px;right:6px;background:var(--surface2);border:0.5px solid var(--border);border-radius:4px;padding:2px 7px;font-size:10px;color:var(--muted2);cursor:pointer;transition:all .15s}
+.tools-copy-btn:hover{color:var(--teal);border-color:var(--teal)}
+.ai-badge{display:inline-flex;align-items:center;gap:4px;font-size:10px;font-weight:600;padding:2px 8px;border-radius:10px;background:rgba(77,217,172,.12);color:var(--teal);border:0.5px solid rgba(77,217,172,.3)}
+.ai-badge.off{background:rgba(248,113,113,.1);color:var(--danger,#f87171);border-color:rgba(248,113,113,.3)}
 /* profile modal */
 .profile-nav{display:flex;gap:0;border-bottom:0.5px solid var(--border);margin-bottom:1.25rem}
 .profile-nav-btn{padding:8px 16px;font-size:12px;font-weight:500;color:var(--muted);background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;margin-bottom:-1px}
@@ -815,6 +867,17 @@ img.profile-avatar{background:transparent}
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 0 1 1-1h8z"/></svg>
                 Repositorio GitHub
               </button>
+              <div class="menu-sep"></div>
+              <!-- Herramientas — visible only if user has feat_obsidian or feat_ai_local -->
+              <button class="menu-item" id="menu-tools-btn" data-tab="tools" onclick="switchTab('tools');closeMenus()" data-i18n="menu_tools" style="display:none">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/></svg>
+                Herramientas
+              </button>
+              <!-- Configuración — visible only for PI role -->
+              <button class="menu-item" id="menu-config-btn" data-tab="config" onclick="switchTab('config');closeMenus()" data-i18n="menu_config" style="display:none">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.474l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/></svg>
+                Configuración
+              </button>
             </div>
           </div>
 
@@ -1410,10 +1473,53 @@ img.profile-avatar{background:transparent}
           </div>
         </div>
 
+        <!-- TOOLS TAB -->
+        <div class="tab-content" id="tab-tools">
+          <div class="page-body">
+            <div id="tools-content">
+              <p style="text-align:center;color:var(--muted);padding:2rem;font-size:12px">Cargando herramientas…</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- CONFIG TAB (PI only) -->
+        <div class="tab-content" id="tab-config">
+          <div class="page-body">
+            <div id="config-content">
+              <p style="text-align:center;color:var(--muted);padding:2rem;font-size:12px">Cargando configuración…</p>
+            </div>
+          </div>
+        </div>
+
       </div><!-- /view-project -->
     </div><!-- /main-content -->
   </div><!-- /app-body -->
 </div><!-- /app-screen -->
+
+<!-- AI CHAT WIDGET -->
+<div class="ai-chat-widget" id="ai-chat-widget">
+  <div class="ai-chat-panel" id="ai-chat-panel">
+    <div class="ai-chat-panel-header">
+      <span class="ai-chat-panel-title">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="var(--teal)"><path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5ZM3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.58 26.58 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.933.933 0 0 1-.765.935c-.845.147-2.34.346-4.235.346-1.895 0-3.39-.2-4.235-.346A.933.933 0 0 1 3 9.219V8.062Zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a24.767 24.767 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25.286 25.286 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.134Z"/><path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783Z"/></svg>
+        Asistente IA
+      </span>
+      <button class="btn-icon" onclick="clearAiChat()" title="Limpiar historial" style="font-size:10px;color:var(--muted)">✕</button>
+    </div>
+    <div class="ai-chat-messages" id="ai-chat-messages">
+      <div class="ai-msg assistant">Hola, soy tu asistente de investigación. ¿En qué puedo ayudarte?</div>
+    </div>
+    <div class="ai-chat-input-row">
+      <textarea class="ai-chat-input" id="ai-chat-input" placeholder="Escribí tu consulta…" rows="1"
+        onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();sendAiMessage()}"
+        oninput="this.style.height='auto';this.style.height=Math.min(this.scrollHeight,100)+'px'"></textarea>
+      <button class="ai-chat-send" onclick="sendAiMessage()">↑</button>
+    </div>
+  </div>
+  <button class="ai-chat-fab" onclick="toggleAiChat()" title="Asistente IA">
+    <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5ZM3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.58 26.58 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.933.933 0 0 1-.765.935c-.845.147-2.34.346-4.235.346-1.895 0-3.39-.2-4.235-.346A.933.933 0 0 1 3 9.219V8.062Zm4.542-.827a.25.25 0 0 0-.217.068l-.92.9a24.767 24.767 0 0 1-1.871-.183.25.25 0 0 0-.068.495c.55.076 1.232.149 2.02.193a.25.25 0 0 0 .189-.071l.754-.736.847 1.71a.25.25 0 0 0 .404.062l.932-.97a25.286 25.286 0 0 0 1.922-.188.25.25 0 0 0-.068-.495c-.538.074-1.207.145-1.98.189a.25.25 0 0 0-.166.076l-.754.785-.842-1.7a.25.25 0 0 0-.182-.134Z"/><path d="M8 1.783C7.015.936 5.587.81 4.287.94c-1.514.153-3.042.672-3.994 1.105A.5.5 0 0 0 0 2.5v11a.5.5 0 0 0 .707.455c.882-.4 2.303-.881 3.68-1.02 1.409-.142 2.59.087 3.223.877a.5.5 0 0 0 .78 0c.633-.79 1.814-1.019 3.222-.877 1.378.139 2.8.62 3.681 1.02A.5.5 0 0 0 16 13.5v-11a.5.5 0 0 0-.293-.455c-.952-.433-2.48-.952-3.994-1.105C10.413.809 8.985.936 8 1.783Z"/></svg>
+  </button>
+</div>
 
 <!-- ══════════════ MODALS ══════════════ -->
 <div class="modal-overlay hidden" id="modal-new-project">
@@ -1517,7 +1623,6 @@ img.profile-avatar{background:transparent}
       <button class="profile-nav-btn"         data-psec="professional" onclick="switchProfileSection('professional')">Profesional</button>
       <button class="profile-nav-btn"         data-psec="password"    onclick="switchProfileSection('password')">Contraseña</button>
       <button class="profile-nav-btn"         data-psec="email"       onclick="switchProfileSection('email')">Email</button>
-      <button class="profile-nav-btn"         data-psec="obsidian"    onclick="switchProfileSection('obsidian')">Obsidian</button>
     </div>
 
     <!-- INFO -->
@@ -1632,63 +1737,7 @@ img.profile-avatar{background:transparent}
         <button class="btn-ghost" onclick="resetEmailChangeForm()">Atrás</button>
         <button class="btn-primary" onclick="confirmEmailChange()">Confirmar cambio</button>
       </div>
-    <!-- OBSIDIAN -->
-    <div class="profile-section" id="psec-obsidian">
-      <div style="background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:1.25rem">
-        <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:6px">
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
-          Token de acceso personal
-        </div>
-        <div style="font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:10px">
-          Usá este token para configurar el plugin Obsidian en tu máquina local.<br>
-          <strong style="color:var(--warning,#f59e0b)">No lo compartas</strong> — es personal y te identifica en el Lab.
-          Expira cada <strong>72 horas</strong>; podés renovarlo con el botón de abajo.
-        </div>
-        <div style="display:flex;gap:8px;align-items:center">
-          <input id="obsidian-token-display" type="password" readonly
-            style="flex:1;font-family:monospace;font-size:11px;padding:6px 10px;background:var(--bg);border:0.5px solid var(--border2);border-radius:var(--r);color:var(--muted2);outline:none"
-            placeholder="—">
-          <button class="btn-icon" title="Mostrar / ocultar" onclick="toggleTokenVisibility()" style="flex-shrink:0">
-            <svg id="token-eye-icon" width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg>
-          </button>
-          <button class="btn-secondary" onclick="copyLabToken()" style="flex-shrink:0;font-size:11px;padding:5px 12px">
-            <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" style="margin-right:4px;vertical-align:-1px"><path d="M4 1.5H3a2 2 0 0 0-2 2V14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V3.5a2 2 0 0 0-2-2h-1v1h1a1 1 0 0 1 1 1V14a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1V3.5a1 1 0 0 1 1-1h1v-1z"/><path d="M9.5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5v-1a.5.5 0 0 1 .5-.5h3zm-3-1A1.5 1.5 0 0 0 5 1.5v1A1.5 1.5 0 0 0 6.5 4h3A1.5 1.5 0 0 0 11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3z"/></svg>
-            Copiar
-          </button>
-        </div>
-        <div style="margin-top:10px;display:flex;align-items:center;gap:6px">
-          <span id="token-expiry-info" style="font-size:11px;color:var(--muted);flex:1"></span>
-          <button class="btn-ghost" style="font-size:11px;padding:4px 10px" onclick="renewLabToken()">
-            <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" style="margin-right:4px;vertical-align:-1px"><path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/><path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/></svg>
-            Renovar token
-          </button>
-        </div>
-      </div>
-      <!-- Plugin download card -->
-      <div style="background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:14px 16px;margin-bottom:1.25rem">
-        <div style="font-size:12px;font-weight:600;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:6px">
-          <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
-          <span data-i18n="plugin_card_title">Plugin Obsidian</span>
-        </div>
-        <div style="font-size:11px;color:var(--muted);line-height:1.6;margin-bottom:10px" data-i18n="plugin_card_desc">
-          Descargá la última versión del plugin para sincronizar tu vault local con el Research Lab.
-        </div>
-        <div id="plugin-version-info" style="font-size:11px;color:var(--muted2);margin-bottom:10px"></div>
-        <button id="plugin-download-btn" class="btn-secondary" onclick="downloadPlugin()" style="font-size:11px;padding:5px 14px">
-          <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" style="margin-right:4px;vertical-align:-1px"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
-          <span data-i18n="plugin_download_btn">Descargar plugin</span>
-        </button>
-      </div>
-      <div style="font-size:11px;color:var(--muted);line-height:1.6">
-        <strong>Project ID</strong> — lo encontrás en la URL al abrir un proyecto:<br>
-        <code style="font-size:10px;background:var(--surface2);padding:2px 6px;border-radius:4px">/projects/<strong style="color:var(--teal)">xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx</strong></code>
-      </div>
-      <div class="modal-footer">
-        <button class="btn-ghost" onclick="closeModal('modal-profile')">Cerrar</button>
-      </div>
-    </div>
-
-    </div>
+    </div><!-- /psec-email -->
   </div>
 </div>
 
@@ -1703,6 +1752,8 @@ img.profile-avatar{background:transparent}
       <button class="help-nav-btn active" data-section="uso" onclick="switchHelpSection('uso')">Manual de uso</button>
       <button class="help-nav-btn" data-section="shortcuts" onclick="switchHelpSection('shortcuts')">Atajos</button>
       <button class="help-nav-btn" data-section="github" onclick="switchHelpSection('github')">GitHub App</button>
+      <button class="help-nav-btn" data-section="obsidian-guide" onclick="switchHelpSection('obsidian-guide')">Plugin Obsidian</button>
+      <button class="help-nav-btn" data-section="ai-guide" onclick="switchHelpSection('ai-guide')">Asistente IA</button>
       <button class="help-nav-btn" data-section="about" onclick="switchHelpSection('about')">Acerca de</button>
     </div>
 
@@ -1857,6 +1908,62 @@ img.profile-avatar{background:transparent}
       <p class="help-p">El PI puede <strong>mergear</strong> los PRs directamente desde el Lab sin abrir GitHub.</p>
     </div>
 
+    <!-- PLUGIN OBSIDIAN -->
+    <div class="help-section" id="help-obsidian-guide">
+      <div class="help-h2">¿Qué es el Plugin Obsidian?</div>
+      <p class="help-p">El plugin de Obsidian sincroniza tu vault local con el Research Lab. Cada archivo <code style="font-size:11px;background:var(--surface2);padding:1px 5px;border-radius:3px">.md</code> que abras o modifiques se refleja automáticamente como Documento en el proyecto, con locking optimista para evitar conflictos.</p>
+
+      <div class="help-h2">Solicitar acceso</div>
+      <p class="help-p">El plugin solo está disponible si el PI del proyecto lo habilitó. Pedile al PI que active la función <strong>Obsidian Plugin</strong> en <em>Configuración → Funciones</em> y que te habilite a vos en <em>Configuración → Acceso por usuario</em>.</p>
+      <p class="help-p">Una vez habilitado, el botón <strong>Descargar plugin</strong> aparecerá en la sección <strong>Herramientas</strong> del menú lateral.</p>
+
+      <div class="help-h2">Instalación</div>
+      <ol class="help-steps">
+        <li>Descargá <code style="font-size:11px">main.js</code> y <code style="font-size:11px">manifest.json</code> desde Herramientas.</li>
+        <li>Copiá ambos archivos a <code style="font-size:11px">&lt;vault&gt;/.obsidian/plugins/sspa-research-lab/</code></li>
+        <li>En Obsidian → Configuración → Plugins de la comunidad → activá <strong>SSPA Research Lab</strong>.</li>
+        <li>Abrí los ajustes del plugin e ingresá la URL del Lab, el token de acceso y el ID del proyecto (todos disponibles en la sección Herramientas).</li>
+      </ol>
+
+      <div class="help-h2">Uso</div>
+      <ul class="help-ul">
+        <li>Al abrir una nota → se adquiere un soft lock (10 min renovable) para ese documento.</li>
+        <li>Al modificar y guardar → se sincroniza automáticamente con SHA-256 version hash.</li>
+        <li>Si otro colaborador editó el documento mientras vos tenías el lock → se detecta el conflicto y se guarda en la cola de resolución del Lab.</li>
+        <li>Token: expira cada 72 h. El plugin lo renueva automáticamente 10 min antes del vencimiento.</li>
+      </ul>
+
+      <div class="help-note" style="margin-top:1rem">El plugin comparte el mismo sistema de locking que el editor web colaborativo. Nunca pisarás el trabajo de otro colaborador.</div>
+    </div>
+
+    <!-- ASISTENTE IA -->
+    <div class="help-section" id="help-ai-guide">
+      <div class="help-h2">¿Qué es el Asistente IA?</div>
+      <p class="help-p">El Asistente IA es un chat contextual integrado en cada sección del Lab (bitácora, hipótesis, hitos, etc.). Usa la API de Claude (Anthropic) y tiene acceso al contexto del proyecto para ayudarte con redacción, análisis, búsquedas y más.</p>
+
+      <div class="help-h2">Solicitar acceso</div>
+      <p class="help-p">El asistente debe ser configurado y habilitado por el PI del proyecto:</p>
+      <ol class="help-steps">
+        <li>PI → <strong>Configuración → Asistente IA</strong>: ingresá la clave API de Anthropic, seleccioná el modelo y activá el asistente web.</li>
+        <li>PI → <strong>Configuración → Acceso por usuario</strong>: habilitá la función <em>IA Web</em> para cada investigador que deba usarlo.</li>
+        <li>El ícono del asistente (💬) aparecerá en el ángulo inferior derecho de la pantalla.</li>
+      </ol>
+
+      <div class="help-h2">Uso del chat</div>
+      <ul class="help-ul">
+        <li>Hacé click en el botón flotante para abrir el panel de chat.</li>
+        <li>El asistente detecta en qué sección estás (hipótesis, bitácora, hitos…) y usa ese contexto.</li>
+        <li>Podés pedirle que resuma hipótesis, redacte entradas de bitácora, analice hitos pendientes, sugiera referencias, etc.</li>
+        <li>El historial se mantiene durante la sesión; podés limpiarlo con el botón ✕.</li>
+      </ul>
+
+      <div class="help-h2">MCP Bridge (uso local con Claude Code)</div>
+      <p class="help-p">Si el PI habilitó la función <strong>IA Local</strong>, podés usar <code style="font-size:11px">mcp-lab-bridge.mjs</code> como servidor MCP en Claude Code. Esto permite a Claude Code leer y escribir notas en tu vault directamente, con anti-colisión contra el sistema de locking del Lab.</p>
+      <p class="help-p">La configuración JSON del servidor MCP está disponible en <strong>Herramientas → MCP Bridge</strong>.</p>
+
+      <div class="help-note" style="margin-top:1rem">La clave API de Anthropic es configurada por el PI y nunca es visible para los colaboradores. Solo el PI puede cambiarla.</div>
+    </div>
+
     <!-- ACERCA DE -->
     <div class="help-section" id="help-about">
       <div class="help-h2">Aural-Syncro · Research Lab</div>
@@ -1925,10 +2032,52 @@ const TRANSLATIONS = {
     menu_references:    'Bibliografía',
     menu_graph:         'Knowledge Graph',
     menu_repo:          'Repositorio GitHub',
+    menu_tools:         'Herramientas',
+    menu_config:        'Configuración',
+    tab_tools:          'Herramientas',
+    tab_config:         'Configuración del proyecto',
     menu_manual:        'Manual de uso',
     menu_shortcuts:     'Atajos de teclado',
     menu_github_help:   'Configurar GitHub App',
     menu_about:         'Acerca de',
+    // ── Config tab ──────────────────────────────────────────
+    config_features:    'Funciones del proyecto',
+    config_access:      'Acceso por usuario',
+    config_ai:          'Asistente IA',
+    feat_obsidian:      'Plugin Obsidian',
+    feat_obsidian_desc: 'Permite sincronizar vaults con el plugin para Obsidian',
+    feat_ai_local:      'IA local (MCP / Claude Code)',
+    feat_ai_local_desc: 'Permite usar el MCP bridge con Claude Code localmente',
+    feat_ai_web:        'Asistente IA web',
+    feat_ai_web_desc:   'Habilita el chat con IA en la interfaz web',
+    feat_github_push:   'Push / Propose a GitHub',
+    feat_github_push_desc:'Permite proponer cambios al repositorio GitHub del proyecto',
+    feat_wiki:          'Publicar wiki',
+    feat_wiki_desc:     'Permite publicar la wiki del proyecto en forma pública',
+    perm_member:        'Miembro',
+    perm_obsidian:      'Obsidian',
+    perm_ai_local:      'IA local',
+    perm_ai_web:        'IA web',
+    perm_github_push:   'GitHub Push',
+    perm_wiki:          'Wiki',
+    ai_provider_label:  'Proveedor',
+    ai_model_label:     'Modelo',
+    ai_apikey_label:    'Clave API',
+    ai_apikey_set:      'Clave guardada — dejá vacío para no cambiarla',
+    ai_instructions_label:'Instrucciones del proyecto (system prompt)',
+    ai_mcp_label:       'Habilitar MCP bridge',
+    // ── Tools tab ───────────────────────────────────────────
+    tools_token_title:  'Token de acceso personal',
+    tools_token_desc:   'Usá este token para configurar el plugin Obsidian o el MCP bridge.',
+    tools_obsidian_title:'Plugin Obsidian',
+    tools_obsidian_desc:'Descargá el plugin para sincronizar tu vault local con el Lab.',
+    tools_mcp_title:    'MCP Bridge',
+    tools_mcp_desc:     'Configuración del servidor MCP para usar con Claude Code.',
+    tools_copy:         'Copiar',
+    tools_projectid:    'Project ID',
+    // ── AI chat ─────────────────────────────────────────────
+    ai_chat_placeholder:'Escribí tu consulta…',
+    ai_chat_greeting:   'Hola, soy tu asistente de investigación. ¿En qué puedo ayudarte?',
     // ── Common actions ──────────────────────────────────────
     save:    'Guardar',
     cancel:  'Cancelar',
@@ -2211,10 +2360,52 @@ const TRANSLATIONS = {
     menu_references:    'Bibliography',
     menu_graph:         'Knowledge Graph',
     menu_repo:          'GitHub Repository',
+    menu_tools:         'Tools',
+    menu_config:        'Settings',
+    tab_tools:          'Tools',
+    tab_config:         'Project settings',
     menu_manual:        'User manual',
     menu_shortcuts:     'Keyboard shortcuts',
     menu_github_help:   'Configure GitHub App',
     menu_about:         'About',
+    // ── Config tab ──────────────────────────────────────────
+    config_features:    'Project features',
+    config_access:      'User access',
+    config_ai:          'AI assistant',
+    feat_obsidian:      'Obsidian Plugin',
+    feat_obsidian_desc: 'Allow vault sync with the Obsidian plugin',
+    feat_ai_local:      'Local AI (MCP / Claude Code)',
+    feat_ai_local_desc: 'Allow the MCP bridge with Claude Code locally',
+    feat_ai_web:        'Web AI assistant',
+    feat_ai_web_desc:   'Enable AI chat in the web interface',
+    feat_github_push:   'Push / Propose to GitHub',
+    feat_github_push_desc:'Allow proposing changes to the project GitHub repo',
+    feat_wiki:          'Publish wiki',
+    feat_wiki_desc:     'Allow publishing the project wiki publicly',
+    perm_member:        'Member',
+    perm_obsidian:      'Obsidian',
+    perm_ai_local:      'Local AI',
+    perm_ai_web:        'Web AI',
+    perm_github_push:   'GitHub Push',
+    perm_wiki:          'Wiki',
+    ai_provider_label:  'Provider',
+    ai_model_label:     'Model',
+    ai_apikey_label:    'API Key',
+    ai_apikey_set:      'Key stored — leave blank to keep current',
+    ai_instructions_label:'Project instructions (system prompt)',
+    ai_mcp_label:       'Enable MCP bridge',
+    // ── Tools tab ───────────────────────────────────────────
+    tools_token_title:  'Personal access token',
+    tools_token_desc:   'Use this token to configure the Obsidian plugin or the MCP bridge.',
+    tools_obsidian_title:'Obsidian Plugin',
+    tools_obsidian_desc:'Download the plugin to sync your local vault with the Lab.',
+    tools_mcp_title:    'MCP Bridge',
+    tools_mcp_desc:     'MCP server configuration for use with Claude Code.',
+    tools_copy:         'Copy',
+    tools_projectid:    'Project ID',
+    // ── AI chat ─────────────────────────────────────────────
+    ai_chat_placeholder:'Type your query…',
+    ai_chat_greeting:   "Hi, I'm your research assistant. How can I help you?",
     // ── Common actions ──────────────────────────────────────
     save:    'Save',
     cancel:  'Cancel',
@@ -2520,6 +2711,8 @@ function applyI18n() {
     TAB_LABELS.graph      = t('tab_graph');
     TAB_LABELS.team       = t('tab_team');
     TAB_LABELS.repo       = t('tab_repo');
+    TAB_LABELS.tools      = t('tab_tools');
+    TAB_LABELS.config     = t('tab_config');
   }
   // Re-render section indicator for current tab
   const ind = document.getElementById('section-indicator');
@@ -2545,9 +2738,9 @@ function toggleLangPicker() {
 }
 
 function _reRenderCurrentTab() {
-  const active = document.querySelector('.menu-item[data-tab].active');
-  if (!active) return;
-  const tab = active.dataset.tab;
+  const tab = window._activeTab
+    || document.querySelector('.menu-item[data-tab].active')?.dataset.tab;
+  if (!tab) return;
   if (tab === 'journal')    renderJournal();
   if (tab === 'hypotheses') renderHypotheses();
   if (tab === 'milestones') renderMilestones();
@@ -2845,7 +3038,8 @@ function showHome() {
 const TAB_LABELS = {
   overview:'Resumen', journal:'Bitácora', hypotheses:'Hipótesis',
   milestones:'Hitos', notes:'Notas', documents:'Documentos', references:'Bibliografía',
-  graph:'Knowledge Graph', team:'Equipo', repo:'Repositorio GitHub'
+  graph:'Knowledge Graph', team:'Equipo', repo:'Repositorio GitHub',
+  tools:'Herramientas', config:'Configuración'
 };
 
 function switchTab(tab) {
@@ -2867,6 +3061,10 @@ function switchTab(tab) {
   if (tab === 'team')       loadTeam();
   if (tab === 'graph')      loadGraph();
   if (tab === 'repo')       loadRepo();
+  if (tab === 'tools')      renderToolsTab();
+  if (tab === 'config')     renderConfigTab();
+  // track current tab for AI context and _reRenderCurrentTab
+  window._activeTab = tab;
 }
 
 // ── Menu bar ────────────────────────────────────────────────
@@ -2979,8 +3177,8 @@ async function openProject(id) {
   // Mostrar buscador
   document.getElementById('search-wrap').classList.remove('hidden');
   clearSearch();
-  // Precargar datos y abrir overview
-  await Promise.all([loadJournal(), loadHypotheses(), loadMilestones()]);
+  // Precargar datos, cargar features y abrir overview
+  await Promise.all([loadJournal(), loadHypotheses(), loadMilestones(), loadMyFeatures()]);
   switchTab('overview');
 }
 
@@ -4640,10 +4838,7 @@ function switchProfileSection(sec) {
     b.classList.toggle('active', b.dataset.psec === sec));
   document.querySelectorAll('.profile-section').forEach(s =>
     s.classList.toggle('active', s.id === 'psec-' + sec));
-  if (sec === 'obsidian') {
-    _refreshObsidianTokenUI();
-    loadPluginInfo();
-  }
+  // Obsidian section removed — token is now in Herramientas tab
 }
 
 async function loadPluginInfo() {
@@ -4730,6 +4925,9 @@ async function renewLabToken() {
     token = data.access_token;
     localStorage.setItem('research_token', token);
     _refreshObsidianTokenUI();
+    // Also update tools tab token display if visible
+    const toolsEl = document.getElementById('tools-token-display');
+    if (toolsEl) toolsEl.value = token;
     toast(t('msg_token_renewed'), 'success');
   } catch(e) { toast(e.message, 'error'); }
 }
@@ -5111,6 +5309,391 @@ if (_initInviteParam) {
   _renderMenuAvatar(currentUser);
   _proactiveRefresh();   // verifica/renueva el token al restaurar sesión
   loadProjects();
+}
+
+// ══════════════════════════════════════════════════════════
+// USER FEATURES — loads per-user per-project feature access
+// ══════════════════════════════════════════════════════════
+let userFeatures = { role:'OBSERVER', feat_obsidian:false, feat_ai_local:false,
+                     feat_ai_web:false, feat_github_push:false, feat_wiki:false,
+                     ai_web_available:false };
+
+async function loadMyFeatures() {
+  if (!currentProject) return;
+  try {
+    userFeatures = await api('GET', `/projects/${currentProject.id}/my-features`);
+  } catch {
+    userFeatures = { role:'OBSERVER', feat_obsidian:false, feat_ai_local:false,
+                     feat_ai_web:false, feat_github_push:false, feat_wiki:false,
+                     ai_web_available:false };
+  }
+  _applyFeatureVisibility();
+}
+
+function _applyFeatureVisibility() {
+  const isPI   = userFeatures.role === 'PI';
+  const hasTool = userFeatures.feat_obsidian || userFeatures.feat_ai_local;
+
+  // Config tab — PI only
+  const configBtn = document.getElementById('menu-config-btn');
+  if (configBtn) configBtn.style.display = isPI ? '' : 'none';
+
+  // Tools tab — if any tool feature enabled
+  const toolsBtn = document.getElementById('menu-tools-btn');
+  if (toolsBtn) toolsBtn.style.display = hasTool ? '' : 'none';
+
+  // AI chat widget
+  const widget = document.getElementById('ai-chat-widget');
+  if (widget) widget.classList.toggle('visible', userFeatures.ai_web_available);
+}
+
+// ══════════════════════════════════════════════════════════
+// TOOLS TAB
+// ══════════════════════════════════════════════════════════
+async function renderToolsTab() {
+  if (!currentProject) return;
+  const el = document.getElementById('tools-content');
+  if (!el) return;
+
+  const tok = localStorage.getItem('research_token') || '';
+  const labUrl = window.location.origin;
+
+  let html = '';
+
+  // ── Token section (always shown in tools if obsidian or ai_local) ──
+  if (userFeatures.feat_obsidian || userFeatures.feat_ai_local) {
+    html += `
+    <div class="config-section-title">${t('tools_token_title')}</div>
+    <div class="tools-card">
+      <div class="tools-card-title">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
+        ${t('tools_token_title')}
+      </div>
+      <div class="tools-card-desc">${t('tools_token_desc')}<br><strong style="color:var(--warning,#f59e0b)">${lang==='es'?'No lo compartas':'Do not share it'}</strong> — ${lang==='es'?'es personal y te identifica en el Lab.':'it is personal and identifies you in the Lab.'}</div>
+      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
+        <input id="tools-token-display" type="password" readonly value="${esc(tok)}"
+          style="flex:1;font-family:monospace;font-size:11px;padding:6px 10px;background:var(--bg);border:0.5px solid var(--border2);border-radius:var(--r);color:var(--muted2);outline:none">
+        <button class="btn-icon" onclick="toggleToolsTokenVisibility()">
+          <svg id="tools-token-eye" width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg>
+        </button>
+        <button class="btn-secondary" onclick="copyToolsToken()" style="font-size:11px;padding:5px 12px">${t('tools_copy')}</button>
+        <button class="btn-ghost" style="font-size:11px;padding:4px 10px" onclick="renewLabToken(true)">${lang==='es'?'Renovar':'Renew'}</button>
+      </div>
+      <div style="font-size:11px;color:var(--muted)"><strong>${t('tools_projectid')}:</strong>
+        <code style="font-size:10px;background:var(--surface2);padding:1px 6px;border-radius:4px;margin-left:4px;color:var(--teal)">${esc(currentProject.id)}</code>
+        <button class="btn-ghost" style="font-size:10px;padding:2px 7px;margin-left:6px" onclick="navigator.clipboard.writeText('${esc(currentProject.id)}').then(()=>toast('ID copiado','success'))">${t('tools_copy')}</button>
+      </div>
+    </div>`;
+  }
+
+  // ── Obsidian plugin ──
+  if (userFeatures.feat_obsidian) {
+    html += `
+    <div class="config-section-title">${t('tools_obsidian_title')}</div>
+    <div class="tools-card">
+      <div class="tools-card-title">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+        ${t('tools_obsidian_title')}
+      </div>
+      <div class="tools-card-desc">${t('tools_obsidian_desc')}</div>
+      <button class="btn-secondary" onclick="downloadPlugin()" style="font-size:11px;padding:5px 14px">
+        <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" style="margin-right:4px;vertical-align:-1px"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+        ${lang==='es'?'Descargar plugin':'Download plugin'}
+      </button>
+      <p style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.6">${lang==='es'?'Configuración del plugin: <strong>Server URL</strong> = '+labUrl+' · <strong>Token</strong> = (ver arriba) · <strong>Project ID</strong> = '+currentProject.id:'Plugin settings: <strong>Server URL</strong> = '+labUrl+' · <strong>Token</strong> = (see above) · <strong>Project ID</strong> = '+currentProject.id}</p>
+    </div>`;
+  }
+
+  // ── MCP Bridge ──
+  if (userFeatures.feat_ai_local) {
+    const mcpConfig = JSON.stringify({
+      mcpServers: {
+        "mcp-lab-bridge": {
+          command: "node",
+          args: ["<path-to>/obsidian-plugin/mcp-lab-bridge.mjs"],
+          env: {
+            VAULT_PATH: "<path-to-obsidian-vault>",
+            LAB_URL: labUrl,
+            LAB_TOKEN: "<paste-token-from-above>",
+            LAB_PROJECT_ID: currentProject.id
+          }
+        }
+      }
+    }, null, 2);
+
+    html += `
+    <div class="config-section-title">${t('tools_mcp_title')}</div>
+    <div class="tools-card">
+      <div class="tools-card-title">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0z"/></svg>
+        ${t('tools_mcp_title')}
+      </div>
+      <div class="tools-card-desc">${t('tools_mcp_desc')} ${lang==='es'?'Pegalo en <code style="font-size:10px">~/.claude/mcp.json</code>':'Paste it in <code style="font-size:10px">~/.claude/mcp.json</code>'}</div>
+      <div class="tools-code-block" id="mcp-config-block">${esc(mcpConfig)}<button class="tools-copy-btn" onclick="copyMcpConfig()">${t('tools_copy')}</button></div>
+    </div>`;
+  }
+
+  if (!html) {
+    html = `<div style="text-align:center;color:var(--muted);padding:3rem;font-size:12px">${lang==='es'?'No tenés funciones de herramientas habilitadas en este proyecto.':'No tool features are enabled for you in this project.'}</div>`;
+  }
+
+  el.innerHTML = html;
+}
+
+function toggleToolsTokenVisibility() {
+  const el = document.getElementById('tools-token-display');
+  if (!el) return;
+  el.type = el.type === 'password' ? 'text' : 'password';
+}
+
+function copyToolsToken() {
+  const tok = localStorage.getItem('research_token') || '';
+  navigator.clipboard.writeText(tok).then(() => toast(lang==='es'?'Token copiado':'Token copied', 'success'));
+}
+
+function copyMcpConfig() {
+  const el = document.getElementById('mcp-config-block');
+  if (!el) return;
+  // Get text without the button
+  const text = el.childNodes[0]?.textContent || '';
+  navigator.clipboard.writeText(text).then(() => toast(lang==='es'?'Configuración copiada':'Config copied', 'success'));
+}
+
+// ══════════════════════════════════════════════════════════
+// CONFIG TAB (PI only)
+// ══════════════════════════════════════════════════════════
+let _projectConfig    = null;
+let _memberPermissions = [];
+
+async function renderConfigTab() {
+  if (!currentProject || userFeatures.role !== 'PI') return;
+  try {
+    [_projectConfig, _memberPermissions] = await Promise.all([
+      api('GET', `/projects/${currentProject.id}/config`),
+      api('GET', `/projects/${currentProject.id}/config/members`),
+    ]);
+    _renderConfigHTML();
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+function _renderConfigHTML() {
+  const cfg  = _projectConfig;
+  const mems = _memberPermissions;
+
+  const featToggle = (key, labelKey, descKey, val) => `
+    <div class="feat-toggle-row">
+      <div>
+        <div class="feat-toggle-label">${t(labelKey)}</div>
+        <div class="feat-toggle-sublabel">${t(descKey)}</div>
+      </div>
+      <label class="toggle-switch">
+        <input type="checkbox" id="cfg-${key}" ${val?'checked':''} onchange="_onFeatToggle()">
+        <span class="toggle-slider"></span>
+      </label>
+    </div>`;
+
+  const featureRows = [
+    featToggle('feat_obsidian',    'feat_obsidian',      'feat_obsidian_desc',      cfg.feat_obsidian),
+    featToggle('feat_ai_local',    'feat_ai_local',      'feat_ai_local_desc',      cfg.feat_ai_local),
+    featToggle('feat_ai_web',      'feat_ai_web',        'feat_ai_web_desc',        cfg.feat_ai_web),
+    featToggle('feat_github_push', 'feat_github_push',   'feat_github_push_desc',   cfg.feat_github_push),
+    featToggle('feat_wiki',        'feat_wiki',          'feat_wiki_desc',          cfg.feat_wiki),
+  ].join('');
+
+  // Permission matrix
+  const matrixHeaders = `<th>${t('perm_member')}</th><th>${t('perm_obsidian')}</th><th>${t('perm_ai_local')}</th><th>${t('perm_ai_web')}</th><th>${t('perm_github_push')}</th><th>${t('perm_wiki')}</th>`;
+  const matrixRows = mems.map(m => {
+    const isPI = m.role === 'PI';
+    const chk = (feat, val) => isPI
+      ? `<td><input type="checkbox" checked disabled title="${lang==='es'?'PI siempre habilitado':'PI always enabled'}"></td>`
+      : `<td><input type="checkbox" data-uid="${m.user_id}" data-feat="${feat}" ${val?'checked':''} onchange="_onMemberPermChange(this)"></td>`;
+    return `<tr>
+      <td>${esc(m.user_name)}<span class="role-badge ${isPI?'pi':''}">${m.role}</span></td>
+      ${chk('feat_obsidian',    m.feat_obsidian)}
+      ${chk('feat_ai_local',    m.feat_ai_local)}
+      ${chk('feat_ai_web',      m.feat_ai_web)}
+      ${chk('feat_github_push', m.feat_github_push)}
+      ${chk('feat_wiki',        m.feat_wiki)}
+    </tr>`;
+  }).join('');
+
+  const aiKeyPlaceholder = cfg.ai_api_key_set
+    ? t('ai_apikey_set')
+    : (lang==='es'?'sk-ant-…':'sk-ant-…');
+
+  const el = document.getElementById('config-content');
+  el.innerHTML = `
+    <!-- FEATURES -->
+    <div class="config-section-title">${t('config_features')}</div>
+    <div style="background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:4px 16px;margin-bottom:1.25rem">
+      ${featureRows}
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:1.5rem">
+      <button class="btn-primary" style="font-size:11px" onclick="saveProjectFeatures()">${t('save')}</button>
+    </div>
+
+    <!-- USER ACCESS -->
+    <div class="config-section-title">${t('config_access')}</div>
+    <div style="background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:12px 16px;margin-bottom:1.5rem;overflow-x:auto">
+      <table class="perm-matrix">
+        <thead><tr>${matrixHeaders}</tr></thead>
+        <tbody>${matrixRows}</tbody>
+      </table>
+    </div>
+
+    <!-- AI CONFIG -->
+    <div class="config-section-title">${t('config_ai')}</div>
+    <div style="background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:1.25rem">
+      <div class="fg" style="margin-bottom:.75rem">
+        <label style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em">${t('ai_provider_label')}</label>
+        <select id="cfg-ai-provider" style="background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--r);padding:7px 10px;color:var(--text);font-size:12px;outline:none;width:100%">
+          <option value="" ${!cfg.ai_provider?'selected':''}>— ${lang==='es'?'Deshabilitado':'Disabled'} —</option>
+          <option value="claude" ${cfg.ai_provider==='claude'?'selected':''}>Anthropic Claude</option>
+        </select>
+      </div>
+      <div class="fg" style="margin-bottom:.75rem">
+        <label style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em">${t('ai_model_label')}</label>
+        <select id="cfg-ai-model" style="background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--r);padding:7px 10px;color:var(--text);font-size:12px;outline:none;width:100%">
+          <option value="claude-sonnet-4-6" ${cfg.ai_model==='claude-sonnet-4-6'||!cfg.ai_model?'selected':''}>Claude Sonnet 4.6 (recomendado)</option>
+          <option value="claude-opus-4-6" ${cfg.ai_model==='claude-opus-4-6'?'selected':''}>Claude Opus 4.6</option>
+          <option value="claude-haiku-4-5-20251001" ${cfg.ai_model==='claude-haiku-4-5-20251001'?'selected':''}>Claude Haiku 4.5 (rápido)</option>
+        </select>
+      </div>
+      <div class="fg" style="margin-bottom:.75rem">
+        <label style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em">${t('ai_apikey_label')}</label>
+        <input id="cfg-ai-apikey" type="password" placeholder="${aiKeyPlaceholder}"
+          style="background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--r);padding:8px 10px;color:var(--text);font-size:12px;outline:none;width:100%;font-family:monospace">
+        ${cfg.ai_api_key_set ? `<div style="font-size:10px;color:var(--teal);margin-top:4px">✓ ${lang==='es'?'Clave almacenada':'Key stored'}</div>` : ''}
+      </div>
+      <div class="fg" style="margin-bottom:.75rem">
+        <label style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em">${t('ai_instructions_label')}</label>
+        <textarea id="cfg-ai-instructions" rows="3" placeholder="${lang==='es'?'Instrucciones específicas para el asistente en este proyecto…':'Project-specific instructions for the assistant…'}"
+          style="background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--r);padding:8px 10px;color:var(--text);font-size:12px;outline:none;width:100%;resize:vertical;font-family:inherit;line-height:1.5">${esc(cfg.ai_instructions||'')}</textarea>
+      </div>
+      <div class="feat-toggle-row" style="border:none;padding:0">
+        <div class="feat-toggle-label">${t('ai_mcp_label')}</div>
+        <label class="toggle-switch">
+          <input type="checkbox" id="cfg-ai-mcp" ${cfg.ai_mcp_enabled?'checked':''}>
+          <span class="toggle-slider"></span>
+        </label>
+      </div>
+    </div>
+    <div style="display:flex;justify-content:flex-end;margin-bottom:2rem">
+      <button class="btn-primary" style="font-size:11px" onclick="saveAiConfig()">${t('save')}</button>
+    </div>`;
+}
+
+function _onFeatToggle() { /* changes auto-saved on saveProjectFeatures() click */ }
+
+async function _onMemberPermChange(el) {
+  const userId = el.dataset.uid;
+  const feat   = el.dataset.feat;
+  const val    = el.checked;
+  // find current member perms
+  const m = _memberPermissions.find(x => x.user_id === userId);
+  if (!m) return;
+  const body = {
+    feat_obsidian:    m.feat_obsidian,
+    feat_ai_local:    m.feat_ai_local,
+    feat_ai_web:      m.feat_ai_web,
+    feat_github_push: m.feat_github_push,
+    feat_wiki:        m.feat_wiki,
+    [feat]:           val,
+  };
+  try {
+    const updated = await api('PUT', `/projects/${currentProject.id}/config/members/${userId}`, body);
+    const idx = _memberPermissions.findIndex(x => x.user_id === userId);
+    if (idx >= 0) _memberPermissions[idx] = updated;
+    toast(lang==='es'?'Permisos actualizados':'Permissions updated', 'success');
+  } catch(e) { toast(e.message, 'error'); el.checked = !val; }
+}
+
+async function saveProjectFeatures() {
+  if (!_projectConfig) return;
+  const body = {
+    ..._projectConfig,
+    feat_obsidian:    document.getElementById('cfg-feat_obsidian')?.checked    ?? _projectConfig.feat_obsidian,
+    feat_ai_local:    document.getElementById('cfg-feat_ai_local')?.checked    ?? _projectConfig.feat_ai_local,
+    feat_ai_web:      document.getElementById('cfg-feat_ai_web')?.checked      ?? _projectConfig.feat_ai_web,
+    feat_github_push: document.getElementById('cfg-feat_github_push')?.checked ?? _projectConfig.feat_github_push,
+    feat_wiki:        document.getElementById('cfg-feat_wiki')?.checked        ?? _projectConfig.feat_wiki,
+  };
+  try {
+    _projectConfig = await api('PUT', `/projects/${currentProject.id}/config`, body);
+    toast(lang==='es'?'Funciones guardadas':'Features saved', 'success');
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+async function saveAiConfig() {
+  if (!_projectConfig) return;
+  const apiKey = document.getElementById('cfg-ai-apikey')?.value?.trim() || null;
+  const body = {
+    ..._projectConfig,
+    ai_provider:     document.getElementById('cfg-ai-provider')?.value || null,
+    ai_model:        document.getElementById('cfg-ai-model')?.value    || null,
+    ai_api_key:      apiKey || null,
+    ai_instructions: document.getElementById('cfg-ai-instructions')?.value?.trim() || null,
+    ai_mcp_enabled:  document.getElementById('cfg-ai-mcp')?.checked ?? false,
+  };
+  try {
+    _projectConfig = await api('PUT', `/projects/${currentProject.id}/config`, body);
+    toast(lang==='es'?'Configuración de IA guardada':'AI config saved', 'success');
+    _renderConfigHTML();   // re-render to show "key stored" badge
+  } catch(e) { toast(e.message, 'error'); }
+}
+
+// ══════════════════════════════════════════════════════════
+// AI CHAT WIDGET
+// ══════════════════════════════════════════════════════════
+let _aiChatHistory = [];
+
+function toggleAiChat() {
+  const panel = document.getElementById('ai-chat-panel');
+  if (!panel) return;
+  panel.classList.toggle('open');
+  if (panel.classList.contains('open')) {
+    document.getElementById('ai-chat-input')?.focus();
+  }
+}
+
+function clearAiChat() {
+  _aiChatHistory = [];
+  const msgs = document.getElementById('ai-chat-messages');
+  if (msgs) msgs.innerHTML = `<div class="ai-msg assistant">${t('ai_chat_greeting')}</div>`;
+  document.getElementById('ai-chat-panel')?.classList.remove('open');
+}
+
+async function sendAiMessage() {
+  const input = document.getElementById('ai-chat-input');
+  if (!input) return;
+  const message = input.value.trim();
+  if (!message || !currentProject) return;
+
+  input.value = '';
+  input.style.height = 'auto';
+
+  const msgs = document.getElementById('ai-chat-messages');
+  msgs.innerHTML += `<div class="ai-msg user">${esc(message)}</div>`;
+  msgs.innerHTML += `<div class="ai-msg assistant thinking" id="ai-typing">${lang==='es'?'Pensando…':'Thinking…'}</div>`;
+  msgs.scrollTop = msgs.scrollHeight;
+
+  try {
+    const res = await api('POST', `/projects/${currentProject.id}/ai/chat`, {
+      message,
+      context_type: window._activeTab || 'general',
+      history: _aiChatHistory.slice(-10),
+    });
+    _aiChatHistory.push({ role:'user', content: message });
+    _aiChatHistory.push({ role:'assistant', content: res.reply });
+
+    document.getElementById('ai-typing')?.remove();
+    msgs.innerHTML += `<div class="ai-msg assistant">${esc(res.reply)}</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  } catch(e) {
+    document.getElementById('ai-typing')?.remove();
+    msgs.innerHTML += `<div class="ai-msg assistant" style="color:var(--danger,#f87171)">${esc(e.message)}</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }
 }
 </script>
 </body>

@@ -9,3 +9,4 @@ python-multipart==0.0.12
 psycopg2-binary==2.9.9
 redis==5.0.8
 cryptography==42.0.8
+anthropic>=0.40.0
