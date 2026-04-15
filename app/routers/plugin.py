@@ -8,7 +8,7 @@ import os
 from fastapi import APIRouter, Depends, HTTPException
 from fastapi.responses import FileResponse
 
-from app.routers.auth import get_current_user
+from app.auth import get_current_user
 
 router = APIRouter(tags=["plugin"])
 

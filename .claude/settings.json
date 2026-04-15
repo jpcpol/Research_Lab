@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(dir \"C:\\\\Users\\\\Usuario\\\\.claude\\\\projects\\\\c--Users-Usuario-Documents-Aural-Syncro-Research-Lab\\\\memory\")"
+    ]
+  }
+}

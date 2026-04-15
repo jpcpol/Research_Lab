@@ -2,3 +2,25 @@
 **/.env.example
 **/deuda_tecnica/*.md
 **/tareas.txt
+
+# ── Python ────────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# ── Node / Plugin build ───────────────────────────────────────────────────────
+node_modules/
+obsidian-plugin/main.js
+obsidian-plugin/*.js.map
+
+# ── Static user data ──────────────────────────────────────────────────────────
+static/avatars/*
+!static/avatars/.gitkeep
+static/plugin/main.js
+
+# ── OS ────────────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
