@@ -185,6 +185,15 @@ button{font-family:inherit;cursor:pointer}
 .btn-profile{display:flex;align-items:center;gap:6px;padding:4px 11px;font-size:11px;font-weight:600;color:var(--muted2);background:var(--surface2);border:0.5px solid var(--border);border-radius:20px;cursor:pointer;transition:all .15s;white-space:nowrap}
 .btn-profile:hover{color:var(--teal);border-color:var(--teal)}
 .btn-profile svg{opacity:.7}
+/* ── Language picker ── */
+.lang-picker{position:relative}
+.lang-picker-btn{display:flex;align-items:center;gap:5px;background:transparent;border:0.5px solid var(--border);border-radius:12px;padding:4px 9px;font-size:10px;font-weight:700;color:var(--muted2);cursor:pointer;letter-spacing:.06em;transition:all .15s}
+.lang-picker-btn:hover,.lang-picker.open .lang-picker-btn{border-color:var(--teal);color:var(--teal)}
+.lang-drop{position:absolute;top:calc(100% + 6px);right:0;background:var(--surface);border:0.5px solid var(--border2);border-radius:var(--r);padding:4px;min-width:130px;z-index:300;display:none;box-shadow:0 8px 24px rgba(0,0,0,.45)}
+.lang-picker.open .lang-drop{display:block}
+.lang-opt{display:flex;align-items:center;gap:8px;width:100%;background:transparent;border:none;color:var(--muted2);font-size:12px;font-weight:500;padding:7px 10px;border-radius:5px;cursor:pointer;transition:all .15s;text-align:left}
+.lang-opt:hover{background:rgba(77,217,172,.08);color:var(--text)}
+.lang-opt.active{color:var(--teal);font-weight:700}
 /* profile modal */
 .profile-nav{display:flex;gap:0;border-bottom:0.5px solid var(--border);margin-bottom:1.25rem}
 .profile-nav-btn{padding:8px 16px;font-size:12px;font-weight:500;color:var(--muted);background:transparent;border:none;border-bottom:2px solid transparent;cursor:pointer;transition:all .2s;margin-bottom:-1px}
@@ -839,10 +848,17 @@ img.profile-avatar{background:transparent}
 
           <div class="menubar-right">
             <span class="section-indicator" id="section-indicator">Resumen</span>
-            <button id="lang-switcher" onclick="setLang(lang==='es'?'en':'es')"
-              style="background:transparent;border:0.5px solid var(--border);border-radius:12px;padding:3px 9px;font-size:10px;font-weight:700;color:var(--muted2);cursor:pointer;letter-spacing:.06em;transition:all .15s"
-              onmouseover="this.style.borderColor='var(--teal)';this.style.color='var(--teal)'"
-              onmouseout="this.style.borderColor='var(--border)';this.style.color='var(--muted2)'">EN</button>
+            <div class="lang-picker" id="lang-picker">
+              <button class="lang-picker-btn" id="lang-switcher" onclick="toggleLangPicker()" title="Language / Idioma">
+                <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm7.5-6.923c-.67.204-1.335.82-1.887 1.855A7.97 7.97 0 0 0 5.145 4H7.5V1.077zM4.09 4a9.267 9.267 0 0 1 .64-1.539 6.7 6.7 0 0 1 .597-.933A7.025 7.025 0 0 0 2.255 4H4.09zm-.582 3.5c.03-.877.138-1.718.312-2.5H1.674a6.958 6.958 0 0 0-.656 2.5h2.49zM4.847 5a12.5 12.5 0 0 0-.338 2.5H7.5V5H4.847zM8.5 5v2.5h2.99a12.495 12.495 0 0 0-.337-2.5H8.5zM4.51 8.5a12.5 12.5 0 0 0 .337 2.5H7.5V8.5H4.51zm3.99 0V11h2.653c.187-.765.306-1.608.338-2.5H8.5zM5.145 12c.138.386.295.744.468 1.065.552 1.035 1.218 1.65 1.887 1.855V12H5.145zm.182 2.472a6.696 6.696 0 0 1-.597-.933A9.268 9.268 0 0 1 4.09 12H2.255a7.024 7.024 0 0 0 3.072 2.472zM3.82 11a13.652 13.652 0 0 1-.312-2.5h-2.49c.062.89.291 1.733.656 2.5H3.82zm6.853 3.472A7.024 7.024 0 0 0 13.745 12H11.91a9.27 9.27 0 0 1-.64 1.539 6.688 6.688 0 0 1-.597.933zM8.5 12v2.92c.67-.204 1.335-.82 1.887-1.855.173-.321.33-.679.468-1.065H8.5zm3.68-1h2.146c.365-.767.594-1.61.656-2.5h-2.49a13.65 13.65 0 0 1-.312 2.5zm2.802-3.5a6.959 6.959 0 0 0-.656-2.5H12.18c.174.782.282 1.623.312 2.5h2.49zM11.27 2.461c.247.464.462.98.64 1.539h1.835a7.024 7.024 0 0 0-3.072-2.472c.218.284.418.598.597.933zM10.855 4a7.966 7.966 0 0 0-.468-1.065C9.835 1.77 9.17 1.155 8.5.952V4h2.355z"/></svg>
+                <span id="lang-picker-label">ES</span>
+                <svg width="8" height="8" viewBox="0 0 16 16" fill="currentColor" style="opacity:.5"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
+              </button>
+              <div class="lang-drop" id="lang-drop">
+                <button class="lang-opt" id="lang-opt-es" onclick="setLang('es')">🇦🇷 Español</button>
+                <button class="lang-opt" id="lang-opt-en" onclick="setLang('en')">🇺🇸 English</button>
+              </div>
+            </div>
             <button class="btn-profile" id="btn-profile" onclick="openProfileModal()">
               <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/></svg>
               <span id="menu-username">—</span>
@@ -1990,8 +2006,10 @@ const TRANSLATIONS = {
     ms_desc_ph:   'Descripción…',
     add_milestone: 'Agregar hito',
     new_milestone: '+ Nuevo hito',
-    milestone_status_pending:    'Pendiente',
-    milestone_status_done:       'Completado',
+    milestone_status_pending:     'Pendiente',
+    milestone_status_in_progress: 'En proceso',
+    milestone_status_done:        'Completado',
+    milestone_status_blocked:     'Bloqueado',
     req_title_ph: 'Requerimiento…',
     add_req:      'Agregar',
     // ── Notes ───────────────────────────────────────────────
@@ -2274,8 +2292,10 @@ const TRANSLATIONS = {
     ms_desc_ph:   'Description…',
     add_milestone: 'Add milestone',
     new_milestone: '+ New milestone',
-    milestone_status_pending: 'Pending',
-    milestone_status_done:    'Completed',
+    milestone_status_pending:     'Pending',
+    milestone_status_in_progress: 'In progress',
+    milestone_status_done:        'Completed',
+    milestone_status_blocked:     'Blocked',
     req_title_ph: 'Requirement…',
     add_req:      'Add',
     // ── Notes ───────────────────────────────────────────────
@@ -2485,9 +2505,9 @@ function applyI18n() {
   document.querySelectorAll('[data-i18n-title]').forEach(el => {
     el.title = t(el.dataset.i18nTitle);
   });
-  // Language switcher badge
-  const lsw = document.getElementById('lang-switcher');
-  if (lsw) lsw.textContent = t('lang_switch');
+  // Language picker label
+  const lbl = document.getElementById('lang-picker-label');
+  if (lbl) lbl.textContent = lang.toUpperCase();
   // Update TAB_LABELS
   if (typeof TAB_LABELS !== 'undefined') {
     TAB_LABELS.overview   = t('tab_overview');
@@ -2513,7 +2533,24 @@ function setLang(l) {
   lang = l;
   localStorage.setItem('lab_lang', l);
   document.documentElement.lang = l;
+  document.getElementById('lang-picker')?.classList.remove('open');
+  document.getElementById('lang-opt-es')?.classList.toggle('active', l === 'es');
+  document.getElementById('lang-opt-en')?.classList.toggle('active', l === 'en');
   applyI18n();
+  _reRenderCurrentTab();
+}
+
+function toggleLangPicker() {
+  document.getElementById('lang-picker')?.classList.toggle('open');
+}
+
+function _reRenderCurrentTab() {
+  const active = document.querySelector('.menu-item[data-tab].active');
+  if (!active) return;
+  const tab = active.dataset.tab;
+  if (tab === 'journal')    renderJournal();
+  if (tab === 'hypotheses') renderHypotheses();
+  if (tab === 'milestones') renderMilestones();
 }
 
 // ══════════════════════════════════════════════════════════
@@ -2850,9 +2887,12 @@ function closeMenus() {
   document.querySelectorAll('.menu-trigger.open').forEach(t => t.classList.remove('open'));
 }
 
-// close menus on outside click
+// close menus and lang picker on outside click
 document.addEventListener('click', e => {
   if (!e.target.closest('.menu-group')) closeMenus();
+  if (!e.target.closest('#lang-picker')) {
+    document.getElementById('lang-picker')?.classList.remove('open');
+  }
 });
 
 // close menus on Escape
@@ -2994,7 +3034,13 @@ function renderJournal(entries) {
     return;
   }
   const badgeClass = {progress:'badge-progress',modification:'badge-modification',decision:'badge-decision',milestone:'badge-milestone',note:'badge-note'};
-  const typeLabel = {progress:'Avance',modification:'Modificación',decision:'Decisión',milestone:'Hito',note:'Nota'};
+  const typeLabel = {
+    progress:     t('entry_progress').replace(/^[^\s]+\s/,''),
+    modification: t('entry_modification').replace(/^[^\s]+\s/,''),
+    decision:     t('entry_decision').replace(/^[^\s]+\s/,''),
+    milestone:    t('entry_milestone').replace(/^[^\s]+\s/,''),
+    note:         t('entry_note').replace(/^[^\s]+\s/,''),
+  };
   list.innerHTML = filtered.map(e => `
     <div class="entry-card" data-id="${e.id}" data-type="${e.entry_type}">
       <div class="entry-meta">
@@ -3063,13 +3109,13 @@ function renderHypotheses() {
   const stats = document.getElementById('hyp-stats');
   const validated = hypotheses.filter(h => h.status === 'validated').length;
   const rejected = hypotheses.filter(h => h.status === 'rejected').length;
-  stats.textContent = `${hypotheses.length} hipótesis · ${validated} validadas · ${rejected} rechazadas`;
+  stats.textContent = `${hypotheses.length} ${t('tab_hypotheses').toLowerCase()} · ${validated} ${t('status_validated').toLowerCase()} · ${rejected} ${t('status_rejected').toLowerCase()}`;
   if (!hypotheses.length) {
-    list.innerHTML = `<div style="text-align:center;color:var(--muted);padding:2rem;font-size:12px">Sin hipótesis registradas aún.</div>`;
+    list.innerHTML = `<div style="text-align:center;color:var(--muted);padding:2rem;font-size:12px">${lang==='en'?'No hypotheses recorded yet.':'Sin hipótesis registradas aún.'}</div>`;
     return;
   }
-  const prioLabel = {1:'Crítica',2:'Alta',3:'Media',4:'Baja',5:'Mínima'};
-  const statusLabel = {pending:'Pendiente',in_progress:'En proceso',validated:'Validada',rejected:'Rechazada',on_hold:'En espera'};
+  const prioLabel = {1:t('pri1').split(' — ')[1],2:t('pri2').split(' — ')[1],3:t('pri3').split(' — ')[1],4:t('pri4').split(' — ')[1],5:t('pri5').split(' — ')[1]};
+  const statusLabel = {pending:t('status_pending'),in_progress:t('status_progress'),validated:t('status_validated'),rejected:t('status_rejected'),on_hold:t('status_on_hold')};
   list.innerHTML = hypotheses.map(h => `
     <div class="hypothesis-card" data-id="${h.id}">
       <div class="hyp-status-dot status-${h.status}"></div>
@@ -3146,9 +3192,9 @@ function renderMilestones() {
   const list = document.getElementById('milestone-list');
   const stats = document.getElementById('ms-stats');
   const done = milestones.filter(m => m.completed_at).length;
-  stats.textContent = `${milestones.length} hitos · ${done} completados`;
+  stats.textContent = `${milestones.length} ${t('tab_milestones').toLowerCase()} · ${done} ${t('milestone_status_done').toLowerCase()}`;
   if (!milestones.length) {
-    list.innerHTML = `<div style="text-align:center;color:var(--muted);padding:2rem;font-size:12px">Sin hitos registrados aún.</div>`;
+    list.innerHTML = `<div style="text-align:center;color:var(--muted);padding:2rem;font-size:12px">${lang==='en'?'No milestones recorded yet.':'Sin hitos registrados aún.'}</div>`;
     return;
   }
   list.innerHTML = milestones.map(m => {
@@ -3175,17 +3221,17 @@ function renderMilestones() {
                    onclick="toggleReq('${m.id}','${r.id}','${r.status}')"></div>
               <span class="req-title ${r.status==='done'?'done-text':''}">${esc(r.title)}</span>
               <select class="req-status-select" onchange="updateReqStatus('${m.id}','${r.id}',this.value)">
-                <option value="pending" ${r.status==='pending'?'selected':''}>Pendiente</option>
-                <option value="in_progress" ${r.status==='in_progress'?'selected':''}>En proceso</option>
-                <option value="done" ${r.status==='done'?'selected':''}>Listo</option>
-                <option value="blocked" ${r.status==='blocked'?'selected':''}>Bloqueado</option>
+                <option value="pending" ${r.status==='pending'?'selected':''}>${t('milestone_status_pending')}</option>
+                <option value="in_progress" ${r.status==='in_progress'?'selected':''}>${t('milestone_status_in_progress')}</option>
+                <option value="done" ${r.status==='done'?'selected':''}>${t('milestone_status_done')}</option>
+                <option value="blocked" ${r.status==='blocked'?'selected':''}>${t('milestone_status_blocked')}</option>
               </select>
               <button class="btn-icon" onclick="deleteReq('${m.id}','${r.id}')" style="color:var(--muted)">✕</button>
             </li>`).join('')}
         </ul>
         <div class="req-add">
-          <input type="text" id="req-input-${m.id}" placeholder="Nuevo requerimiento…" onkeydown="if(event.key==='Enter')addReq('${m.id}')">
-          <button class="btn-ghost" onclick="addReq('${m.id}')">+ Agregar</button>
+          <input type="text" id="req-input-${m.id}" placeholder="${t('req_title_ph')}" onkeydown="if(event.key==='Enter')addReq('${m.id}')">
+          <button class="btn-ghost" onclick="addReq('${m.id}')">+ ${t('add_req')}</button>
         </div>
       </div>` : ''}
     </div>`;
