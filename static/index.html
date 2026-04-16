@@ -5533,9 +5533,9 @@ function openToolsModal(which) {
       el.innerHTML = `<div style="padding:1.25rem;text-align:center;color:var(--muted);font-size:12px">${lang==='es'?'No tenés la función IA Local habilitada en este proyecto. Pedile al PI que te la active en Configuración → Acceso por usuario.':'The IA Local feature is not enabled for you in this project. Ask the PI to enable it in Configuración → Acceso por usuario.'}</div>`;
     } else {
       const mcpConfig = JSON.stringify({
-        mcpServers: { "mcp-lab-bridge": {
+        mcpServers: { "lab-obsidian": {
           command: "node",
-          args: ["<ruta-a>/obsidian-plugin/mcp-lab-bridge.mjs"],
+          args: ["~/.lab-tools/mcp-bridge/mcp-lab-bridge.mjs"],
           env: {
             VAULT_PATH: "<ruta-a-vault-obsidian>",
             LAB_URL: labUrl,
@@ -5547,29 +5547,63 @@ function openToolsModal(which) {
 
       el.innerHTML = `
         <div style="padding:0 1.25rem 1.25rem">
-          <p style="font-size:12px;color:var(--muted2);line-height:1.6;margin-bottom:1rem">
+          <p style="font-size:12px;color:var(--muted2);line-height:1.6;margin-bottom:1.25rem">
             ${lang==='es'
               ? 'El MCP Bridge conecta Claude Code con tu vault de Obsidian y el Research Lab. Claude Code puede leer y escribir notas directamente desde la terminal, con anti-colisión contra el sistema de locking del Lab.'
               : 'The MCP Bridge connects Claude Code to your Obsidian vault and the Research Lab. Claude Code can read and write notes directly from the terminal, with anti-collision against the Lab locking system.'}
           </p>
-          <div style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">
-            ${lang==='es'?'Configuración para ~/.claude/mcp.json':'Config for ~/.claude/mcp.json'}
+
+          <!-- Instalador automático -->
+          <div style="background:var(--surface2);border:0.5px solid var(--teal);border-radius:var(--r);padding:14px 16px;margin-bottom:1rem">
+            <div style="font-size:12px;font-weight:600;color:var(--teal);margin-bottom:6px">
+              <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor" style="margin-right:5px;vertical-align:-1px"><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0zm.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM8 5.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg>
+              ${lang==='es'?'Instalador automático (recomendado)':'Automatic installer (recommended)'}
+            </div>
+            <p style="font-size:11px;color:var(--muted2);line-height:1.6;margin-bottom:10px">
+              ${lang==='es'
+                ? 'Descargá el instalador personalizado y ejecutalo con <code style="background:var(--surface3);padding:0 4px;border-radius:3px">node install-lab-tools.mjs</code>. Instala todo automáticamente: solo necesitás ingresar la ruta de tu vault.'
+                : 'Download the personalized installer and run it with <code style="background:var(--surface3);padding:0 4px;border-radius:3px">node install-lab-tools.mjs</code>. Installs everything automatically — you only need to enter your vault path.'}
+            </p>
+            <div style="font-size:11px;color:var(--muted);background:var(--surface3);border-radius:var(--r);padding:8px 12px;margin-bottom:10px;line-height:1.8">
+              <strong style="display:block;margin-bottom:2px">${lang==='es'?'Requisito:':'Requirement:'}</strong>
+              ${lang==='es'?'Node.js 18 o superior instalado en tu máquina.':'Node.js 18 or later installed on your machine.'}
+              <a href="https://nodejs.org" target="_blank" rel="noopener" style="color:var(--teal);text-decoration:none;margin-left:4px">nodejs.org ↗</a>
+            </div>
+            <button class="btn-primary" style="font-size:11px;padding:6px 16px" onclick="downloadInstaller()">
+              <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" style="margin-right:5px;vertical-align:-1px"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+              ${lang==='es'?'Descargar instalador':'Download installer'}
+            </button>
+            <p style="font-size:10px;color:var(--muted);margin-top:8px;margin-bottom:0">
+              ${lang==='es'?'El instalador contiene tu token personal (válido 72 h). Descargalo cuando estés listo para instalar.':'The installer contains your personal token (valid 72 h). Download it when you\'re ready to install.'}
+            </p>
           </div>
-          <div class="tools-code-block" id="mcp-config-block" style="position:relative">${esc(mcpConfig)}<button class="tools-copy-btn" onclick="copyMcpConfig()">${t('tools_copy')}</button></div>
-          <button class="btn-ghost" style="font-size:11px;padding:5px 14px;margin-top:8px" onclick="downloadMcpConfig()">
-            <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" style="margin-right:4px;vertical-align:-1px"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
-            ${lang==='es'?'Descargar como mcp.json':'Download as mcp.json'}
-          </button>
-          <div style="margin-top:1rem;font-size:11px;color:var(--muted2);background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:10px 14px;line-height:1.8">
-            <div style="font-weight:600;margin-bottom:4px">${lang==='es'?'Pasos de instalación:':'Installation steps:'}</div>
-            <ol style="padding-left:1.2rem;line-height:1.9">
-              <li>${lang==='es'?'Descargá o cloná el repositorio del Lab en tu máquina.':'Download or clone the Lab repository to your machine.'}</li>
-              <li>${lang==='es'?'Instalá dependencias: <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">cd obsidian-plugin && npm install</code>':'Install dependencies: <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">cd obsidian-plugin && npm install</code>'}</li>
-              <li>${lang==='es'?'Reemplazá los valores entre &lt;&gt; en el JSON con tus rutas reales y tu token.':'Replace the &lt;&gt; placeholders in the JSON with your actual paths and token.'}</li>
-              <li>${lang==='es'?'Pegá el JSON en <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">~/.claude/mcp.json</code> (o usá el botón Descargar).':'Paste the JSON into <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">~/.claude/mcp.json</code> (or use the Download button).'}</li>
-              <li>${lang==='es'?'Ejecutá <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">claude</code> en tu terminal — las herramientas del Lab estarán disponibles.':'Run <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">claude</code> in your terminal — Lab tools will be available.'}</li>
-            </ol>
-          </div>
+
+          <!-- Configuración avanzada (manual) -->
+          <details style="margin-top:4px">
+            <summary style="font-size:11px;font-weight:600;color:var(--muted2);cursor:pointer;padding:4px 0;text-transform:uppercase;letter-spacing:.06em;list-style:none;display:flex;align-items:center;gap:6px">
+              <svg width="10" height="10" viewBox="0 0 16 16" fill="currentColor" style="flex-shrink:0"><path d="M7.247 11.14L2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
+              ${lang==='es'?'Configuración manual (avanzado)':'Manual configuration (advanced)'}
+            </summary>
+            <div style="margin-top:10px">
+              <div style="font-size:11px;color:var(--muted2);margin-bottom:6px">
+                ${lang==='es'?'Contenido para <code style="background:var(--surface3);padding:0 4px;border-radius:3px">~/.claude/mcp.json</code>:':'Content for <code style="background:var(--surface3);padding:0 4px;border-radius:3px">~/.claude/mcp.json</code>:'}
+              </div>
+              <div class="tools-code-block" id="mcp-config-block" style="position:relative">${esc(mcpConfig)}<button class="tools-copy-btn" onclick="copyMcpConfig()">${t('tools_copy')}</button></div>
+              <button class="btn-ghost" style="font-size:11px;padding:5px 14px;margin-top:8px" onclick="downloadMcpConfig()">
+                <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" style="margin-right:4px;vertical-align:-1px"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+                ${lang==='es'?'Descargar como mcp.json':'Download as mcp.json'}
+              </button>
+              <div style="margin-top:1rem;font-size:11px;color:var(--muted2);background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:10px 14px;line-height:1.8">
+                <div style="font-weight:600;margin-bottom:4px">${lang==='es'?'Pasos de instalación manual:':'Manual installation steps:'}</div>
+                <ol style="padding-left:1.2rem;line-height:1.9">
+                  <li>${lang==='es'?'Instalá las dependencias del bridge en cualquier carpeta:<br><code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">npm install @modelcontextprotocol/sdk node-fetch</code>':'Install bridge dependencies in any folder:<br><code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">npm install @modelcontextprotocol/sdk node-fetch</code>'}</li>
+                  <li>${lang==='es'?'Descargá <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">mcp-lab-bridge.mjs</code> y ubicalo en esa carpeta.':'Download <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">mcp-lab-bridge.mjs</code> and place it in that folder.'}</li>
+                  <li>${lang==='es'?'Completá el JSON de arriba con tu ruta de vault real y tu token.':'Complete the JSON above with your actual vault path and token.'}</li>
+                  <li>${lang==='es'?'Pegalo en <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">~/.claude/mcp.json</code>.':'Paste it into <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">~/.claude/mcp.json</code>.'}</li>
+                </ol>
+              </div>
+            </div>
+          </details>
         </div>`;
     }
     openModal('modal-tools-mcp');
@@ -5585,6 +5619,24 @@ function downloadMcpConfig() {
     href: URL.createObjectURL(blob), download: 'mcp.json'
   });
   a.click(); URL.revokeObjectURL(a.href);
+}
+
+async function downloadInstaller() {
+  if (!currentProject) return;
+  try {
+    const tok = localStorage.getItem('research_token') || '';
+    const url = `/api/v1/plugin/installer?project_id=${encodeURIComponent(currentProject.id)}`;
+    const res = await fetch(url, { headers: { 'Authorization': `Bearer ${tok}` } });
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ detail: res.statusText }));
+      return toast(err.detail || 'Error al generar el instalador', 'error');
+    }
+    const blob = await res.blob();
+    const a = Object.assign(document.createElement('a'), {
+      href: URL.createObjectURL(blob), download: 'install-lab-tools.mjs'
+    });
+    a.click(); URL.revokeObjectURL(a.href);
+  } catch(e) { toast(e.message, 'error'); }
 }
 
 function toggleToolsTokenVisibility() {
