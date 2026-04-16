@@ -867,16 +867,51 @@ img.profile-avatar{background:transparent}
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 0 1 1-1h8z"/></svg>
                 Repositorio GitHub
               </button>
-              <div class="menu-sep"></div>
-              <!-- Herramientas — visible only if user has feat_obsidian or feat_ai_local -->
-              <button class="menu-item" id="menu-tools-btn" data-tab="tools" onclick="switchTab('tools');closeMenus()" data-i18n="menu_tools" style="display:none">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0zm9.646 10.646a.5.5 0 0 1 .708 0l2.914 2.915a.5.5 0 0 1-.707.707l-2.915-2.914a.5.5 0 0 1 0-.708zM3 11l.471.242.529.026.287.445.445.287.026.529L5 13l-.242.471-.026.529-.445.287-.287.445-.529.026L3 15l-.471-.242L2 14.732l-.287-.445L1.268 14l-.026-.529L1 13l.242-.471.026-.529.445-.287.287-.445.529-.026L3 11z"/></svg>
-                Herramientas
+            </div>
+          </div>
+
+          <!-- HERRAMIENTAS -->
+          <div class="menu-group" id="menu-group-tools" style="display:none">
+            <button class="menu-trigger" id="trigger-tools" onclick="toggleMenu('menu-tools')" data-i18n="menu_tools">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0z"/></svg>
+              Herramientas
+              <svg class="chev" width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
+            </button>
+            <div class="menu-dropdown" id="menu-tools">
+              <button class="menu-item" onclick="openToolsModal('token');closeMenus()">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
+                Token de acceso
               </button>
-              <!-- Configuración — visible only for PI role -->
-              <button class="menu-item" id="menu-config-btn" data-tab="config" onclick="switchTab('config');closeMenus()" data-i18n="menu_config" style="display:none">
-                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.474l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/></svg>
-                Configuración
+              <button class="menu-item" onclick="openToolsModal('obsidian');closeMenus()">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+                Plugin Obsidian
+              </button>
+              <button class="menu-item" onclick="openToolsModal('mcp');closeMenus()">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M5 1a1 1 0 0 0-1 1v1H1.5a.5.5 0 0 0 0 1H2v9.5A1.5 1.5 0 0 0 3.5 15h9a1.5 1.5 0 0 0 1.5-1.5V4h.5a.5.5 0 0 0 0-1H13V2a1 1 0 0 0-1-1H5zm0 1h6v1H5V2zm1.646 5.146a.5.5 0 0 1 .708 0L9 8.793l1.646-1.647a.5.5 0 0 1 .708.708l-2 2a.5.5 0 0 1-.708 0l-2-2a.5.5 0 0 1 0-.708z"/></svg>
+                MCP Bridge
+              </button>
+            </div>
+          </div>
+
+          <!-- CONFIGURACIÓN -->
+          <div class="menu-group" id="menu-group-config" style="display:none">
+            <button class="menu-trigger" id="trigger-config" onclick="toggleMenu('menu-config')" data-i18n="menu_config">
+              <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 4.754a3.246 3.246 0 1 0 0 6.492 3.246 3.246 0 0 0 0-6.492zM5.754 8a2.246 2.246 0 1 1 4.492 0 2.246 2.246 0 0 1-4.492 0z"/><path d="M9.796 1.343c-.527-1.79-3.065-1.79-3.592 0l-.094.319a.873.873 0 0 1-1.255.52l-.292-.16c-1.64-.892-3.433.902-2.54 2.541l.159.292a.873.873 0 0 1-.52 1.255l-.319.094c-1.79.527-1.79 3.065 0 3.592l.319.094a.873.873 0 0 1 .52 1.255l-.16.292c-.892 1.64.901 3.434 2.541 2.54l.292-.159a.873.873 0 0 1 1.255.52l.094.319c.527 1.79 3.065 1.79 3.592 0l.094-.319a.873.873 0 0 1 1.255-.52l.292.16c1.64.893 3.434-.902 2.54-2.541l-.159-.292a.873.873 0 0 1 .52-1.255l.319-.094c1.79-.527 1.79-3.065 0-3.592l-.319-.094a.873.873 0 0 1-.52-1.255l.16-.292c.893-1.64-.902-3.433-2.541-2.54l-.292.159a.873.873 0 0 1-1.255-.52l-.094-.319zm-2.633.283c.246-.835 1.428-.835 1.674 0l.094.319a1.873 1.873 0 0 0 2.693 1.115l.291-.16c.764-.415 1.6.42 1.184 1.185l-.159.292a1.873 1.873 0 0 0 1.116 2.692l.318.094c.835.246.835 1.428 0 1.674l-.319.094a1.873 1.873 0 0 0-1.115 2.693l.16.291c.415.764-.42 1.6-1.185 1.184l-.291-.159a1.873 1.873 0 0 0-2.693 1.116l-.094.318c-.246.835-1.428.835-1.674 0l-.094-.319a1.873 1.873 0 0 0-2.692-1.115l-.292.16c-.764.415-1.6-.42-1.184-1.185l.159-.291A1.873 1.873 0 0 0 1.945 8.93l-.319-.094c-.835-.246-.835-1.428 0-1.674l.319-.094A1.873 1.873 0 0 0 3.06 4.474l-.16-.292c-.415-.764.42-1.6 1.185-1.184l.292.159a1.873 1.873 0 0 0 2.692-1.115l.094-.319z"/></svg>
+              Configuración
+              <svg class="chev" width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
+            </button>
+            <div class="menu-dropdown" id="menu-config">
+              <button class="menu-item" onclick="openConfigModal('funciones');closeMenus()">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M7 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-1zM2 1a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2H2zm0 8a2 2 0 0 0-2 2v2a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2v-2a2 2 0 0 0-2-2H2z"/></svg>
+                Funciones del proyecto
+              </button>
+              <button class="menu-item" onclick="openConfigModal('acceso');closeMenus()">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/><path fill-rule="evenodd" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z"/><path d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"/></svg>
+                Acceso por usuario
+              </button>
+              <button class="menu-item" onclick="openConfigModal('ai');closeMenus()">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zM3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.58 26.58 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.933.933 0 0 1-.765.935c-.845.147-2.34.346-4.235.346-1.895 0-3.39-.2-4.235-.346A.933.933 0 0 1 3 9.219V8.062zm4.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 1 0v-.5h.5a.5.5 0 0 0 0-1H7.5z"/></svg>
+                Asistente IA
               </button>
             </div>
           </div>
@@ -889,20 +924,29 @@ img.profile-avatar{background:transparent}
               <svg class="chev" width="10" height="10" viewBox="0 0 16 16" fill="currentColor"><path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/></svg>
             </button>
             <div class="menu-dropdown" id="menu-ayuda">
-              <button class="menu-item" onclick="openHelpModal('uso');closeMenus()" data-i18n="menu_manual">
+              <button class="menu-item" onclick="openHelpSection('uso');closeMenus()" data-i18n="menu_manual">
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M14.5 3a.5.5 0 0 1 .5.5v9a.5.5 0 0 1-.5.5h-13a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h13zm-13-1A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13z"/><path d="M3 5.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 8a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 8zm0 2.5a.5.5 0 0 1 .5-.5h6a.5.5 0 0 1 0 1h-6a.5.5 0 0 1-.5-.5z"/></svg>
                 Manual de uso
               </button>
-              <button class="menu-item" onclick="openHelpModal('shortcuts');closeMenus()" data-i18n="menu_shortcuts">
+              <button class="menu-item" onclick="openHelpSection('shortcuts');closeMenus()" data-i18n="menu_shortcuts">
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M14 5a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1h12zM2 4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2H2z"/><path d="M13 10.25a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm0-2a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-5 0A.25.25 0 0 1 8.25 8h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5A.25.25 0 0 1 8 8.75v-.5zm2 0a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm2 0a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm-6 2A.25.25 0 0 1 7.25 10h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm2 0a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm2 0a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5zm2 0a.25.25 0 0 1 .25-.25h.5a.25.25 0 0 1 .25.25v.5a.25.25 0 0 1-.25.25h-.5a.25.25 0 0 1-.25-.25v-.5z"/></svg>
                 Atajos de teclado
               </button>
               <div class="menu-sep"></div>
-              <button class="menu-item" onclick="openHelpModal('github');closeMenus()" data-i18n="menu_github_help">
+              <button class="menu-item" onclick="openHelpSection('github');closeMenus()" data-i18n="menu_github_help">
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8z"/></svg>
                 Configurar GitHub App
               </button>
-              <button class="menu-item" onclick="openHelpModal('about');closeMenus()" data-i18n="menu_about">
+              <button class="menu-item" onclick="openHelpSection('obsidian-guide');closeMenus()">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+                Plugin Obsidian
+              </button>
+              <button class="menu-item" onclick="openHelpSection('ai-guide');closeMenus()">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zM3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.58 26.58 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.933.933 0 0 1-.765.935c-.845.147-2.34.346-4.235.346-1.895 0-3.39-.2-4.235-.346A.933.933 0 0 1 3 9.219V8.062zm4.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 1 0v-.5h.5a.5.5 0 0 0 0-1H7.5z"/></svg>
+                Asistente IA
+              </button>
+              <div class="menu-sep"></div>
+              <button class="menu-item" onclick="openHelpSection('about');closeMenus()" data-i18n="menu_about">
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/><path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
                 Acerca de
               </button>
@@ -1741,21 +1785,14 @@ img.profile-avatar{background:transparent}
   </div>
 </div>
 
-<!-- HELP MODAL -->
-<div class="modal-overlay hidden" id="modal-help" onclick="if(event.target===this)closeModal('modal-help')">
-  <div class="modal" style="max-width:640px">
-    <div class="modal-header">
-      <h3>Ayuda — Research Lab</h3>
-      <button class="modal-close" onclick="closeModal('modal-help')">✕</button>
-    </div>
-    <div class="help-nav">
-      <button class="help-nav-btn active" data-section="uso" onclick="switchHelpSection('uso')">Manual de uso</button>
-      <button class="help-nav-btn" data-section="shortcuts" onclick="switchHelpSection('shortcuts')">Atajos</button>
-      <button class="help-nav-btn" data-section="github" onclick="switchHelpSection('github')">GitHub App</button>
-      <button class="help-nav-btn" data-section="obsidian-guide" onclick="switchHelpSection('obsidian-guide')">Plugin Obsidian</button>
-      <button class="help-nav-btn" data-section="ai-guide" onclick="switchHelpSection('ai-guide')">Asistente IA</button>
-      <button class="help-nav-btn" data-section="about" onclick="switchHelpSection('about')">Acerca de</button>
-    </div>
+<!-- HELP SECTIONS (hidden store — content cloned into viewer modal on demand) -->
+<div id="help-sections-store" style="display:none">
+  <div id="hs-title-uso">Manual de uso</div>
+  <div id="hs-title-shortcuts">Atajos de teclado</div>
+  <div id="hs-title-github">Configurar GitHub App</div>
+  <div id="hs-title-obsidian-guide">Plugin Obsidian</div>
+  <div id="hs-title-ai-guide">Asistente IA</div>
+  <div id="hs-title-about">Acerca de</div>
 
     <!-- MANUAL DE USO -->
     <div class="help-section active" id="help-uso">
@@ -1991,6 +2028,78 @@ img.profile-avatar{background:transparent}
 
       <p class="help-p" style="margin-top:1rem;font-size:11px;color:var(--muted)">v1.0.0 · Aural-Syncro © 2026</p>
     </div>
+</div>
+
+<!-- HELP VIEWER MODAL (single window, content loaded dynamically) -->
+<div class="modal-overlay hidden" id="modal-help-view" onclick="if(event.target===this)closeModal('modal-help-view')">
+  <div class="modal" style="max-width:660px">
+    <div class="modal-header">
+      <h3 id="help-view-title">Ayuda</h3>
+      <button class="modal-close" onclick="closeModal('modal-help-view')">✕</button>
+    </div>
+    <div id="help-view-body" style="max-height:70vh;overflow-y:auto"></div>
+  </div>
+</div>
+
+<!-- TOOLS MODALS -->
+<div class="modal-overlay hidden" id="modal-tools-token" onclick="if(event.target===this)closeModal('modal-tools-token')">
+  <div class="modal" style="max-width:520px">
+    <div class="modal-header">
+      <h3>Token de acceso personal</h3>
+      <button class="modal-close" onclick="closeModal('modal-tools-token')">✕</button>
+    </div>
+    <div id="tools-token-body" style="max-height:70vh;overflow-y:auto"></div>
+  </div>
+</div>
+
+<div class="modal-overlay hidden" id="modal-tools-obsidian" onclick="if(event.target===this)closeModal('modal-tools-obsidian')">
+  <div class="modal" style="max-width:520px">
+    <div class="modal-header">
+      <h3>Plugin Obsidian</h3>
+      <button class="modal-close" onclick="closeModal('modal-tools-obsidian')">✕</button>
+    </div>
+    <div id="tools-obsidian-body" style="max-height:70vh;overflow-y:auto"></div>
+  </div>
+</div>
+
+<div class="modal-overlay hidden" id="modal-tools-mcp" onclick="if(event.target===this)closeModal('modal-tools-mcp')">
+  <div class="modal" style="max-width:580px">
+    <div class="modal-header">
+      <h3>MCP Bridge</h3>
+      <button class="modal-close" onclick="closeModal('modal-tools-mcp')">✕</button>
+    </div>
+    <div id="tools-mcp-body" style="max-height:70vh;overflow-y:auto"></div>
+  </div>
+</div>
+
+<!-- CONFIG MODALS (PI only) -->
+<div class="modal-overlay hidden" id="modal-cfg-funciones" onclick="if(event.target===this)closeModal('modal-cfg-funciones')">
+  <div class="modal" style="max-width:500px">
+    <div class="modal-header">
+      <h3>Funciones del proyecto</h3>
+      <button class="modal-close" onclick="closeModal('modal-cfg-funciones')">✕</button>
+    </div>
+    <div id="cfg-funciones-body" style="max-height:70vh;overflow-y:auto"></div>
+  </div>
+</div>
+
+<div class="modal-overlay hidden" id="modal-cfg-acceso" onclick="if(event.target===this)closeModal('modal-cfg-acceso')">
+  <div class="modal" style="max-width:720px">
+    <div class="modal-header">
+      <h3>Acceso por usuario</h3>
+      <button class="modal-close" onclick="closeModal('modal-cfg-acceso')">✕</button>
+    </div>
+    <div id="cfg-acceso-body" style="max-height:70vh;overflow-y:auto"></div>
+  </div>
+</div>
+
+<div class="modal-overlay hidden" id="modal-cfg-ai" onclick="if(event.target===this)closeModal('modal-cfg-ai')">
+  <div class="modal" style="max-width:500px">
+    <div class="modal-header">
+      <h3>Asistente IA</h3>
+      <button class="modal-close" onclick="closeModal('modal-cfg-ai')">✕</button>
+    </div>
+    <div id="cfg-ai-body" style="max-height:70vh;overflow-y:auto"></div>
   </div>
 </div>
 
@@ -2797,6 +2906,9 @@ async function api(method, path, body = null, _retry = false) {
   return data;
 }
 
+// Alias con orden de argumentos invertido (path, method, body) — usado en documentos y renewLabToken
+function apiRequest(path, method = 'GET', body = null) { return api(method, path, body); }
+
 // ── Refresco proactivo al arrancar la app ──────────────────────────────────
 // Si el token tiene menos de 24h de vida, refresca en background sin bloquear.
 function _proactiveRefresh() {
@@ -3061,8 +3173,6 @@ function switchTab(tab) {
   if (tab === 'team')       loadTeam();
   if (tab === 'graph')      loadGraph();
   if (tab === 'repo')       loadRepo();
-  if (tab === 'tools')      renderToolsTab();
-  if (tab === 'config')     renderConfigTab();
   // track current tab for AI context and _reRenderCurrentTab
   window._activeTab = tab;
 }
@@ -3101,18 +3211,19 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// ── Help modal ───────────────────────────────────────────────
-function openHelpModal(section = 'uso') {
-  openModal('modal-help');
-  switchHelpSection(section);
+// ── Help viewer (one window per section) ─────────────────────
+function openHelpSection(section) {
+  const titleEl   = document.getElementById('hs-title-' + section);
+  const contentEl = document.getElementById('help-' + section);
+  if (!contentEl) return;
+  document.getElementById('help-view-title').textContent =
+    titleEl ? titleEl.textContent : 'Ayuda';
+  document.getElementById('help-view-body').innerHTML = contentEl.innerHTML;
+  openModal('modal-help-view');
 }
 
-function switchHelpSection(section) {
-  document.querySelectorAll('.help-nav-btn').forEach(b =>
-    b.classList.toggle('active', b.dataset.section === section));
-  document.querySelectorAll('.help-section').forEach(s =>
-    s.classList.toggle('active', s.id === 'help-' + section));
-}
+// legacy alias kept for any surviving callers
+function openHelpModal(section) { openHelpSection(section); }
 
 // ══════════════════════════════════════════════════════════
 // PROJECTS
@@ -5334,13 +5445,13 @@ function _applyFeatureVisibility() {
   const isPI   = userFeatures.role === 'PI';
   const hasTool = userFeatures.feat_obsidian || userFeatures.feat_ai_local;
 
-  // Config tab — PI only
-  const configBtn = document.getElementById('menu-config-btn');
-  if (configBtn) configBtn.style.display = isPI ? '' : 'none';
+  // Configuración menu — PI only
+  const cfgGroup = document.getElementById('menu-group-config');
+  if (cfgGroup) cfgGroup.style.display = isPI ? '' : 'none';
 
-  // Tools tab — if any tool feature enabled
-  const toolsBtn = document.getElementById('menu-tools-btn');
-  if (toolsBtn) toolsBtn.style.display = hasTool ? '' : 'none';
+  // Herramientas menu — if any tool feature enabled
+  const toolsGroup = document.getElementById('menu-group-tools');
+  if (toolsGroup) toolsGroup.style.display = hasTool ? '' : 'none';
 
   // AI chat widget
   const widget = document.getElementById('ai-chat-widget');
@@ -5348,96 +5459,132 @@ function _applyFeatureVisibility() {
 }
 
 // ══════════════════════════════════════════════════════════
-// TOOLS TAB
+// TOOLS MODALS
 // ══════════════════════════════════════════════════════════
-async function renderToolsTab() {
+function openToolsModal(which) {
   if (!currentProject) return;
-  const el = document.getElementById('tools-content');
-  if (!el) return;
-
-  const tok = localStorage.getItem('research_token') || '';
   const labUrl = window.location.origin;
+  const tok    = localStorage.getItem('research_token') || '';
 
-  let html = '';
+  if (which === 'token') {
+    const el = document.getElementById('tools-token-body');
+    el.innerHTML = `
+      <div style="padding:0 1.25rem 1.25rem">
+        <p style="font-size:12px;color:var(--muted2);margin-bottom:1.25rem;line-height:1.6">
+          ${lang==='es'
+            ? 'El token de acceso personal te identifica en el Lab al usar el plugin Obsidian y el MCP Bridge. Es equivalente a una contraseña de aplicación.'
+            : 'Your personal access token identifies you in the Lab when using the Obsidian plugin and MCP Bridge. It works like an app password.'}
+          <br><strong style="color:var(--warn)">${lang==='es'?'No lo compartas':'Do not share it'}</strong> — ${lang==='es'?'es personal e intransferible.':'it is personal and non-transferable.'}
+        </p>
+        <div style="display:flex;gap:8px;align-items:center;margin-bottom:10px">
+          <input id="tools-token-display" type="password" readonly value="${esc(tok)}"
+            style="flex:1;font-family:monospace;font-size:11px;padding:7px 10px;background:var(--bg);border:0.5px solid var(--border2);border-radius:var(--r);color:var(--muted2);outline:none">
+          <button class="btn-icon" onclick="toggleToolsTokenVisibility()" title="${lang==='es'?'Mostrar/ocultar':'Show/hide'}">
+            <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg>
+          </button>
+          <button class="btn-secondary" onclick="copyToolsToken()" style="font-size:11px;padding:5px 12px">${t('tools_copy')}</button>
+          <button class="btn-ghost" style="font-size:11px;padding:5px 10px" onclick="renewLabToken()">${lang==='es'?'Renovar':'Renew'}</button>
+        </div>
+        <div style="font-size:11px;color:var(--muted);background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:10px 14px">
+          <div style="margin-bottom:6px"><strong>${t('tools_projectid')}:</strong>
+            <code style="font-size:10px;background:var(--surface3);padding:1px 6px;border-radius:4px;margin-left:4px;color:var(--teal)">${esc(currentProject.id)}</code>
+            <button class="btn-ghost" style="font-size:10px;padding:2px 7px;margin-left:6px"
+              onclick="navigator.clipboard.writeText('${esc(currentProject.id)}').then(()=>toast('ID copiado','success'))">${t('tools_copy')}</button>
+          </div>
+          <div><strong>Lab URL:</strong>
+            <code style="font-size:10px;background:var(--surface3);padding:1px 6px;border-radius:4px;margin-left:4px;color:var(--muted2)">${labUrl}</code>
+          </div>
+        </div>
+        <p style="font-size:11px;color:var(--muted);margin-top:10px">${lang==='es'?'El token expira cada 72 h. Usá Renovar para obtener uno nuevo sin cerrar sesión.':'Token expires every 72 h. Use Renew to get a new one without logging out.'}</p>
+      </div>`;
+    openModal('modal-tools-token');
 
-  // ── Token section (always shown in tools if obsidian or ai_local) ──
-  if (userFeatures.feat_obsidian || userFeatures.feat_ai_local) {
-    html += `
-    <div class="config-section-title">${t('tools_token_title')}</div>
-    <div class="tools-card">
-      <div class="tools-card-title">
-        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2zm3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/></svg>
-        ${t('tools_token_title')}
-      </div>
-      <div class="tools-card-desc">${t('tools_token_desc')}<br><strong style="color:var(--warning,#f59e0b)">${lang==='es'?'No lo compartas':'Do not share it'}</strong> — ${lang==='es'?'es personal y te identifica en el Lab.':'it is personal and identifies you in the Lab.'}</div>
-      <div style="display:flex;gap:8px;align-items:center;margin-bottom:8px">
-        <input id="tools-token-display" type="password" readonly value="${esc(tok)}"
-          style="flex:1;font-family:monospace;font-size:11px;padding:6px 10px;background:var(--bg);border:0.5px solid var(--border2);border-radius:var(--r);color:var(--muted2);outline:none">
-        <button class="btn-icon" onclick="toggleToolsTokenVisibility()">
-          <svg id="tools-token-eye" width="14" height="14" viewBox="0 0 16 16" fill="currentColor"><path d="M16 8s-3-5.5-8-5.5S0 8 0 8s3 5.5 8 5.5S16 8 16 8zM1.173 8a13.133 13.133 0 0 1 1.66-2.043C4.12 4.668 5.88 3.5 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.133 13.133 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755C11.879 11.332 10.119 12.5 8 12.5c-2.12 0-3.879-1.168-5.168-2.457A13.134 13.134 0 0 1 1.172 8z"/><path d="M8 5.5a2.5 2.5 0 1 0 0 5 2.5 2.5 0 0 0 0-5zM4.5 8a3.5 3.5 0 1 1 7 0 3.5 3.5 0 0 1-7 0z"/></svg>
-        </button>
-        <button class="btn-secondary" onclick="copyToolsToken()" style="font-size:11px;padding:5px 12px">${t('tools_copy')}</button>
-        <button class="btn-ghost" style="font-size:11px;padding:4px 10px" onclick="renewLabToken(true)">${lang==='es'?'Renovar':'Renew'}</button>
-      </div>
-      <div style="font-size:11px;color:var(--muted)"><strong>${t('tools_projectid')}:</strong>
-        <code style="font-size:10px;background:var(--surface2);padding:1px 6px;border-radius:4px;margin-left:4px;color:var(--teal)">${esc(currentProject.id)}</code>
-        <button class="btn-ghost" style="font-size:10px;padding:2px 7px;margin-left:6px" onclick="navigator.clipboard.writeText('${esc(currentProject.id)}').then(()=>toast('ID copiado','success'))">${t('tools_copy')}</button>
-      </div>
-    </div>`;
-  }
+  } else if (which === 'obsidian') {
+    const el = document.getElementById('tools-obsidian-body');
+    if (!userFeatures.feat_obsidian) {
+      el.innerHTML = `<div style="padding:1.25rem;text-align:center;color:var(--muted);font-size:12px">${lang==='es'?'No tenés el plugin Obsidian habilitado en este proyecto. Pedile al PI que lo active en Configuración → Funciones.':'The Obsidian plugin is not enabled for you in this project. Ask the PI to enable it in Configuración → Funciones.'}</div>`;
+    } else {
+      el.innerHTML = `
+        <div style="padding:0 1.25rem 1.25rem">
+          <p style="font-size:12px;color:var(--muted2);line-height:1.6;margin-bottom:1rem">
+            ${lang==='es'
+              ? 'El plugin de Obsidian sincroniza tu vault local con el Research Lab. Cada archivo <code style="font-size:10px;background:var(--surface2);padding:0 4px;border-radius:3px">.md</code> que modifiques se refleja automáticamente como Documento en el proyecto, con locking optimista para evitar conflictos.'
+              : 'The Obsidian plugin syncs your local vault with the Research Lab. Every <code style="font-size:10px;background:var(--surface2);padding:0 4px;border-radius:3px">.md</code> file you modify is automatically reflected as a Document in the project, with optimistic locking to prevent conflicts.'}
+          </p>
+          <button class="btn-secondary" onclick="downloadPlugin()" style="font-size:12px;padding:7px 16px;margin-bottom:1.25rem">
+            <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor" style="margin-right:5px;vertical-align:-1px"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+            ${lang==='es'?'Descargar plugin':'Download plugin'}
+          </button>
+          <div style="font-size:11px;color:var(--muted2);background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:10px 14px;line-height:1.8">
+            <div><strong>Server URL:</strong> <code style="font-size:10px;background:var(--surface3);padding:0 5px;border-radius:3px;color:var(--muted2)">${labUrl}</code></div>
+            <div><strong>Token:</strong> <span style="color:var(--muted)">${lang==='es'?'(ver Herramientas → Token de acceso)':'(see Herramientas → Token de acceso)'}</span></div>
+            <div><strong>Project ID:</strong> <code style="font-size:10px;background:var(--surface3);padding:0 5px;border-radius:3px;color:var(--teal)">${esc(currentProject.id)}</code></div>
+          </div>
+          <div style="margin-top:1rem;font-size:11px;color:var(--muted);background:rgba(77,217,172,.06);border:0.5px solid rgba(77,217,172,.15);border-radius:var(--r);padding:10px 14px">
+            ${lang==='es'?'<strong>Instalación:</strong> Copiá <code style="font-size:10px">main.js</code> y <code style="font-size:10px">manifest.json</code> a <code style="font-size:10px">&lt;vault&gt;/.obsidian/plugins/sspa-research-lab/</code> y activá el plugin en Obsidian → Configuración → Plugins de la comunidad.':'<strong>Installation:</strong> Copy <code style="font-size:10px">main.js</code> and <code style="font-size:10px">manifest.json</code> to <code style="font-size:10px">&lt;vault&gt;/.obsidian/plugins/sspa-research-lab/</code> and enable the plugin in Obsidian → Settings → Community plugins.'}
+          </div>
+        </div>`;
+    }
+    openModal('modal-tools-obsidian');
 
-  // ── Obsidian plugin ──
-  if (userFeatures.feat_obsidian) {
-    html += `
-    <div class="config-section-title">${t('tools_obsidian_title')}</div>
-    <div class="tools-card">
-      <div class="tools-card-title">
-        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
-        ${t('tools_obsidian_title')}
-      </div>
-      <div class="tools-card-desc">${t('tools_obsidian_desc')}</div>
-      <button class="btn-secondary" onclick="downloadPlugin()" style="font-size:11px;padding:5px 14px">
-        <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" style="margin-right:4px;vertical-align:-1px"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
-        ${lang==='es'?'Descargar plugin':'Download plugin'}
-      </button>
-      <p style="font-size:11px;color:var(--muted);margin-top:10px;line-height:1.6">${lang==='es'?'Configuración del plugin: <strong>Server URL</strong> = '+labUrl+' · <strong>Token</strong> = (ver arriba) · <strong>Project ID</strong> = '+currentProject.id:'Plugin settings: <strong>Server URL</strong> = '+labUrl+' · <strong>Token</strong> = (see above) · <strong>Project ID</strong> = '+currentProject.id}</p>
-    </div>`;
-  }
-
-  // ── MCP Bridge ──
-  if (userFeatures.feat_ai_local) {
-    const mcpConfig = JSON.stringify({
-      mcpServers: {
-        "mcp-lab-bridge": {
+  } else if (which === 'mcp') {
+    const el = document.getElementById('tools-mcp-body');
+    if (!userFeatures.feat_ai_local) {
+      el.innerHTML = `<div style="padding:1.25rem;text-align:center;color:var(--muted);font-size:12px">${lang==='es'?'No tenés la función IA Local habilitada en este proyecto. Pedile al PI que te la active en Configuración → Acceso por usuario.':'The IA Local feature is not enabled for you in this project. Ask the PI to enable it in Configuración → Acceso por usuario.'}</div>`;
+    } else {
+      const mcpConfig = JSON.stringify({
+        mcpServers: { "mcp-lab-bridge": {
           command: "node",
-          args: ["<path-to>/obsidian-plugin/mcp-lab-bridge.mjs"],
+          args: ["<ruta-a>/obsidian-plugin/mcp-lab-bridge.mjs"],
           env: {
-            VAULT_PATH: "<path-to-obsidian-vault>",
+            VAULT_PATH: "<ruta-a-vault-obsidian>",
             LAB_URL: labUrl,
-            LAB_TOKEN: "<paste-token-from-above>",
+            LAB_TOKEN: "<pegar-token-de-acceso>",
             LAB_PROJECT_ID: currentProject.id
           }
-        }
-      }
-    }, null, 2);
+        }}
+      }, null, 2);
 
-    html += `
-    <div class="config-section-title">${t('tools_mcp_title')}</div>
-    <div class="tools-card">
-      <div class="tools-card-title">
-        <svg width="13" height="13" viewBox="0 0 16 16" fill="currentColor"><path d="M1 0 0 1l2.2 3.081a1 1 0 0 0 .815.419h.07a1 1 0 0 1 .708.293l2.675 2.675-2.617 2.654A3.003 3.003 0 0 0 0 13a3 3 0 1 0 5.878-.851l2.654-2.617.968.968-.305.914a1 1 0 0 0 .242 1.023l3.27 3.27a.997.997 0 0 0 1.414 0l1.586-1.586a.997.997 0 0 0 0-1.414l-3.27-3.27a1 1 0 0 0-1.023-.242L10.5 9.5l-.96-.96 2.68-2.643A3.005 3.005 0 0 0 16 3c0-.269-.035-.53-.102-.777l-2.14 2.141L12 4l-.364-1.757L13.777.102a3 3 0 0 0-3.675 3.68L7.462 6.46 4.793 3.793a1 1 0 0 1-.293-.707v-.071a1 1 0 0 0-.419-.814L1 0z"/></svg>
-        ${t('tools_mcp_title')}
-      </div>
-      <div class="tools-card-desc">${t('tools_mcp_desc')} ${lang==='es'?'Pegalo en <code style="font-size:10px">~/.claude/mcp.json</code>':'Paste it in <code style="font-size:10px">~/.claude/mcp.json</code>'}</div>
-      <div class="tools-code-block" id="mcp-config-block">${esc(mcpConfig)}<button class="tools-copy-btn" onclick="copyMcpConfig()">${t('tools_copy')}</button></div>
-    </div>`;
+      el.innerHTML = `
+        <div style="padding:0 1.25rem 1.25rem">
+          <p style="font-size:12px;color:var(--muted2);line-height:1.6;margin-bottom:1rem">
+            ${lang==='es'
+              ? 'El MCP Bridge conecta Claude Code con tu vault de Obsidian y el Research Lab. Claude Code puede leer y escribir notas directamente desde la terminal, con anti-colisión contra el sistema de locking del Lab.'
+              : 'The MCP Bridge connects Claude Code to your Obsidian vault and the Research Lab. Claude Code can read and write notes directly from the terminal, with anti-collision against the Lab locking system.'}
+          </p>
+          <div style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px">
+            ${lang==='es'?'Configuración para ~/.claude/mcp.json':'Config for ~/.claude/mcp.json'}
+          </div>
+          <div class="tools-code-block" id="mcp-config-block" style="position:relative">${esc(mcpConfig)}<button class="tools-copy-btn" onclick="copyMcpConfig()">${t('tools_copy')}</button></div>
+          <button class="btn-ghost" style="font-size:11px;padding:5px 14px;margin-top:8px" onclick="downloadMcpConfig()">
+            <svg width="11" height="11" viewBox="0 0 16 16" fill="currentColor" style="margin-right:4px;vertical-align:-1px"><path d="M.5 9.9a.5.5 0 0 1 .5.5v2.5a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-2.5a.5.5 0 0 1 1 0v2.5a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2v-2.5a.5.5 0 0 1 .5-.5z"/><path d="M7.646 11.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293V1.5a.5.5 0 0 0-1 0v8.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3z"/></svg>
+            ${lang==='es'?'Descargar como mcp.json':'Download as mcp.json'}
+          </button>
+          <div style="margin-top:1rem;font-size:11px;color:var(--muted2);background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:10px 14px;line-height:1.8">
+            <div style="font-weight:600;margin-bottom:4px">${lang==='es'?'Pasos de instalación:':'Installation steps:'}</div>
+            <ol style="padding-left:1.2rem;line-height:1.9">
+              <li>${lang==='es'?'Descargá o cloná el repositorio del Lab en tu máquina.':'Download or clone the Lab repository to your machine.'}</li>
+              <li>${lang==='es'?'Instalá dependencias: <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">cd obsidian-plugin && npm install</code>':'Install dependencies: <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">cd obsidian-plugin && npm install</code>'}</li>
+              <li>${lang==='es'?'Reemplazá los valores entre &lt;&gt; en el JSON con tus rutas reales y tu token.':'Replace the &lt;&gt; placeholders in the JSON with your actual paths and token.'}</li>
+              <li>${lang==='es'?'Pegá el JSON en <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">~/.claude/mcp.json</code> (o usá el botón Descargar).':'Paste the JSON into <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">~/.claude/mcp.json</code> (or use the Download button).'}</li>
+              <li>${lang==='es'?'Ejecutá <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">claude</code> en tu terminal — las herramientas del Lab estarán disponibles.':'Run <code style="font-size:10px;background:var(--surface3);padding:0 4px;border-radius:3px">claude</code> in your terminal — Lab tools will be available.'}</li>
+            </ol>
+          </div>
+        </div>`;
+    }
+    openModal('modal-tools-mcp');
   }
+}
 
-  if (!html) {
-    html = `<div style="text-align:center;color:var(--muted);padding:3rem;font-size:12px">${lang==='es'?'No tenés funciones de herramientas habilitadas en este proyecto.':'No tool features are enabled for you in this project.'}</div>`;
-  }
-
-  el.innerHTML = html;
+function downloadMcpConfig() {
+  const el = document.getElementById('mcp-config-block');
+  if (!el) return;
+  const text = el.childNodes[0]?.textContent || '';
+  const blob = new Blob([text], { type: 'application/json' });
+  const a = Object.assign(document.createElement('a'), {
+    href: URL.createObjectURL(blob), download: 'mcp.json'
+  });
+  a.click(); URL.revokeObjectURL(a.href);
 }
 
 function toggleToolsTokenVisibility() {
@@ -5460,127 +5607,136 @@ function copyMcpConfig() {
 }
 
 // ══════════════════════════════════════════════════════════
-// CONFIG TAB (PI only)
+// CONFIG MODALS (PI only)
 // ══════════════════════════════════════════════════════════
 let _projectConfig    = null;
 let _memberPermissions = [];
+let _configProjectId  = null;   // tracks which project the cache belongs to
 
-async function renderConfigTab() {
-  if (!currentProject || userFeatures.role !== 'PI') return;
-  try {
-    [_projectConfig, _memberPermissions] = await Promise.all([
-      api('GET', `/projects/${currentProject.id}/config`),
-      api('GET', `/projects/${currentProject.id}/config/members`),
-    ]);
-    _renderConfigHTML();
-  } catch(e) { toast(e.message, 'error'); }
+async function _ensureConfigLoaded() {
+  if (_projectConfig && _configProjectId === currentProject.id) return;
+  _projectConfig = null; _memberPermissions = [];
+  [_projectConfig, _memberPermissions] = await Promise.all([
+    api('GET', `/projects/${currentProject.id}/config`),
+    api('GET', `/projects/${currentProject.id}/config/members`),
+  ]);
+  _configProjectId = currentProject.id;
 }
 
-function _renderConfigHTML() {
+async function openConfigModal(which) {
+  if (!currentProject || userFeatures.role !== 'PI') return;
+  try {
+    await _ensureConfigLoaded();
+  } catch(e) { toast(e.message, 'error'); return; }
+
   const cfg  = _projectConfig;
   const mems = _memberPermissions;
 
-  const featToggle = (key, labelKey, descKey, val) => `
-    <div class="feat-toggle-row">
-      <div>
-        <div class="feat-toggle-label">${t(labelKey)}</div>
-        <div class="feat-toggle-sublabel">${t(descKey)}</div>
-      </div>
-      <label class="toggle-switch">
-        <input type="checkbox" id="cfg-${key}" ${val?'checked':''} onchange="_onFeatToggle()">
-        <span class="toggle-slider"></span>
-      </label>
-    </div>`;
-
-  const featureRows = [
-    featToggle('feat_obsidian',    'feat_obsidian',      'feat_obsidian_desc',      cfg.feat_obsidian),
-    featToggle('feat_ai_local',    'feat_ai_local',      'feat_ai_local_desc',      cfg.feat_ai_local),
-    featToggle('feat_ai_web',      'feat_ai_web',        'feat_ai_web_desc',        cfg.feat_ai_web),
-    featToggle('feat_github_push', 'feat_github_push',   'feat_github_push_desc',   cfg.feat_github_push),
-    featToggle('feat_wiki',        'feat_wiki',          'feat_wiki_desc',          cfg.feat_wiki),
-  ].join('');
-
-  // Permission matrix
-  const matrixHeaders = `<th>${t('perm_member')}</th><th>${t('perm_obsidian')}</th><th>${t('perm_ai_local')}</th><th>${t('perm_ai_web')}</th><th>${t('perm_github_push')}</th><th>${t('perm_wiki')}</th>`;
-  const matrixRows = mems.map(m => {
-    const isPI = m.role === 'PI';
-    const chk = (feat, val) => isPI
-      ? `<td><input type="checkbox" checked disabled title="${lang==='es'?'PI siempre habilitado':'PI always enabled'}"></td>`
-      : `<td><input type="checkbox" data-uid="${m.user_id}" data-feat="${feat}" ${val?'checked':''} onchange="_onMemberPermChange(this)"></td>`;
-    return `<tr>
-      <td>${esc(m.user_name)}<span class="role-badge ${isPI?'pi':''}">${m.role}</span></td>
-      ${chk('feat_obsidian',    m.feat_obsidian)}
-      ${chk('feat_ai_local',    m.feat_ai_local)}
-      ${chk('feat_ai_web',      m.feat_ai_web)}
-      ${chk('feat_github_push', m.feat_github_push)}
-      ${chk('feat_wiki',        m.feat_wiki)}
-    </tr>`;
-  }).join('');
-
-  const aiKeyPlaceholder = cfg.ai_api_key_set
-    ? t('ai_apikey_set')
-    : (lang==='es'?'sk-ant-…':'sk-ant-…');
-
-  const el = document.getElementById('config-content');
-  el.innerHTML = `
-    <!-- FEATURES -->
-    <div class="config-section-title">${t('config_features')}</div>
-    <div style="background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:4px 16px;margin-bottom:1.25rem">
-      ${featureRows}
-    </div>
-    <div style="display:flex;justify-content:flex-end;margin-bottom:1.5rem">
-      <button class="btn-primary" style="font-size:11px" onclick="saveProjectFeatures()">${t('save')}</button>
-    </div>
-
-    <!-- USER ACCESS -->
-    <div class="config-section-title">${t('config_access')}</div>
-    <div style="background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:12px 16px;margin-bottom:1.5rem;overflow-x:auto">
-      <table class="perm-matrix">
-        <thead><tr>${matrixHeaders}</tr></thead>
-        <tbody>${matrixRows}</tbody>
-      </table>
-    </div>
-
-    <!-- AI CONFIG -->
-    <div class="config-section-title">${t('config_ai')}</div>
-    <div style="background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:16px;margin-bottom:1.25rem">
-      <div class="fg" style="margin-bottom:.75rem">
-        <label style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em">${t('ai_provider_label')}</label>
-        <select id="cfg-ai-provider" style="background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--r);padding:7px 10px;color:var(--text);font-size:12px;outline:none;width:100%">
-          <option value="" ${!cfg.ai_provider?'selected':''}>— ${lang==='es'?'Deshabilitado':'Disabled'} —</option>
-          <option value="claude" ${cfg.ai_provider==='claude'?'selected':''}>Anthropic Claude</option>
-        </select>
-      </div>
-      <div class="fg" style="margin-bottom:.75rem">
-        <label style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em">${t('ai_model_label')}</label>
-        <select id="cfg-ai-model" style="background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--r);padding:7px 10px;color:var(--text);font-size:12px;outline:none;width:100%">
-          <option value="claude-sonnet-4-6" ${cfg.ai_model==='claude-sonnet-4-6'||!cfg.ai_model?'selected':''}>Claude Sonnet 4.6 (recomendado)</option>
-          <option value="claude-opus-4-6" ${cfg.ai_model==='claude-opus-4-6'?'selected':''}>Claude Opus 4.6</option>
-          <option value="claude-haiku-4-5-20251001" ${cfg.ai_model==='claude-haiku-4-5-20251001'?'selected':''}>Claude Haiku 4.5 (rápido)</option>
-        </select>
-      </div>
-      <div class="fg" style="margin-bottom:.75rem">
-        <label style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em">${t('ai_apikey_label')}</label>
-        <input id="cfg-ai-apikey" type="password" placeholder="${aiKeyPlaceholder}"
-          style="background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--r);padding:8px 10px;color:var(--text);font-size:12px;outline:none;width:100%;font-family:monospace">
-        ${cfg.ai_api_key_set ? `<div style="font-size:10px;color:var(--teal);margin-top:4px">✓ ${lang==='es'?'Clave almacenada':'Key stored'}</div>` : ''}
-      </div>
-      <div class="fg" style="margin-bottom:.75rem">
-        <label style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em">${t('ai_instructions_label')}</label>
-        <textarea id="cfg-ai-instructions" rows="3" placeholder="${lang==='es'?'Instrucciones específicas para el asistente en este proyecto…':'Project-specific instructions for the assistant…'}"
-          style="background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--r);padding:8px 10px;color:var(--text);font-size:12px;outline:none;width:100%;resize:vertical;font-family:inherit;line-height:1.5">${esc(cfg.ai_instructions||'')}</textarea>
-      </div>
-      <div class="feat-toggle-row" style="border:none;padding:0">
-        <div class="feat-toggle-label">${t('ai_mcp_label')}</div>
+  if (which === 'funciones') {
+    const featToggle = (key, labelKey, descKey, val) => `
+      <div class="feat-toggle-row">
+        <div>
+          <div class="feat-toggle-label">${t(labelKey)}</div>
+          <div class="feat-toggle-sublabel">${t(descKey)}</div>
+        </div>
         <label class="toggle-switch">
-          <input type="checkbox" id="cfg-ai-mcp" ${cfg.ai_mcp_enabled?'checked':''}>
+          <input type="checkbox" id="cfg-${key}" ${val?'checked':''} onchange="_onFeatToggle()">
           <span class="toggle-slider"></span>
         </label>
-      </div>
-    </div>
-    <div style="display:flex;justify-content:flex-end;margin-bottom:2rem">
-      <button class="btn-primary" style="font-size:11px" onclick="saveAiConfig()">${t('save')}</button>
-    </div>`;
+      </div>`;
+
+    const rows = [
+      featToggle('feat_obsidian',    'feat_obsidian',    'feat_obsidian_desc',    cfg.feat_obsidian),
+      featToggle('feat_ai_local',    'feat_ai_local',    'feat_ai_local_desc',    cfg.feat_ai_local),
+      featToggle('feat_ai_web',      'feat_ai_web',      'feat_ai_web_desc',      cfg.feat_ai_web),
+      featToggle('feat_github_push', 'feat_github_push', 'feat_github_push_desc', cfg.feat_github_push),
+      featToggle('feat_wiki',        'feat_wiki',        'feat_wiki_desc',        cfg.feat_wiki),
+    ].join('');
+
+    document.getElementById('cfg-funciones-body').innerHTML = `
+      <div style="padding:0 1.25rem 1.25rem">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:1rem">${lang==='es'?'Activá las funciones disponibles para todos los miembros del proyecto. Podés luego autorizar usuarios individualmente desde Acceso por usuario.':'Enable the features available to all project members. You can then authorize individual users from Acceso por usuario.'}</p>
+        <div style="background:var(--surface2);border:0.5px solid var(--border);border-radius:var(--r);padding:4px 16px;margin-bottom:1.25rem">${rows}</div>
+        <div style="display:flex;justify-content:flex-end">
+          <button class="btn-primary" style="font-size:11px" onclick="saveProjectFeatures()">${t('save')}</button>
+        </div>
+      </div>`;
+    openModal('modal-cfg-funciones');
+
+  } else if (which === 'acceso') {
+    const matrixHeaders = `<th>${t('perm_member')}</th><th>${t('perm_obsidian')}</th><th>${t('perm_ai_local')}</th><th>${t('perm_ai_web')}</th><th>${t('perm_github_push')}</th><th>${t('perm_wiki')}</th>`;
+    const matrixRows = mems.map(m => {
+      const isPI = m.role === 'PI';
+      const chk = (feat, val) => isPI
+        ? `<td><input type="checkbox" checked disabled title="${lang==='es'?'PI siempre habilitado':'PI always enabled'}"></td>`
+        : `<td><input type="checkbox" data-uid="${m.user_id}" data-feat="${feat}" ${val?'checked':''} onchange="_onMemberPermChange(this)"></td>`;
+      return `<tr>
+        <td>${esc(m.user_name)}<span class="role-badge ${isPI?'pi':''}">${m.role}</span></td>
+        ${chk('feat_obsidian',    m.feat_obsidian)}
+        ${chk('feat_ai_local',    m.feat_ai_local)}
+        ${chk('feat_ai_web',      m.feat_ai_web)}
+        ${chk('feat_github_push', m.feat_github_push)}
+        ${chk('feat_wiki',        m.feat_wiki)}
+      </tr>`;
+    }).join('');
+
+    document.getElementById('cfg-acceso-body').innerHTML = `
+      <div style="padding:0 1.25rem 1.25rem">
+        <p style="font-size:12px;color:var(--muted);margin-bottom:1rem">${lang==='es'?'Cada casilla habilita una función específica para ese colaborador. Los cambios se guardan automáticamente. El PI siempre tiene todos los permisos.':'Each checkbox enables a specific feature for that collaborator. Changes are saved automatically. The PI always has all permissions.'}</p>
+        <div style="overflow-x:auto">
+          <table class="perm-matrix">
+            <thead><tr>${matrixHeaders}</tr></thead>
+            <tbody>${matrixRows}</tbody>
+          </table>
+        </div>
+      </div>`;
+    openModal('modal-cfg-acceso');
+
+  } else if (which === 'ai') {
+    const aiKeyPlaceholder = cfg.ai_api_key_set ? t('ai_apikey_set') : 'sk-ant-…';
+
+    document.getElementById('cfg-ai-body').innerHTML = `
+      <div style="padding:0 1.25rem 1.25rem">
+        <div class="fg" style="margin-bottom:.75rem">
+          <label style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em">${t('ai_provider_label')}</label>
+          <select id="cfg-ai-provider" style="background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--r);padding:7px 10px;color:var(--text);font-size:12px;outline:none;width:100%">
+            <option value="" ${!cfg.ai_provider?'selected':''}>— ${lang==='es'?'Deshabilitado':'Disabled'} —</option>
+            <option value="claude" ${cfg.ai_provider==='claude'?'selected':''}>Anthropic Claude</option>
+          </select>
+        </div>
+        <div class="fg" style="margin-bottom:.75rem">
+          <label style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em">${t('ai_model_label')}</label>
+          <select id="cfg-ai-model" style="background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--r);padding:7px 10px;color:var(--text);font-size:12px;outline:none;width:100%">
+            <option value="claude-sonnet-4-6" ${cfg.ai_model==='claude-sonnet-4-6'||!cfg.ai_model?'selected':''}>Claude Sonnet 4.6 (recomendado)</option>
+            <option value="claude-opus-4-6" ${cfg.ai_model==='claude-opus-4-6'?'selected':''}>Claude Opus 4.6</option>
+            <option value="claude-haiku-4-5-20251001" ${cfg.ai_model==='claude-haiku-4-5-20251001'?'selected':''}>Claude Haiku 4.5 (rápido)</option>
+          </select>
+        </div>
+        <div class="fg" style="margin-bottom:.75rem">
+          <label style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em">${t('ai_apikey_label')}</label>
+          <input id="cfg-ai-apikey" type="password" placeholder="${aiKeyPlaceholder}"
+            style="background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--r);padding:8px 10px;color:var(--text);font-size:12px;outline:none;width:100%;font-family:monospace">
+          ${cfg.ai_api_key_set ? `<div style="font-size:10px;color:var(--teal);margin-top:4px">✓ ${lang==='es'?'Clave almacenada':'Key stored'}</div>` : ''}
+        </div>
+        <div class="fg" style="margin-bottom:.75rem">
+          <label style="font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em">${t('ai_instructions_label')}</label>
+          <textarea id="cfg-ai-instructions" rows="3"
+            placeholder="${lang==='es'?'Instrucciones específicas para el asistente en este proyecto…':'Project-specific instructions for the assistant…'}"
+            style="background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--r);padding:8px 10px;color:var(--text);font-size:12px;outline:none;width:100%;resize:vertical;font-family:inherit;line-height:1.5">${esc(cfg.ai_instructions||'')}</textarea>
+        </div>
+        <div class="feat-toggle-row" style="border:none;padding:0;margin-bottom:1.25rem">
+          <div class="feat-toggle-label">${t('ai_mcp_label')}</div>
+          <label class="toggle-switch">
+            <input type="checkbox" id="cfg-ai-mcp" ${cfg.ai_mcp_enabled?'checked':''}>
+            <span class="toggle-slider"></span>
+          </label>
+        </div>
+        <div style="display:flex;justify-content:flex-end">
+          <button class="btn-primary" style="font-size:11px" onclick="saveAiConfig()">${t('save')}</button>
+        </div>
+      </div>`;
+    openModal('modal-cfg-ai');
+  }
 }
 
 function _onFeatToggle() { /* changes auto-saved on saveProjectFeatures() click */ }
@@ -5619,8 +5775,10 @@ async function saveProjectFeatures() {
     feat_wiki:        document.getElementById('cfg-feat_wiki')?.checked        ?? _projectConfig.feat_wiki,
   };
   try {
-    _projectConfig = await api('PUT', `/projects/${currentProject.id}/config`, body);
+    await api('PUT', `/projects/${currentProject.id}/config`, body);
+    _projectConfig = null; _configProjectId = null;  // force reload on next open
     toast(lang==='es'?'Funciones guardadas':'Features saved', 'success');
+    closeModal('modal-cfg-funciones');
   } catch(e) { toast(e.message, 'error'); }
 }
 
@@ -5637,8 +5795,9 @@ async function saveAiConfig() {
   };
   try {
     _projectConfig = await api('PUT', `/projects/${currentProject.id}/config`, body);
+    _projectConfig = null; _configProjectId = null;  // force reload on next open so "key stored" badge refreshes
     toast(lang==='es'?'Configuración de IA guardada':'AI config saved', 'success');
-    _renderConfigHTML();   // re-render to show "key stored" badge
+    closeModal('modal-cfg-ai');
   } catch(e) { toast(e.message, 'error'); }
 }
 

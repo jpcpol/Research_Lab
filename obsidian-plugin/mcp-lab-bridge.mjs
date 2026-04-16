@@ -24,7 +24,7 @@
  * DT-RL-014 — Claude Code local integration via MCP (Módulo E)
  */
 
-import { createServer }  from "@modelcontextprotocol/sdk/server/index.js";
+import { Server }  from "@modelcontextprotocol/sdk/server/index.js";
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { CallToolRequestSchema, ListToolsRequestSchema } from "@modelcontextprotocol/sdk/types.js";
 import fs   from "fs/promises";
@@ -212,7 +212,7 @@ const TOOLS = [
   },
 ];
 
-const server = createServer(
+const server = new Server(
   { name: "mcp-lab-bridge", version: "1.0.0" },
   { capabilities: { tools: {} } }
 );
