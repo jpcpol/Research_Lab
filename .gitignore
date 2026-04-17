@@ -2,6 +2,8 @@
 **/.env.example
 **/deuda_tecnica/*.md
 **/tareas.txt
+**/img/favicon/*.*
+**/img/png/*.*
 
 # ── Python ────────────────────────────────────────────────────────────────────
 __pycache__/
