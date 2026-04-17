@@ -13,7 +13,9 @@
       "Bash(curl -s -H \"Host: lab.aural-syncro.com.ar\" http://localhost:8004/)",
       "Bash(curl -s -o /dev/null -w \"%{http_code}\" -H \"Host: www.researchlab.aural-syncro.com.ar\" http://localhost:8004/)",
       "Bash(curl -s -H \"Host: www.researchlab.aural-syncro.com.ar\" http://localhost:8004/)",
-      "Bash(curl -s -H \"Host: researchlab.aural-syncro.com.ar\" http://localhost:8004/)"
+      "Bash(curl -s -H \"Host: researchlab.aural-syncro.com.ar\" http://localhost:8004/)",
+      "Bash(curl -s -o /dev/null -w \"favicon.png → %{http_code} \\(%{size_download} bytes\\)\\\\n\" http://localhost:8004/static/favicon.png)",
+      "Bash(curl -s -o /dev/null -w \"favicon.ico → %{http_code} \\(%{size_download} bytes\\)\\\\n\" http://localhost:8004/favicon.ico)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Usuario\\.claude\\projects\\c--Users-Usuario-Documents-Aural-Syncro-Research-Lab\\memory"
