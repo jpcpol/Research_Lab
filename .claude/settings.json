@@ -15,7 +15,11 @@
       "Bash(curl -s -H \"Host: www.researchlab.aural-syncro.com.ar\" http://localhost:8004/)",
       "Bash(curl -s -H \"Host: researchlab.aural-syncro.com.ar\" http://localhost:8004/)",
       "Bash(curl -s -o /dev/null -w \"favicon.png → %{http_code} \\(%{size_download} bytes\\)\\\\n\" http://localhost:8004/static/favicon.png)",
-      "Bash(curl -s -o /dev/null -w \"favicon.ico → %{http_code} \\(%{size_download} bytes\\)\\\\n\" http://localhost:8004/favicon.ico)"
+      "Bash(curl -s -o /dev/null -w \"favicon.ico → %{http_code} \\(%{size_download} bytes\\)\\\\n\" http://localhost:8004/favicon.ico)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8004/api/v1/register-request -X POST -H \"Content-Type: application/json\" -d '{\"name\":\"Test\",\"email\":\"bad-email\",\"institution\":\"x\",\"role\":\"PI\",\"admin\":\"x\",\"motivo\":\"x\",\"investigacion\":\"x\",\"colaboradores\":\"x\"}')",
+      "Bash(curl -s http://localhost:8004/api/docs)",
+      "Bash(curl -s http://localhost:8004/api/v1/register-request -X POST -H \"Content-Type: application/json\" -d '{\"name\":\"Test\",\"email\":\"test@test.com\",\"institution\":\"UNLP\",\"role\":\"PI\",\"admin\":\"Dr. Test\",\"motivo\":\"investigacion\",\"investigacion\":\"estudio de...\",\"colaboradores\":\"col1 - col1@test.com\"}')",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(d\\)\")"
     ],
     "additionalDirectories": [
       "c:\\Users\\Usuario\\.claude\\projects\\c--Users-Usuario-Documents-Aural-Syncro-Research-Lab\\memory"

@@ -15,7 +15,7 @@ def _is_lab_host(request: Request) -> bool:
     return host in _LAB_HOSTS
 
 from app.database import engine, Base
-from app.routers import auth, projects, journal, hypotheses, milestones, notes, references, graph, github, documents, plugin, project_config, ai_chat
+from app.routers import auth, projects, journal, hypotheses, milestones, notes, references, graph, github, documents, plugin, project_config, ai_chat, register
 
 # Create all tables on startup
 Base.metadata.create_all(bind=engine)
@@ -129,6 +129,7 @@ app.include_router(documents.router,      prefix="/api/v1")
 app.include_router(plugin.router,         prefix="/api/v1")
 app.include_router(project_config.router, prefix="/api/v1")
 app.include_router(ai_chat.router,        prefix="/api/v1")
+app.include_router(register.router,       prefix="/api/v1")
 
 # Static files — must be mounted BEFORE catch-all routes
 static_dir = os.path.join(os.path.dirname(__file__), "..", "static")
