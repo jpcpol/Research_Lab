@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="es" data-lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Aural-Syncro Research Lab — Plataforma colaborativa de investigación científica y académica de alto rendimiento." />
+  <meta name="keywords" content="investigación, research, colaboración científica, plataforma académica, hipótesis, knowledge graph, Aural-Syncro, Argentina" />
+  <meta name="author" content="Aural-Syncro" />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#1a237e" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://researchlab.aural-syncro.com.ar/" />
+  <meta property="og:title" content="Aural-Syncro Research Lab" />
+  <meta property="og:description" content="Plataforma colaborativa de investigación científica y académica de alto rendimiento." />
+  <meta property="og:image" content="https://researchlab.aural-syncro.com.ar/static/img/science-logo.png" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Aural-Syncro Research Lab" />
+  <meta name="twitter:description" content="Plataforma colaborativa de investigación científica y académica." />
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://researchlab.aural-syncro.com.ar/" />
+
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon.png" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="apple-touch-icon" href="/static/favicon.png" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ResearchOrganization",
+    "name": "Aural-Syncro Research Lab",
+    "url": "https://researchlab.aural-syncro.com.ar",
+    "logo": "https://researchlab.aural-syncro.com.ar/static/favicon.png",
+    "description": "Plataforma colaborativa de investigación científica y académica.",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "email": "juanpablo.chancay@aural-syncro.com.ar",
+      "contactType": "Research Access"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "addressCountry": "AR"
+    }
+  }
+  </script>
+
+  <title>Aural-Syncro Research Lab</title>
+
+  <style>
+    /* ── Variables ───────────────────────────────────────────── */
+    :root {
+      --primary:       #1a237e;
+      --primary-dark:  #0d1554;
+      --primary-mid:   #283593;
+      --primary-light: #3949ab;
+      --accent:        #c8930a;
+      --accent-bright: #ffc107;
+      --bg:            #eaf3ea;
+      --surface:       #ffffff;
+      --surface-alt:   #d6ecd6;
+      --text:          #1c1c2e;
+      --text-muted:    #4a6a4a;
+      --text-light:    #7da87d;
+      --border:        #b8d8b8;
+      --shadow-sm:     0 2px 8px rgba(26,35,126,.08);
+      --shadow-md:     0 6px 24px rgba(26,35,126,.13);
+      --shadow-lg:     0 16px 48px rgba(26,35,126,.18);
+      --r:             8px;
+      --r-lg:          16px;
+      --r-xl:          24px;
+      --nav-h:         72px;
+      --max-w:         1200px;
+      --section-py:    96px;
+    }
+
+    /* ── Reset ───────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+    button { cursor: pointer; font: inherit; border: none; background: none; }
+
+    /* ── Typography ──────────────────────────────────────────── */
+    h1, h2, h3, h4 {
+      font-family: Georgia, 'Times New Roman', serif;
+      line-height: 1.25;
+      color: var(--primary-dark);
+    }
+    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
+    h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
+    h4 { font-size: 1.1rem; }
+    p  { max-width: 72ch; }
+
+    .label {
+      display: inline-block;
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: .75rem;
+    }
+    .section-title { margin-bottom: 1rem; }
+    .section-intro { color: var(--text-muted); margin-bottom: 2.5rem; }
+
+    /* ── Layout helpers ──────────────────────────────────────── */
+    .container {
+      width: 100%;
+      max-width: var(--max-w);
+      margin-inline: auto;
+      padding-inline: 2rem;
+    }
+    .section { padding-block: var(--section-py); }
+    .section--alt { background: var(--surface-alt); }
+    .section--dark {
+      background: var(--primary-dark);
+      color: #e8eaf6;
+    }
+    .section--dark h2, .section--dark h3, .section--dark h4 { color: #e8eaf6; }
+    .section--dark .label { color: var(--accent-bright); }
+    .section--dark .section-intro { color: #9fa8da; }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    .flex-center { display: flex; align-items: center; justify-content: center; }
+    .flex-between { display: flex; align-items: center; justify-content: space-between; }
+    .text-center { text-align: center; }
+    .text-center p { margin-inline: auto; }
+
+    /* ── Buttons ─────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      padding: .75rem 1.75rem;
+      border-radius: var(--r);
+      font-weight: 600;
+      font-size: .95rem;
+      transition: all .2s ease;
+      white-space: nowrap;
+    }
+    .btn-primary {
+      background: var(--accent-bright);
+      color: var(--primary-dark);
+      box-shadow: 0 4px 16px rgba(255,193,7,.35);
+    }
+    .btn-primary:hover {
+      background: #ffca28;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(255,193,7,.45);
+    }
+    .btn-outline {
+      border: 2px solid rgba(255,255,255,.6);
+      color: #fff;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,.12);
+      border-color: #fff;
+    }
+    .btn-dark {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: var(--shadow-sm);
+    }
+    .btn-dark:hover {
+      background: var(--primary-mid);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .btn-lg { padding: 1rem 2.25rem; font-size: 1.05rem; border-radius: var(--r-lg); }
+
+    /* ── Cards ───────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      padding: 2rem;
+      box-shadow: var(--shadow-sm);
+      border: 1px solid var(--border);
+      transition: box-shadow .2s, transform .2s;
+    }
+    .card:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-4px);
+    }
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: var(--r);
+      background: var(--surface-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      font-size: 1.5rem;
+    }
+    .card h4 { margin-bottom: .5rem; }
+    .card p  { color: var(--text-muted); font-size: .9rem; }
+
+    /* ── Nav ─────────────────────────────────────────────────── */
+    #navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      height: var(--nav-h);
+      background: rgba(26,35,126,.97);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      transition: box-shadow .3s;
+    }
+    #navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.25); }
+
+    .nav-inner {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+    }
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .875rem;
+      color: #fff;
+      font-family: Georgia, serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+    }
+    .nav-logo img {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid rgba(255,255,255,.25);
+    }
+    .nav-logo span { line-height: 1.2; }
+    .nav-logo small {
+      display: block;
+      font-family: system-ui, sans-serif;
+      font-size: .7rem;
+      font-weight: 400;
+      color: #9fa8da;
+      letter-spacing: .04em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: .25rem;
+    }
+    .nav-links a {
+      padding: .45rem .9rem;
+      border-radius: var(--r);
+      color: #c5cae9;
+      font-size: .875rem;
+      font-weight: 500;
+      transition: background .2s, color .2s;
+    }
+    .nav-links a:hover { background: rgba(255,255,255,.1); color: #fff; }
+
+    .nav-actions { display: flex; align-items: center; gap: .75rem; }
+
+    /* Language selector */
+    .lang-picker {
+      position: relative;
+    }
+    .lang-btn {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .4rem .8rem;
+      border-radius: var(--r);
+      color: #c5cae9;
+      font-size: .8rem;
+      font-weight: 600;
+      border: 1px solid rgba(255,255,255,.15);
+      background: rgba(255,255,255,.05);
+      transition: all .2s;
+      letter-spacing: .04em;
+    }
+    .lang-btn:hover { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.3); }
+    .lang-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
+    .lang-btn .caret { font-size: .6rem; margin-left: .1rem; transition: transform .2s; }
+    .lang-btn.open .caret { transform: rotate(180deg); }
+
+    .lang-dropdown {
+      position: absolute;
+      top: calc(100% + 8px);
+      right: 0;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      min-width: 140px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-6px);
+      transition: all .2s;
+    }
+    .lang-dropdown.open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .lang-option {
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      padding: .65rem 1rem;
+      font-size: .875rem;
+      font-weight: 500;
+      color: var(--text);
+      transition: background .15s;
+      cursor: pointer;
+    }
+    .lang-option:hover { background: var(--surface-alt); }
+    .lang-option.active { color: var(--primary); font-weight: 700; }
+    .lang-option .flag { font-size: 1rem; }
+
+    .nav-cta {
+      background: var(--accent-bright);
+      color: var(--primary-dark) !important;
+      font-weight: 700;
+      padding: .5rem 1.1rem;
+      border-radius: var(--r);
+      font-size: .85rem;
+      transition: all .2s;
+      box-shadow: 0 2px 8px rgba(255,193,7,.3);
+    }
+    .nav-cta:hover {
+      background: #ffca28 !important;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 16px rgba(255,193,7,.45);
+    }
+
+    /* hamburger */
+    .nav-hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      padding: .4rem;
+      border-radius: var(--r);
+    }
+    .nav-hamburger span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: #c5cae9;
+      border-radius: 2px;
+      transition: all .2s;
+    }
+
+    /* ── Hero ────────────────────────────────────────────────── */
+    #hero {
+      position: relative;
+      min-height: calc(100vh - var(--nav-h));
+      display: flex;
+      align-items: center;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 40%, #1565c0 100%);
+      overflow: hidden;
+    }
+    .hero-bg-pattern {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 50%, rgba(255,255,255,.05) 0%, transparent 55%),
+        radial-gradient(circle at 85% 20%, rgba(255,193,7,.07) 0%, transparent 45%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(255,255,255,.05)'/%3E%3C/svg%3E");
+      background-size: auto, auto, 60px 60px;
+    }
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      width: 100%;
+      padding-block: 80px;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      color: #fff;
+    }
+    /* Research graph SVG visual */
+    .hero-visual {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .hero-visual svg {
+      width: 100%;
+      max-width: 520px;
+      filter: drop-shadow(0 16px 48px rgba(0,0,0,.35));
+    }
+    /* SVG node pulse animation */
+    @keyframes node-pulse {
+      0%, 100% { opacity: .85; transform: scale(1); }
+      50%       { opacity: 1;   transform: scale(1.08); }
+    }
+    @keyframes dot-travel {
+      0%   { stroke-dashoffset: 200; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes float-in {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-visual svg { animation: float-in .8s ease both; animation-delay: .3s; opacity: 0; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.2);
+      border-radius: 999px;
+      padding: .35rem 1rem;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--accent-bright);
+      margin-bottom: 1.5rem;
+    }
+    .hero-badge span { font-size: .9rem; }
+    .hero-content h1 { color: #fff; margin-bottom: 1.25rem; }
+    .hero-content h1 em {
+      font-style: normal;
+      color: var(--accent-bright);
+    }
+    .hero-content > p {
+      font-size: 1.15rem;
+      color: #c5cae9;
+      margin-bottom: 2.5rem;
+      max-width: 56ch;
+    }
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .hero-access-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .75rem;
+      background: var(--accent-bright);
+      color: var(--primary-dark);
+      padding: 1.1rem 2.25rem;
+      border-radius: var(--r-lg);
+      font-weight: 800;
+      font-size: 1.1rem;
+      box-shadow: 0 6px 24px rgba(255,193,7,.45), 0 2px 8px rgba(0,0,0,.2);
+      transition: all .25s;
+      border: 2px solid transparent;
+    }
+    .hero-access-btn:hover {
+      background: #ffca28;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(255,193,7,.55);
+    }
+    .hero-access-btn .arrow { font-size: 1.2rem; transition: transform .2s; }
+    .hero-access-btn:hover .arrow { transform: translateX(4px); }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255,255,255,.12);
+    }
+    .hero-stat { text-align: center; }
+    .hero-stat .value {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--accent-bright);
+      font-family: Georgia, serif;
+      line-height: 1;
+    }
+    .hero-stat .key {
+      font-size: .75rem;
+      color: #9fa8da;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-top: .25rem;
+    }
+
+    /* ── About ───────────────────────────────────────────────── */
+    #about .grid-2 { align-items: center; gap: 4rem; }
+    .about-img-wrap {
+      position: relative;
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .about-img-wrap img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+    }
+    .about-img-badge {
+      position: absolute;
+      bottom: 1.25rem;
+      left: 1.25rem;
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--r);
+      padding: .6rem 1rem;
+      font-size: .8rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .about-text h2 { margin-bottom: 1rem; }
+    .about-text p { color: var(--text-muted); margin-bottom: 1.25rem; }
+    .about-text .btn { margin-top: .5rem; }
+
+    /* ── Features ────────────────────────────────────────────── */
+    #features .grid-3 { margin-top: 3rem; }
+
+    /* ── Access ──────────────────────────────────────────────── */
+    #access {
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #1a237e 100%);
+      color: #e8eaf6;
+    }
+    .access-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .access-left h2, .access-left h3 { color: #e8eaf6; }
+    .access-left p { color: #9fa8da; margin-bottom: 1rem; }
+    .access-left .label { color: var(--accent-bright); }
+
+    .access-info-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .access-info-card h4 { color: var(--accent-bright); margin-bottom: .75rem; font-size: 1rem; }
+    .access-info-card ul { display: flex; flex-direction: column; gap: .5rem; }
+    .access-info-card li {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      color: #c5cae9;
+      font-size: .9rem;
+    }
+    .access-info-card li::before { content: "›"; color: var(--accent-bright); font-weight: 700; flex-shrink: 0; }
+
+    .access-right {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--r-xl);
+      padding: 2.5rem;
+    }
+    .access-right h3 { color: #e8eaf6; margin-bottom: .5rem; }
+    .access-right p { color: #9fa8da; margin-bottom: 1.5rem; font-size: .9rem; }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.1rem 1.25rem;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--r);
+      margin-bottom: .75rem;
+      transition: background .2s;
+    }
+    .contact-item:hover { background: rgba(255,255,255,.1); }
+    .contact-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--r);
+      background: rgba(255,193,7,.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-item .info { min-width: 0; }
+    .contact-item .info small { display: block; color: #7986cb; font-size: .75rem; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; }
+    .contact-item .info a, .contact-item .info span {
+      display: block;
+      color: #e8eaf6;
+      font-size: .9rem;
+      font-weight: 500;
+      word-break: break-all;
+    }
+    .contact-item .info a:hover { color: var(--accent-bright); }
+
+    .beta-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(255,193,7,.15);
+      border: 1px solid rgba(255,193,7,.3);
+      border-radius: 999px;
+      padding: .35rem .9rem;
+      font-size: .78rem;
+      font-weight: 700;
+      color: var(--accent-bright);
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      margin-bottom: 1.25rem;
+    }
+
+    .note-box {
+      background: rgba(255,193,7,.08);
+      border-left: 3px solid var(--accent-bright);
+      border-radius: 0 var(--r) var(--r) 0;
+      padding: 1rem 1.25rem;
+      margin-top: 1.25rem;
+    }
+    .note-box p { color: #c5cae9; font-size: .85rem; margin-bottom: 0; }
+    .note-box strong { color: var(--accent-bright); }
+
+    /* ── Agreement ───────────────────────────────────────────── */
+    #agreement .container { max-width: 860px; }
+    .agreement-card {
+      background: var(--surface);
+      border-radius: var(--r-xl);
+      padding: 3rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+    }
+    .agreement-steps {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-top: 2rem;
+    }
+    .step {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+    }
+    .step-num {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      font-weight: 700;
+      font-size: .875rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: .15rem;
+    }
+    .step-body h4 { color: var(--primary); margin-bottom: .25rem; }
+    .step-body p { color: var(--text-muted); font-size: .9rem; margin-bottom: 0; }
+
+    /* ── Docs ────────────────────────────────────────────────── */
+    #docs .grid-2 { align-items: center; gap: 4rem; }
+    .docs-img {
+      border-radius: var(--r-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+    .docs-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+
+    .doc-link-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: .875rem 1rem;
+      border-radius: var(--r);
+      border: 1px solid var(--border);
+      background: var(--surface);
+      margin-bottom: .75rem;
+      transition: all .2s;
+      color: var(--text);
+    }
+    .doc-link-item:hover {
+      border-color: var(--primary-light);
+      box-shadow: var(--shadow-sm);
+      transform: translateX(4px);
+    }
+    .doc-link-item .icon {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--r);
+      background: var(--surface-alt);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .doc-link-item .txt { flex: 1; min-width: 0; }
+    .doc-link-item .txt strong { display: block; font-size: .9rem; color: var(--primary); }
+    .doc-link-item .txt small { font-size: .78rem; color: var(--text-muted); }
+    .doc-link-item .arrow-r { color: var(--text-light); font-size: .9rem; }
+
+    /* ── Company ─────────────────────────────────────────────── */
+    #company .grid-2 { align-items: center; gap: 4rem; }
+    .company-logo-wrap {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 1.5rem;
+    }
+    .company-logo-wrap img {
+      max-width: 420px;
+      width: 100%;
+      filter: drop-shadow(0 4px 20px rgba(26,35,126,.15));
+    }
+    .company-tagline {
+      font-family: Georgia, serif;
+      font-size: 1rem;
+      color: var(--text-muted);
+      text-align: center;
+      font-style: italic;
+    }
+    .company-text h2 { margin-bottom: 1rem; }
+    .company-text p { color: var(--text-muted); margin-bottom: 1.25rem; }
+
+    /* ── Contact section ─────────────────────────────────────── */
+    #contact-section { background: var(--surface-alt); }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+    .contact-info h2 { margin-bottom: 1rem; }
+    .contact-info p { color: var(--text-muted); margin-bottom: 2rem; }
+
+    .contact-card {
+      background: var(--surface);
+      border-radius: var(--r-lg);
+      padding: 1.25rem;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      box-shadow: var(--shadow-sm);
+    }
+    .contact-card-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--r);
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+    }
+    .contact-card-text strong { display: block; font-size: .875rem; color: var(--primary); }
+    .contact-card-text a, .contact-card-text span {
+      font-size: .9rem;
+      color: var(--text-muted);
+    }
+    .contact-card-text a:hover { color: var(--primary); }
+
+    .contact-form-panel {
+      background: var(--surface);
+      border-radius: var(--r-xl);
+      padding: 2.5rem;
+      box-shadow: var(--shadow-md);
+      border: 1px solid var(--border);
+    }
+    .contact-form-panel h3 { margin-bottom: .5rem; }
+    .contact-form-panel > p { color: var(--text-muted); font-size: .9rem; margin-bottom: 1.5rem; }
+
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label {
+      display: block;
+      font-size: .825rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: .4rem;
+      letter-spacing: .04em;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: .75rem 1rem;
+      border: 1.5px solid var(--border);
+      border-radius: var(--r);
+      font: inherit;
+      font-size: .9rem;
+      color: var(--text);
+      background: var(--bg);
+      transition: border-color .2s, box-shadow .2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--primary-light);
+      box-shadow: 0 0 0 3px rgba(57,73,171,.12);
+    }
+    .form-group textarea { resize: vertical; min-height: 110px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-submit {
+      width: 100%;
+      padding: .875rem;
+      background: var(--primary);
+      color: #fff;
+      border-radius: var(--r);
+      font-weight: 700;
+      font-size: 1rem;
+      transition: all .2s;
+      box-shadow: var(--shadow-sm);
+    }
+    .form-submit:hover {
+      background: var(--primary-mid);
+      box-shadow: var(--shadow-md);
+      transform: translateY(-1px);
+    }
+
+    .form-note {
+      font-size: .78rem;
+      color: var(--text-light);
+      text-align: center;
+      margin-top: .75rem;
+    }
+
+    /* ── Footer ──────────────────────────────────────────────── */
+    #footer {
+      background: var(--primary-dark);
+      color: #9fa8da;
+      padding-block: 3.5rem 2rem;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr 1fr;
+      gap: 3rem;
+      margin-bottom: 3rem;
+    }
+    .footer-brand .nav-logo { margin-bottom: 1rem; }
+    .footer-brand p { font-size: .875rem; line-height: 1.7; max-width: 36ch; }
+    .footer-col h5 {
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #fff;
+      margin-bottom: 1.25rem;
+    }
+    .footer-col ul { display: flex; flex-direction: column; gap: .65rem; }
+    .footer-col li a {
+      font-size: .875rem;
+      color: #9fa8da;
+      transition: color .15s;
+    }
+    .footer-col li a:hover { color: var(--accent-bright); }
+
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.08);
+      padding-top: 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .footer-bottom p { font-size: .8rem; }
+    .footer-badges { display: flex; gap: .75rem; flex-wrap: wrap; }
+    .footer-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .35rem;
+      padding: .25rem .7rem;
+      border: 1px solid rgba(255,255,255,.12);
+      border-radius: 999px;
+      font-size: .72rem;
+      color: #7986cb;
+      letter-spacing: .05em;
+    }
+
+    /* ── Lab CTA Banner ──────────────────────────────────────── */
+    .lab-cta-banner {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bright) 100%);
+      border-radius: var(--r-xl);
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: 3rem;
+      box-shadow: 0 8px 32px rgba(200,147,10,.3);
+    }
+    .lab-cta-banner h3 {
+      color: var(--primary-dark);
+      margin-bottom: .35rem;
+      font-size: 1.4rem;
+    }
+    .lab-cta-banner p {
+      color: var(--primary-dark);
+      opacity: .8;
+      font-size: .9rem;
+      margin: 0;
+    }
+    .lab-cta-banner .btn-dark { white-space: nowrap; }
+
+    /* ── Scroll-reveal ───────────────────────────────────────── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: .1s; }
+    .reveal-delay-2 { transition-delay: .2s; }
+    .reveal-delay-3 { transition-delay: .3s; }
+    .reveal-delay-4 { transition-delay: .4s; }
+
+    /* ── Back to top ─────────────────────────────────────────── */
+    #back-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s;
+      z-index: 900;
+    }
+    #back-top.show { opacity: 1; visibility: visible; }
+    #back-top:hover { background: var(--primary-mid); transform: translateY(-2px); }
+
+    /* ── Responsive ──────────────────────────────────────────── */
+    @media (max-width: 1024px) {
+      .grid-2 { grid-template-columns: 1fr; }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .access-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .hero-inner { grid-template-columns: 1fr; }
+      .hero-visual { display: none; }
+      .about-img-wrap, .docs-img { order: -1; }
+    }
+    @media (max-width: 768px) {
+      :root { --section-py: 64px; }
+      .nav-links { display: none; }
+      .nav-hamburger { display: flex; }
+      .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: var(--nav-h);
+        left: 0;
+        right: 0;
+        background: var(--primary-dark);
+        padding: 1rem;
+        gap: .25rem;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+      }
+      .grid-3 { grid-template-columns: 1fr; }
+      .grid-4 { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .lab-cta-banner { flex-direction: column; text-align: center; padding: 2rem; }
+      .hero-stats { gap: 1.5rem; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      .container { padding-inline: 1.25rem; }
+      .agreement-card { padding: 2rem 1.25rem; }
+      .access-right { padding: 1.75rem 1.25rem; }
+      .contact-form-panel { padding: 2rem 1.25rem; }
+    }
+
+    /* ── Notification toast ──────────────────────────────────── */
+    #toast {
+      position: fixed;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%) translateY(80px);
+      background: var(--primary);
+      color: #fff;
+      padding: .75rem 1.5rem;
+      border-radius: 999px;
+      font-size: .875rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-lg);
+      z-index: 9999;
+      transition: transform .3s ease;
+      white-space: nowrap;
+    }
+    #toast.show { transform: translateX(-50%) translateY(0); }
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════
+     NAVBAR
+═══════════════════════════════════════════════════════════ -->
+<nav id="navbar" role="navigation" aria-label="Main navigation">
+  <div class="container nav-inner">
+    <!-- Logo -->
+    <a href="#hero" class="nav-logo" aria-label="Aural-Syncro Research Lab home">
+      <img src="/static/favicon.png" alt="Aural-Syncro logo" width="36" height="36" />
+      <span>
+        Aural-Syncro
+        <small data-i18n="nav_research_lab">Research Lab</small>
+      </span>
+    </a>
+
+    <!-- Desktop nav links -->
+    <ul class="nav-links" id="nav-links-list">
+      <li><a href="#about" data-i18n="nav_about">Acerca de</a></li>
+      <li><a href="#features" data-i18n="nav_features">Plataforma</a></li>
+      <li><a href="#access" data-i18n="nav_access">Acceso</a></li>
+      <li><a href="#docs" data-i18n="nav_docs">Documentación</a></li>
+      <li><a href="#company" data-i18n="nav_company">Empresa</a></li>
+      <li><a href="#contact-section" data-i18n="nav_contact">Contacto</a></li>
+    </ul>
+
+    <!-- Actions -->
+    <div class="nav-actions">
+      <!-- Language picker -->
+      <div class="lang-picker">
+        <button class="lang-btn" id="lang-btn" aria-haspopup="listbox" aria-expanded="false" aria-label="Select language">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+          <span id="lang-label">ES</span>
+          <span class="caret" aria-hidden="true">▾</span>
+        </button>
+        <div class="lang-dropdown" id="lang-dropdown" role="listbox" aria-label="Language options">
+          <div class="lang-option active" data-lang="es" role="option" aria-selected="true" tabindex="0">
+            <span class="flag" aria-hidden="true">🇦🇷</span> Español
+          </div>
+          <div class="lang-option" data-lang="en" role="option" aria-selected="false" tabindex="0">
+            <span class="flag" aria-hidden="true">🇺🇸</span> English
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA -->
+      <a href="https://lab.aural-syncro.com.ar/app" class="nav-cta btn" data-i18n="nav_enter_lab" target="_blank" rel="noopener">
+        Entrar al Lab →
+      </a>
+
+      <!-- Hamburger -->
+      <button class="nav-hamburger" id="hamburger" aria-label="Toggle mobile menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════════════════════════════════════════
+     HERO
+═══════════════════════════════════════════════════════════ -->
+<section id="hero" aria-labelledby="hero-title">
+  <div class="hero-bg-pattern" aria-hidden="true"></div>
+  <div class="container">
+    <div class="hero-inner">
+      <!-- Left: text -->
+      <div class="hero-content">
+        <div class="hero-badge">
+          <span>🔬</span>
+          <span data-i18n="hero_badge">Beta Testing — Acceso por invitación</span>
+        </div>
+        <h1 id="hero-title" data-i18n="hero_title">
+          La plataforma de<br/><em>investigación colaborativa</em><br/>del futuro
+        </h1>
+        <p data-i18n="hero_subtitle">
+          Un entorno integrado para equipos de investigación científica y académica. Gestione proyectos, hipótesis, notas, bitácoras y colaboradores en un solo lugar, potenciado por inteligencia artificial.
+        </p>
+        <div class="hero-actions">
+          <a href="https://lab.aural-syncro.com.ar/app"
+             class="hero-access-btn"
+             target="_blank" rel="noopener"
+             aria-label="Acceder a la plataforma Research Lab">
+            <span data-i18n="hero_cta_lab">Acceder al Research Lab</span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="#access" class="btn btn-outline" data-i18n="hero_cta_access">
+            Solicitar acceso
+          </a>
+        </div>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="value">v1.0</div>
+            <div class="key" data-i18n="stat_version">Versión</div>
+          </div>
+          <div class="hero-stat">
+            <div class="value">Beta</div>
+            <div class="key" data-i18n="stat_stage">Etapa</div>
+          </div>
+          <div class="hero-stat">
+            <div class="value">Open</div>
+            <div class="key" data-i18n="stat_license">Uso libre</div>
+          </div>
+          <div class="hero-stat">
+            <div class="value">24/7</div>
+            <div class="key" data-i18n="stat_avail">Disponibilidad</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Research Knowledge Graph SVG -->
+      <div class="hero-visual" aria-hidden="true">
+        <svg viewBox="0 0 520 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Research knowledge graph visualization">
+          <defs>
+            <radialGradient id="glow-center" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffc107" stop-opacity=".25"/>
+              <stop offset="100%" stop-color="#ffc107" stop-opacity="0"/>
+            </radialGradient>
+            <radialGradient id="node-gold" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ffca28"/>
+              <stop offset="100%" stop-color="#f9a825"/>
+            </radialGradient>
+            <radialGradient id="node-blue" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#5c6bc0"/>
+              <stop offset="100%" stop-color="#3949ab"/>
+            </radialGradient>
+            <radialGradient id="node-teal" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#26a69a"/>
+              <stop offset="100%" stop-color="#00897b"/>
+            </radialGradient>
+            <filter id="blur-glow">
+              <feGaussianBlur stdDeviation="8" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="shadow-node">
+              <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,.4)"/>
+            </filter>
+          </defs>
+
+          <!-- Background glow at center -->
+          <circle cx="260" cy="240" r="140" fill="url(#glow-center)"/>
+
+          <!-- ── Connection lines ── -->
+          <!-- Central → Hipótesis -->
+          <line x1="260" y1="240" x2="120" y2="110" stroke="rgba(255,193,7,.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <!-- Central → Notas -->
+          <line x1="260" y1="240" x2="400" y2="110" stroke="rgba(99,125,229,.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <!-- Central → Bitácora -->
+          <line x1="260" y1="240" x2="440" y2="240" stroke="rgba(38,166,154,.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <!-- Central → Referencias -->
+          <line x1="260" y1="240" x2="400" y2="370" stroke="rgba(255,193,7,.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <!-- Central → Knowledge Graph -->
+          <line x1="260" y1="240" x2="120" y2="370" stroke="rgba(99,125,229,.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <!-- Central → IA -->
+          <line x1="260" y1="240" x2="80" y2="240" stroke="rgba(38,166,154,.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
+          <!-- Secondary connections -->
+          <line x1="120" y1="110" x2="400" y2="110" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="4 6"/>
+          <line x1="400" y1="110" x2="440" y2="240" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="4 6"/>
+          <line x1="440" y1="240" x2="400" y2="370" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="4 6"/>
+          <line x1="400" y1="370" x2="120" y2="370" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="4 6"/>
+          <line x1="120" y1="370" x2="80" y2="240" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="4 6"/>
+          <line x1="80" y1="240" x2="120" y2="110" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="4 6"/>
+
+          <!-- ── Animated travel dots ── -->
+          <circle r="3.5" fill="#ffc107" opacity=".9">
+            <animateMotion dur="3s" repeatCount="indefinite" begin="0s">
+              <mpath href="#path-to-hip"/>
+            </animateMotion>
+          </circle>
+          <circle r="3" fill="#7986cb" opacity=".85">
+            <animateMotion dur="3.5s" repeatCount="indefinite" begin="1.2s">
+              <mpath href="#path-to-ref"/>
+            </animateMotion>
+          </circle>
+          <circle r="3" fill="#4db6ac" opacity=".85">
+            <animateMotion dur="2.8s" repeatCount="indefinite" begin="0.6s">
+              <mpath href="#path-to-ia"/>
+            </animateMotion>
+          </circle>
+
+          <!-- Hidden paths for animateMotion -->
+          <defs>
+            <path id="path-to-hip" d="M260,240 L120,110"/>
+            <path id="path-to-ref" d="M260,240 L400,370"/>
+            <path id="path-to-ia"  d="M260,240 L80,240"/>
+          </defs>
+
+          <!-- ── Central node — RESEARCH LAB ── -->
+          <circle cx="260" cy="240" r="58" fill="url(#node-gold)" filter="url(#shadow-node)" style="animation: node-pulse 3s ease-in-out infinite;"/>
+          <circle cx="260" cy="240" r="52" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
+          <!-- Microscope icon simplified -->
+          <text x="260" y="228" text-anchor="middle" font-size="22" fill="#1a237e">🔬</text>
+          <text x="260" y="248" text-anchor="middle" font-size="10" font-weight="800" fill="#1a237e" letter-spacing="1" font-family="Georgia,serif">RESEARCH</text>
+          <text x="260" y="261" text-anchor="middle" font-size="9" font-weight="700" fill="#1a237e" opacity=".8" letter-spacing=".5">LAB</text>
+
+          <!-- ── Satellite nodes ── -->
+          <!-- Hipótesis (top-left) -->
+          <circle cx="120" cy="110" r="38" fill="url(#node-blue)" filter="url(#shadow-node)" style="animation: node-pulse 3.4s ease-in-out infinite; animation-delay:.4s;"/>
+          <circle cx="120" cy="110" r="32" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+          <text x="120" y="102" text-anchor="middle" font-size="16" fill="#fff">💡</text>
+          <text x="120" y="118" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" letter-spacing=".5">HIPÓTESIS</text>
+
+          <!-- Notas (top-right) -->
+          <circle cx="400" cy="110" r="36" fill="url(#node-teal)" filter="url(#shadow-node)" style="animation: node-pulse 2.9s ease-in-out infinite; animation-delay:.8s;"/>
+          <circle cx="400" cy="110" r="30" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+          <text x="400" y="103" text-anchor="middle" font-size="15" fill="#fff">📝</text>
+          <text x="400" y="118" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" letter-spacing=".5">NOTAS</text>
+
+          <!-- Bitácora (right) -->
+          <circle cx="440" cy="240" r="36" fill="url(#node-blue)" filter="url(#shadow-node)" style="animation: node-pulse 3.2s ease-in-out infinite; animation-delay:.2s;"/>
+          <circle cx="440" cy="240" r="30" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+          <text x="440" y="234" text-anchor="middle" font-size="15" fill="#fff">📔</text>
+          <text x="440" y="249" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" letter-spacing=".3">BITÁCORA</text>
+
+          <!-- Referencias (bottom-right) -->
+          <circle cx="400" cy="370" r="36" fill="url(#node-teal)" filter="url(#shadow-node)" style="animation: node-pulse 3.6s ease-in-out infinite; animation-delay:1s;"/>
+          <circle cx="400" cy="370" r="30" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+          <text x="400" y="363" text-anchor="middle" font-size="15" fill="#fff">📚</text>
+          <text x="400" y="378" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" letter-spacing=".3">REFERENCIAS</text>
+
+          <!-- Knowledge Graph (bottom-left) -->
+          <circle cx="120" cy="370" r="36" fill="url(#node-blue)" filter="url(#shadow-node)" style="animation: node-pulse 2.7s ease-in-out infinite; animation-delay:.6s;"/>
+          <circle cx="120" cy="370" r="30" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+          <text x="120" y="363" text-anchor="middle" font-size="15" fill="#fff">🔗</text>
+          <text x="120" y="375" text-anchor="middle" font-size="7.5" font-weight="700" fill="#fff" letter-spacing=".3">KNOWLEDGE</text>
+          <text x="120" y="386" text-anchor="middle" font-size="7.5" font-weight="700" fill="#fff" letter-spacing=".3">GRAPH</text>
+
+          <!-- IA Assistant (left) -->
+          <circle cx="80" cy="240" r="36" fill="url(#node-teal)" filter="url(#shadow-node)" style="animation: node-pulse 3.1s ease-in-out infinite; animation-delay:1.4s;"/>
+          <circle cx="80" cy="240" r="30" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
+          <text x="80" y="234" text-anchor="middle" font-size="15" fill="#fff">🤖</text>
+          <text x="80" y="249" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" letter-spacing=".3">IA</text>
+
+          <!-- ── Floating micro-particles ── -->
+          <circle cx="200" cy="60" r="3" fill="rgba(255,193,7,.5)">
+            <animate attributeName="cy" values="60;45;60" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".5;.9;.5" dur="4s" repeatCount="indefinite"/>
+          </circle>
+          <circle cx="340" cy="50" r="2" fill="rgba(121,134,203,.6)">
+            <animate attributeName="cy" values="50;38;50" dur="3.3s" repeatCount="indefinite" begin=".8s"/>
+          </circle>
+          <circle cx="480" cy="170" r="2.5" fill="rgba(77,182,172,.5)">
+            <animate attributeName="cy" values="170;155;170" dur="3.8s" repeatCount="indefinite" begin="1.2s"/>
+          </circle>
+          <circle cx="490" cy="320" r="2" fill="rgba(255,193,7,.4)">
+            <animate attributeName="cy" values="320;308;320" dur="4.2s" repeatCount="indefinite" begin=".3s"/>
+          </circle>
+          <circle cx="50" cy="160" r="2.5" fill="rgba(121,134,203,.5)">
+            <animate attributeName="cy" values="160;148;160" dur="3.5s" repeatCount="indefinite" begin="1.8s"/>
+          </circle>
+          <circle cx="30" cy="330" r="2" fill="rgba(77,182,172,.4)">
+            <animate attributeName="cy" values="330;318;330" dur="4.5s" repeatCount="indefinite" begin=".9s"/>
+          </circle>
+          <circle cx="260" cy="430" r="2.5" fill="rgba(255,193,7,.4)">
+            <animate attributeName="cy" values="430;418;430" dur="3.7s" repeatCount="indefinite" begin="2s"/>
+          </circle>
+
+          <!-- ── Corner label: AURAL-SYNCRO ── -->
+          <text x="260" y="462" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.3)" letter-spacing="3" font-family="Georgia,serif">AURAL-SYNCRO · RESEARCH PLATFORM</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ABOUT
+═══════════════════════════════════════════════════════════ -->
+<section id="about" class="section" aria-labelledby="about-title">
+  <div class="container">
+    <div class="grid-2">
+      <div>
+        <div class="about-img-wrap reveal">
+          <img src="/static/img/science-innovation.avif"
+               alt="Investigadores colaborando en la plataforma"
+               loading="lazy" />
+        </div>
+        <div class="about-img-badge" style="position:static; margin-top:1rem; display:inline-flex;">
+          🏛️ <span data-i18n="about_img_badge">Plataforma académica de uso libre</span>
+        </div>
+      </div>
+      <div class="about-text reveal reveal-delay-1">
+        <span class="label" data-i18n="about_label">¿Qué es?</span>
+        <h2 id="about-title" class="section-title" data-i18n="about_title">
+          Un laboratorio digital para la ciencia moderna
+        </h2>
+        <p data-i18n="about_p1">
+          Aural-Syncro Research Lab es una plataforma web de investigación colaborativa diseñada para equipos académicos y científicos que necesitan centralizar, versionar y compartir su trabajo de forma segura y estructurada.
+        </p>
+        <p data-i18n="about_p2">
+          A diferencia de las herramientas genéricas de gestión de proyectos, el Research Lab está construido específicamente para el flujo de trabajo de la investigación: hipótesis, bitácoras de campo, gestión de referencias bibliográficas, hitos, grafos de conocimiento y sincronización con repositorios como GitHub u Obsidian.
+        </p>
+        <p data-i18n="about_p3">
+          La plataforma es de <strong>uso libre</strong> y se encuentra actualmente en <strong>fase beta</strong>. El acceso está disponible para instituciones, grupos de investigación y colaboradores externos mediante solicitud.
+        </p>
+        <a href="#access" class="btn btn-dark" data-i18n="about_cta">Cómo obtener acceso →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FEATURES
+═══════════════════════════════════════════════════════════ -->
+<section id="features" class="section section--alt" aria-labelledby="features-title">
+  <div class="container text-center">
+    <span class="label reveal" data-i18n="features_label">Plataforma</span>
+    <h2 id="features-title" class="section-title reveal" data-i18n="features_title">
+      Herramientas diseñadas para investigadores
+    </h2>
+    <p class="section-intro reveal" data-i18n="features_intro">
+      Cada módulo fue diseñado teniendo en cuenta el flujo de trabajo real de equipos de investigación, desde la formulación de hipótesis hasta la publicación de resultados.
+    </p>
+    <div class="grid-3">
+      <div class="card reveal">
+        <div class="card-icon">📋</div>
+        <h4 data-i18n="feat1_title">Gestión de proyectos</h4>
+        <p data-i18n="feat1_desc">Cree proyectos de investigación con roles diferenciados (Investigador Principal, Colaborador), gestione miembros y permisos con control total.</p>
+      </div>
+      <div class="card reveal reveal-delay-1">
+        <div class="card-icon">💡</div>
+        <h4 data-i18n="feat2_title">Hipótesis y notas</h4>
+        <p data-i18n="feat2_desc">Registre hipótesis de trabajo, agregue evidencia, vincule referencias y realice seguimiento del estado. Notas colaborativas con historial de versiones.</p>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <div class="card-icon">📔</div>
+        <h4 data-i18n="feat3_title">Bitácora de investigación</h4>
+        <p data-i18n="feat3_desc">Diario de campo digital con entradas fechadas, versionado automático y trazabilidad completa de actividades del equipo.</p>
+      </div>
+      <div class="card reveal reveal-delay-3">
+        <div class="card-icon">🔗</div>
+        <h4 data-i18n="feat4_title">Knowledge Graph</h4>
+        <p data-i18n="feat4_desc">Visualice relaciones entre entidades: hipótesis, notas, referencias y hitos se conectan en un grafo de conocimiento semántico interactivo.</p>
+      </div>
+      <div class="card reveal reveal-delay-1">
+        <div class="card-icon">📚</div>
+        <h4 data-i18n="feat5_title">Referencias bibliográficas</h4>
+        <p data-i18n="feat5_desc">Gestión integrada de bibliografía con enriquecimiento automático vía DOI (CrossRef / OpenAlex). Exportación en formatos estándar.</p>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <div class="card-icon">🤖</div>
+        <h4 data-i18n="feat6_title">Asistente IA</h4>
+        <p data-i18n="feat6_desc">Chat contextual integrado con Claude AI (Anthropic). Asistencia en redacción, análisis de consistencia, búsqueda semántica y automatización. Requiere clave API del investigador.</p>
+      </div>
+      <div class="card reveal">
+        <div class="card-icon">🔌</div>
+        <h4 data-i18n="feat7_title">Plugin Obsidian</h4>
+        <p data-i18n="feat7_desc">Sincronice su vault de Obsidian con el Lab. Trabaje localmente y sincronice en tiempo real. Resolución de conflictos automática.</p>
+      </div>
+      <div class="card reveal reveal-delay-1">
+        <div class="card-icon">🐙</div>
+        <h4 data-i18n="feat8_title">Integración GitHub</h4>
+        <p data-i18n="feat8_desc">Conecte su proyecto a un repositorio GitHub. Proponga cambios, genere changelogs y publique documentación científica de forma automática.</p>
+      </div>
+      <div class="card reveal reveal-delay-2">
+        <div class="card-icon">🔒</div>
+        <h4 data-i18n="feat9_title">Seguridad enterprise</h4>
+        <p data-i18n="feat9_desc">Autenticación JWT, cifrado AES-256-GCM para secretos, control de acceso granular por proyecto y colaborador. Datos en infraestructura propia.</p>
+      </div>
+    </div>
+
+    <!-- Lab CTA Banner -->
+    <div class="lab-cta-banner reveal">
+      <div>
+        <h3 data-i18n="cta_banner_title">¿Listo para comenzar?</h3>
+        <p data-i18n="cta_banner_subtitle">Acceda al Research Lab y explore las funcionalidades disponibles para su equipo.</p>
+      </div>
+      <a href="https://lab.aural-syncro.com.ar/app"
+         class="btn btn-dark btn-lg"
+         target="_blank" rel="noopener"
+         data-i18n="cta_banner_btn">
+        Ingresar al Research Lab →
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     ACCESS
+═══════════════════════════════════════════════════════════ -->
+<section id="access" class="section" aria-labelledby="access-title">
+  <div class="container">
+    <div class="access-grid">
+      <!-- Left: info -->
+      <div class="access-left reveal">
+        <span class="label" data-i18n="access_label">Acceso</span>
+        <h2 id="access-title" class="section-title" data-i18n="access_title">
+          Cómo obtener acceso a la plataforma
+        </h2>
+
+        <div class="beta-badge">
+          ✦ <span data-i18n="access_beta">Beta Testing — Uso libre</span>
+        </div>
+
+        <p data-i18n="access_p1">
+          La plataforma es de <strong style="color:var(--accent-bright)">uso libre</strong> y se encuentra en <strong style="color:var(--accent-bright)">etapa beta</strong>. Está disponible para grupos de investigación, instituciones académicas y colaboradores externos sin costo de acceso.
+        </p>
+        <p data-i18n="access_p2">
+          Algunas funcionalidades avanzadas, como el <strong style="color:var(--accent-bright)">asistente virtual IA</strong> (Claude Anthropic), requieren una clave de API propia que debe ser provista y cubierta económicamente por el equipo investigador.
+        </p>
+
+        <div class="access-info-card">
+          <h4 data-i18n="access_req_title">📋 Información requerida para solicitar acceso</h4>
+          <ul>
+            <li data-i18n="req_1">Motivo de la solicitud y objetivo de investigación</li>
+            <li data-i18n="req_2">Descripción de la investigación o proyecto</li>
+            <li data-i18n="req_3">Lista de colaboradores (nombres y correos institucionales)</li>
+            <li data-i18n="req_4">Nombre del administrador o investigador principal del proyecto</li>
+          </ul>
+        </div>
+
+        <div class="access-info-card">
+          <h4 data-i18n="access_agreement_title">📜 Acuerdo de uso</h4>
+          <ul>
+            <li data-i18n="agr_1">Al obtener acceso, recibirá las credenciales de ingreso</li>
+            <li data-i18n="agr_2">En el primer ingreso a la plataforma se le solicitará completar y firmar digitalmente el acuerdo de uso</li>
+            <li data-i18n="agr_3">El acuerdo establece las condiciones de uso, privacidad de datos y responsabilidades del equipo investigador</li>
+            <li data-i18n="agr_4">La plataforma no puede utilizarse con fines comerciales sin autorización expresa de Aural-Syncro</li>
+          </ul>
+        </div>
+
+        <div class="note-box">
+          <p data-i18n="access_note">
+            <strong>Nota:</strong> La plataforma está en etapa de testing activo. Algunas funcionalidades pueden presentar comportamientos inesperados. Agradecemos el reporte de errores para mejorar la experiencia.
+          </p>
+        </div>
+      </div>
+
+      <!-- Right: contact card -->
+      <div class="access-right reveal reveal-delay-2">
+        <h3 data-i18n="contact_title">Contacto para solicitud de acceso</h3>
+        <p data-i18n="contact_subtitle">Envíe un correo con la información requerida al siguiente contacto:</p>
+
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div class="info">
+            <small data-i18n="contact_email_label">Correo de contacto</small>
+            <a href="mailto:juanpablo.chancay@aural-syncro.com.ar">
+              juanpablo.chancay@aural-syncro.com.ar
+            </a>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">👤</div>
+          <div class="info">
+            <small data-i18n="contact_name_label">Responsable</small>
+            <span>Juan Pablo Chancay</span>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-icon">🏢</div>
+          <div class="info">
+            <small data-i18n="contact_org_label">Organización</small>
+            <span>Aural-Syncro</span>
+          </div>
+        </div>
+
+        <div style="margin-top:2rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,.1);">
+          <h3 style="color:#e8eaf6; margin-bottom:.75rem; font-size:1rem;" data-i18n="direct_access_title">
+            ¿Ya tiene credenciales?
+          </h3>
+          <p style="color:#9fa8da; font-size:.875rem; margin-bottom:1.25rem;" data-i18n="direct_access_desc">
+            Ingrese directamente a la plataforma con sus credenciales asignadas.
+          </p>
+          <a href="https://lab.aural-syncro.com.ar/app"
+             class="btn btn-primary btn-lg"
+             target="_blank" rel="noopener"
+             style="width:100%; justify-content:center; font-size:1rem;">
+            <span data-i18n="direct_access_btn">🔬 Ingresar al Research Lab</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     AGREEMENT FLOW
+═══════════════════════════════════════════════════════════ -->
+<section id="agreement" class="section section--alt" aria-labelledby="agreement-title">
+  <div class="container text-center">
+    <span class="label reveal" data-i18n="agreement_label">Proceso de incorporación</span>
+    <h2 id="agreement-title" class="section-title reveal" data-i18n="agreement_title">
+      ¿Cómo funciona el proceso de acceso?
+    </h2>
+    <p class="section-intro reveal" data-i18n="agreement_intro">
+      El acceso al Research Lab sigue un proceso simple de cuatro pasos para garantizar el uso responsable de la plataforma.
+    </p>
+    <div class="agreement-card reveal">
+      <div class="agreement-steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <div class="step-body">
+            <h4 data-i18n="step1_title">Envío de solicitud</h4>
+            <p data-i18n="step1_desc">Envíe un correo a <strong>juanpablo.chancay@aural-syncro.com.ar</strong> con los datos del proyecto: motivo, descripción de la investigación, colaboradores y administrador de proyecto.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <div class="step-body">
+            <h4 data-i18n="step2_title">Revisión y habilitación</h4>
+            <p data-i18n="step2_desc">El equipo de Aural-Syncro revisará la solicitud y le asignará las credenciales de acceso correspondientes al administrador del proyecto en el menor tiempo posible.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <div class="step-body">
+            <h4 data-i18n="step3_title">Acuerdo de uso</h4>
+            <p data-i18n="step3_desc">Al ingresar por primera vez a la plataforma, deberá leer y completar digitalmente el acuerdo de uso. Este documento establece las condiciones de privacidad, uso de datos y responsabilidades del equipo.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-num">4</div>
+          <div class="step-body">
+            <h4 data-i18n="step4_title">¡A investigar!</h4>
+            <p data-i18n="step4_desc">Una vez completado el acuerdo, podrá crear proyectos, invitar colaboradores y comenzar a utilizar todas las funcionalidades del Research Lab.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     DOCUMENTATION
+═══════════════════════════════════════════════════════════ -->
+<section id="docs" class="section" aria-labelledby="docs-title">
+  <div class="container">
+    <div class="grid-2">
+      <div class="docs-text reveal">
+        <span class="label" data-i18n="docs_label">Documentación</span>
+        <h2 id="docs-title" class="section-title" data-i18n="docs_title">
+          Guías de uso y referencia técnica
+        </h2>
+        <p class="section-intro" data-i18n="docs_intro">
+          La documentación completa de la plataforma está disponible dentro del Research Lab. A continuación encontrará un resumen de los módulos documentados.
+        </p>
+
+        <a href="https://lab.aural-syncro.com.ar/app" target="_blank" rel="noopener" class="doc-link-item">
+          <div class="icon">🚀</div>
+          <div class="txt">
+            <strong data-i18n="doc1_title">Inicio rápido</strong>
+            <small data-i18n="doc1_desc">Primeros pasos: crear cuenta, proyecto y agregar colaboradores</small>
+          </div>
+          <span class="arrow-r">›</span>
+        </a>
+        <a href="https://lab.aural-syncro.com.ar/app" target="_blank" rel="noopener" class="doc-link-item">
+          <div class="icon">📋</div>
+          <div class="txt">
+            <strong data-i18n="doc2_title">Gestión de proyectos</strong>
+            <small data-i18n="doc2_desc">Roles, permisos, miembros y configuración avanzada</small>
+          </div>
+          <span class="arrow-r">›</span>
+        </a>
+        <a href="https://lab.aural-syncro.com.ar/app" target="_blank" rel="noopener" class="doc-link-item">
+          <div class="icon">🔌</div>
+          <div class="txt">
+            <strong data-i18n="doc3_title">Plugin Obsidian</strong>
+            <small data-i18n="doc3_desc">Instalación, configuración y sincronización del vault</small>
+          </div>
+          <span class="arrow-r">›</span>
+        </a>
+        <a href="https://lab.aural-syncro.com.ar/app" target="_blank" rel="noopener" class="doc-link-item">
+          <div class="icon">🤖</div>
+          <div class="txt">
+            <strong data-i18n="doc4_title">Asistente IA</strong>
+            <small data-i18n="doc4_desc">Configuración de Claude API, permisos y funcionalidades</small>
+          </div>
+          <span class="arrow-r">›</span>
+        </a>
+        <a href="https://lab.aural-syncro.com.ar/app" target="_blank" rel="noopener" class="doc-link-item">
+          <div class="icon">🔗</div>
+          <div class="txt">
+            <strong data-i18n="doc5_title">MCP Bridge — Claude Code</strong>
+            <small data-i18n="doc5_desc">Integración del Lab con Claude Code via Model Context Protocol</small>
+          </div>
+          <span class="arrow-r">›</span>
+        </a>
+        <a href="https://lab.aural-syncro.com.ar/app" target="_blank" rel="noopener" class="doc-link-item">
+          <div class="icon">🔒</div>
+          <div class="txt">
+            <strong data-i18n="doc6_title">Seguridad y privacidad</strong>
+            <small data-i18n="doc6_desc">Autenticación, cifrado, control de acceso y política de datos</small>
+          </div>
+          <span class="arrow-r">›</span>
+        </a>
+      </div>
+      <div class="docs-img reveal reveal-delay-2">
+        <img src="/static/img/doc-search.png"
+             alt="Vista de búsqueda y documentación de la plataforma"
+             loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     COMPANY
+═══════════════════════════════════════════════════════════ -->
+<section id="company" class="section section--alt" aria-labelledby="company-title">
+  <div class="container">
+    <div class="grid-2">
+      <div class="company-logo-wrap reveal">
+        <img src="/static/img/aural-logo.png"
+             alt="Aural-Syncro — Procesamiento en el origen para soluciones en tiempo real"
+             loading="lazy" />
+        <p class="company-tagline" data-i18n="company_tagline">
+          "Tecnología al servicio de la ciencia"
+        </p>
+      </div>
+      <div class="company-text reveal reveal-delay-1">
+        <span class="label" data-i18n="company_label">Sobre nosotros</span>
+        <h2 id="company-title" class="section-title" data-i18n="company_title">
+          Aural-Syncro
+        </h2>
+        <p data-i18n="company_p1">
+          Aural-Syncro es una empresa de ingeniería de software especializada en el diseño y desarrollo de plataformas tecnológicas complejas para sectores de alta exigencia: investigación científica, educación superior, industria y gobierno.
+        </p>
+        <p data-i18n="company_p2">
+          Desde Argentina, desarrollamos soluciones a medida que combinan arquitecturas modernas (microservicios, containerización, IA) con las necesidades reales de los equipos que las utilizan. Nos especializamos en plataformas colaborativas, sistemas de gestión de conocimiento y herramientas potenciadas por inteligencia artificial.
+        </p>
+        <p data-i18n="company_p3">
+          El Research Lab es uno de nuestros proyectos open-access: una apuesta por democratizar las herramientas de investigación de alta calidad, disponibilizándolas libremente a la comunidad científica y académica.
+        </p>
+        <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.5rem;">
+          <a href="mailto:juanpablo.chancay@aural-syncro.com.ar" class="btn btn-dark" data-i18n="company_contact_btn">
+            Contactar al equipo
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     CONTACT SECTION
+═══════════════════════════════════════════════════════════ -->
+<section id="contact-section" class="section" aria-labelledby="contact-section-title">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <span class="label" data-i18n="contactsec_label">Contacto</span>
+        <h2 id="contact-section-title" class="section-title" data-i18n="contactsec_title">
+          Póngase en contacto
+        </h2>
+        <p data-i18n="contactsec_intro">
+          Para solicitar acceso a la plataforma, reportar un problema, proponer una colaboración o simplemente conocer más sobre el Research Lab, contáctenos a través de los siguientes medios.
+        </p>
+
+        <div class="contact-card">
+          <div class="contact-card-icon">✉️</div>
+          <div class="contact-card-text">
+            <strong data-i18n="cc_access">Acceso a la plataforma</strong>
+            <a href="mailto:juanpablo.chancay@aural-syncro.com.ar">juanpablo.chancay@aural-syncro.com.ar</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">🔬</div>
+          <div class="contact-card-text">
+            <strong data-i18n="cc_platform">Plataforma Research Lab</strong>
+            <a href="https://lab.aural-syncro.com.ar/app" target="_blank" rel="noopener">lab.aural-syncro.com.ar</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">🌐</div>
+          <div class="contact-card-text">
+            <strong data-i18n="cc_web">Web corporativa</strong>
+            <a href="https://researchlab.aural-syncro.com.ar" target="_blank" rel="noopener">www.aural-syncro.com.ar</a>
+          </div>
+        </div>
+        <div class="contact-card">
+          <div class="contact-card-icon">📍</div>
+          <div class="contact-card-text">
+            <strong data-i18n="cc_location">Ubicación</strong>
+            <span data-i18n="cc_location_val">Argentina</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Contact form -->
+      <div class="contact-form-panel reveal reveal-delay-2">
+        <h3 data-i18n="form_title">Solicitar información</h3>
+        <p data-i18n="form_subtitle">Complete el formulario y le responderemos a la brevedad.</p>
+        <form id="contact-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="f-name" data-i18n="form_name">Nombre completo *</label>
+              <input type="text" id="f-name" name="name" required autocomplete="name" />
+            </div>
+            <div class="form-group">
+              <label for="f-institution" data-i18n="form_institution">Institución</label>
+              <input type="text" id="f-institution" name="institution" autocomplete="organization" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="f-email" data-i18n="form_email">Correo electrónico *</label>
+            <input type="email" id="f-email" name="email" required autocomplete="email" />
+          </div>
+          <div class="form-group">
+            <label for="f-subject" data-i18n="form_subject">Motivo de contacto *</label>
+            <select id="f-subject" name="subject" required>
+              <option value="" data-i18n="form_select_default">Seleccione...</option>
+              <option value="access" data-i18n="form_opt_access">Solicitar acceso a la plataforma</option>
+              <option value="collab" data-i18n="form_opt_collab">Propuesta de colaboración</option>
+              <option value="bug" data-i18n="form_opt_bug">Reporte de problema</option>
+              <option value="info" data-i18n="form_opt_info">Consulta general</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="f-message" data-i18n="form_message">Mensaje *</label>
+            <textarea id="f-message" name="message" required placeholder="Descripción de la investigación, colaboradores, consulta..."></textarea>
+          </div>
+          <button type="submit" class="form-submit" data-i18n="form_submit">Enviar solicitud</button>
+          <p class="form-note" data-i18n="form_note">
+            Al enviar, se abrirá su cliente de correo con la información pre-completada.
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════════
+     FOOTER
+═══════════════════════════════════════════════════════════ -->
+<footer id="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+      <!-- Brand -->
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo" style="color:#fff;" aria-label="Aural-Syncro Research Lab">
+          <img src="/static/favicon.png" alt="" width="32" height="32" />
+          <span>Aural-Syncro Research Lab</span>
+        </a>
+        <p data-i18n="footer_desc">
+          Plataforma colaborativa de investigación científica y académica. Desarrollada y mantenida por Aural-Syncro, Argentina.
+        </p>
+      </div>
+      <!-- Links -->
+      <div class="footer-col">
+        <h5 data-i18n="footer_platform">Plataforma</h5>
+        <ul>
+          <li><a href="#about" data-i18n="footer_about">Acerca de</a></li>
+          <li><a href="#features" data-i18n="footer_features">Funcionalidades</a></li>
+          <li><a href="#access" data-i18n="footer_access">Solicitar acceso</a></li>
+          <li><a href="#docs" data-i18n="footer_docs">Documentación</a></li>
+          <li><a href="https://lab.aural-syncro.com.ar/app" target="_blank" rel="noopener" data-i18n="footer_lab">Research Lab ↗</a></li>
+        </ul>
+      </div>
+      <!-- Info -->
+      <div class="footer-col">
+        <h5 data-i18n="footer_info">Información</h5>
+        <ul>
+          <li><a href="#company" data-i18n="footer_company">Aural-Syncro</a></li>
+          <li><a href="#contact-section" data-i18n="footer_contact">Contacto</a></li>
+          <li><a href="mailto:juanpablo.chancay@aural-syncro.com.ar" data-i18n="footer_email">Solicitar acceso</a></li>
+          <li><a href="/sitemap.xml" data-i18n="footer_sitemap">Sitemap</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© <span id="year"></span> Aural-Syncro. <span data-i18n="footer_rights">Todos los derechos reservados.</span></p>
+      <div class="footer-badges">
+        <span class="footer-badge">🔒 HTTPS</span>
+        <span class="footer-badge">🐳 Docker</span>
+        <span class="footer-badge">⚡ FastAPI</span>
+        <span class="footer-badge">🤖 Claude AI</span>
+        <span class="footer-badge" data-i18n="badge_beta">β Beta</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Back to top -->
+<button id="back-top" aria-label="Volver arriba">↑</button>
+
+<!-- Toast notification -->
+<div id="toast" role="status" aria-live="polite"></div>
+
+<!-- ═══════════════════════════════════════════════════════════
+     JAVASCRIPT
+═══════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  'use strict';
+
+  /* ── i18n ─────────────────────────────────────────────────── */
+  const STRINGS = {
+    es: {
+      nav_research_lab:      'Research Lab',
+      nav_about:             'Acerca de',
+      nav_features:          'Plataforma',
+      nav_access:            'Acceso',
+      nav_docs:              'Documentación',
+      nav_company:           'Empresa',
+      nav_contact:           'Contacto',
+      nav_enter_lab:         'Entrar al Lab →',
+
+      hero_badge:            'Beta Testing — Acceso por invitación',
+      hero_title:            'La plataforma de<br/><em>investigación colaborativa</em><br/>del futuro',
+      hero_subtitle:         'Un entorno integrado para equipos de investigación científica y académica. Gestione proyectos, hipótesis, notas, bitácoras y colaboradores en un solo lugar, potenciado por inteligencia artificial.',
+      hero_cta_lab:          'Acceder al Research Lab',
+      hero_cta_access:       'Solicitar acceso',
+
+      stat_version: 'Versión',
+      stat_stage:   'Etapa',
+      stat_license: 'Uso libre',
+      stat_avail:   'Disponibilidad',
+
+      about_label:       '¿Qué es?',
+      about_title:       'Un laboratorio digital para la ciencia moderna',
+      about_img_badge:   'Plataforma académica de uso libre',
+      about_p1:          'Aural-Syncro Research Lab es una plataforma web de investigación colaborativa diseñada para equipos académicos y científicos que necesitan centralizar, versionar y compartir su trabajo de forma segura y estructurada.',
+      about_p2:          'A diferencia de las herramientas genéricas de gestión de proyectos, el Research Lab está construido específicamente para el flujo de trabajo de la investigación: hipótesis, bitácoras de campo, gestión de referencias bibliográficas, hitos, grafos de conocimiento y sincronización con repositorios como GitHub u Obsidian.',
+      about_p3:          'La plataforma es de <strong>uso libre</strong> y se encuentra actualmente en <strong>fase beta</strong>. El acceso está disponible para instituciones, grupos de investigación y colaboradores externos mediante solicitud.',
+      about_cta:         'Cómo obtener acceso →',
+
+      features_label: 'Plataforma',
+      features_title: 'Herramientas diseñadas para investigadores',
+      features_intro: 'Cada módulo fue diseñado teniendo en cuenta el flujo de trabajo real de equipos de investigación, desde la formulación de hipótesis hasta la publicación de resultados.',
+
+      feat1_title: 'Gestión de proyectos',
+      feat1_desc:  'Cree proyectos de investigación con roles diferenciados (Investigador Principal, Colaborador), gestione miembros y permisos con control total.',
+      feat2_title: 'Hipótesis y notas',
+      feat2_desc:  'Registre hipótesis de trabajo, agregue evidencia, vincule referencias y realice seguimiento del estado. Notas colaborativas con historial de versiones.',
+      feat3_title: 'Bitácora de investigación',
+      feat3_desc:  'Diario de campo digital con entradas fechadas, versionado automático y trazabilidad completa de actividades del equipo.',
+      feat4_title: 'Knowledge Graph',
+      feat4_desc:  'Visualice relaciones entre entidades: hipótesis, notas, referencias y hitos se conectan en un grafo de conocimiento semántico interactivo.',
+      feat5_title: 'Referencias bibliográficas',
+      feat5_desc:  'Gestión integrada de bibliografía con enriquecimiento automático vía DOI (CrossRef / OpenAlex). Exportación en formatos estándar.',
+      feat6_title: 'Asistente IA',
+      feat6_desc:  'Chat contextual integrado con Claude AI (Anthropic). Asistencia en redacción, análisis de consistencia, búsqueda semántica y automatización. Requiere clave API del investigador.',
+      feat7_title: 'Plugin Obsidian',
+      feat7_desc:  'Sincronice su vault de Obsidian con el Lab. Trabaje localmente y sincronice en tiempo real. Resolución de conflictos automática.',
+      feat8_title: 'Integración GitHub',
+      feat8_desc:  'Conecte su proyecto a un repositorio GitHub. Proponga cambios, genere changelogs y publique documentación científica de forma automática.',
+      feat9_title: 'Seguridad enterprise',
+      feat9_desc:  'Autenticación JWT, cifrado AES-256-GCM para secretos, control de acceso granular por proyecto y colaborador. Datos en infraestructura propia.',
+
+      cta_banner_title:    '¿Listo para comenzar?',
+      cta_banner_subtitle: 'Acceda al Research Lab y explore las funcionalidades disponibles para su equipo.',
+      cta_banner_btn:      'Ingresar al Research Lab →',
+
+      access_label:          'Acceso',
+      access_title:          'Cómo obtener acceso a la plataforma',
+      access_beta:           'Beta Testing — Uso libre',
+      access_p1:             'La plataforma es de <strong style="color:var(--accent-bright)">uso libre</strong> y se encuentra en <strong style="color:var(--accent-bright)">etapa beta</strong>. Está disponible para grupos de investigación, instituciones académicas y colaboradores externos sin costo de acceso.',
+      access_p2:             'Algunas funcionalidades avanzadas, como el <strong style="color:var(--accent-bright)">asistente virtual IA</strong> (Claude Anthropic), requieren una clave de API propia que debe ser provista y cubierta económicamente por el equipo investigador.',
+      access_req_title:      '📋 Información requerida para solicitar acceso',
+      req_1:                 'Motivo de la solicitud y objetivo de investigación',
+      req_2:                 'Descripción de la investigación o proyecto',
+      req_3:                 'Lista de colaboradores (nombres y correos institucionales)',
+      req_4:                 'Nombre del administrador o investigador principal del proyecto',
+      access_agreement_title:'📜 Acuerdo de uso',
+      agr_1:                 'Al obtener acceso, recibirá las credenciales de ingreso',
+      agr_2:                 'En el primer ingreso a la plataforma se le solicitará completar y firmar digitalmente el acuerdo de uso',
+      agr_3:                 'El acuerdo establece las condiciones de uso, privacidad de datos y responsabilidades del equipo investigador',
+      agr_4:                 'La plataforma no puede utilizarse con fines comerciales sin autorización expresa de Aural-Syncro',
+      access_note:           '<strong>Nota:</strong> La plataforma está en etapa de testing activo. Algunas funcionalidades pueden presentar comportamientos inesperados. Agradecemos el reporte de errores para mejorar la experiencia.',
+      contact_title:         'Contacto para solicitud de acceso',
+      contact_subtitle:      'Envíe un correo con la información requerida al siguiente contacto:',
+      contact_email_label:   'Correo de contacto',
+      contact_name_label:    'Responsable',
+      contact_org_label:     'Organización',
+      direct_access_title:   '¿Ya tiene credenciales?',
+      direct_access_desc:    'Ingrese directamente a la plataforma con sus credenciales asignadas.',
+      direct_access_btn:     '🔬 Ingresar al Research Lab',
+
+      agreement_label: 'Proceso de incorporación',
+      agreement_title: '¿Cómo funciona el proceso de acceso?',
+      agreement_intro: 'El acceso al Research Lab sigue un proceso simple de cuatro pasos para garantizar el uso responsable de la plataforma.',
+      step1_title: 'Envío de solicitud',
+      step1_desc:  'Envíe un correo a <strong>juanpablo.chancay@aural-syncro.com.ar</strong> con los datos del proyecto: motivo, descripción de la investigación, colaboradores y administrador de proyecto.',
+      step2_title: 'Revisión y habilitación',
+      step2_desc:  'El equipo de Aural-Syncro revisará la solicitud y le asignará las credenciales de acceso correspondientes al administrador del proyecto en el menor tiempo posible.',
+      step3_title: 'Acuerdo de uso',
+      step3_desc:  'Al ingresar por primera vez a la plataforma, deberá leer y completar digitalmente el acuerdo de uso. Este documento establece las condiciones de privacidad, uso de datos y responsabilidades del equipo.',
+      step4_title: '¡A investigar!',
+      step4_desc:  'Una vez completado el acuerdo, podrá crear proyectos, invitar colaboradores y comenzar a utilizar todas las funcionalidades del Research Lab.',
+
+      docs_label: 'Documentación',
+      docs_title: 'Guías de uso y referencia técnica',
+      docs_intro: 'La documentación completa de la plataforma está disponible dentro del Research Lab. A continuación encontrará un resumen de los módulos documentados.',
+      doc1_title: 'Inicio rápido',
+      doc1_desc:  'Primeros pasos: crear cuenta, proyecto y agregar colaboradores',
+      doc2_title: 'Gestión de proyectos',
+      doc2_desc:  'Roles, permisos, miembros y configuración avanzada',
+      doc3_title: 'Plugin Obsidian',
+      doc3_desc:  'Instalación, configuración y sincronización del vault',
+      doc4_title: 'Asistente IA',
+      doc4_desc:  'Configuración de Claude API, permisos y funcionalidades',
+      doc5_title: 'MCP Bridge — Claude Code',
+      doc5_desc:  'Integración del Lab con Claude Code via Model Context Protocol',
+      doc6_title: 'Seguridad y privacidad',
+      doc6_desc:  'Autenticación, cifrado, control de acceso y política de datos',
+
+      company_label:       'Sobre nosotros',
+      company_title:       'Aural-Syncro',
+      company_tagline:     '"Tecnología al servicio de la ciencia"',
+      company_p1:          'Aural-Syncro es una empresa de ingeniería de software especializada en el diseño y desarrollo de plataformas tecnológicas complejas para sectores de alta exigencia: investigación científica, educación superior, industria y gobierno.',
+      company_p2:          'Desde Argentina, desarrollamos soluciones a medida que combinan arquitecturas modernas (microservicios, containerización, IA) con las necesidades reales de los equipos que las utilizan. Nos especializamos en plataformas colaborativas, sistemas de gestión de conocimiento y herramientas potenciadas por inteligencia artificial.',
+      company_p3:          'El Research Lab es uno de nuestros proyectos open-access: una apuesta por democratizar las herramientas de investigación de alta calidad, disponibilizándolas libremente a la comunidad científica y académica.',
+      company_contact_btn: 'Contactar al equipo',
+
+      contactsec_label: 'Contacto',
+      contactsec_title: 'Póngase en contacto',
+      contactsec_intro: 'Para solicitar acceso a la plataforma, reportar un problema, proponer una colaboración o simplemente conocer más sobre el Research Lab, contáctenos a través de los siguientes medios.',
+      cc_access:        'Acceso a la plataforma',
+      cc_platform:      'Plataforma Research Lab',
+      cc_web:           'Web corporativa',
+      cc_location:      'Ubicación',
+      cc_location_val:  'Argentina',
+      form_title:         'Solicitar información',
+      form_subtitle:      'Complete el formulario y le responderemos a la brevedad.',
+      form_name:          'Nombre completo *',
+      form_institution:   'Institución',
+      form_email:         'Correo electrónico *',
+      form_subject:       'Motivo de contacto *',
+      form_select_default:'Seleccione...',
+      form_opt_access:    'Solicitar acceso a la plataforma',
+      form_opt_collab:    'Propuesta de colaboración',
+      form_opt_bug:       'Reporte de problema',
+      form_opt_info:      'Consulta general',
+      form_message:       'Mensaje *',
+      form_submit:        'Enviar solicitud',
+      form_note:          'Al enviar, se abrirá su cliente de correo con la información pre-completada.',
+
+      footer_desc:     'Plataforma colaborativa de investigación científica y académica. Desarrollada y mantenida por Aural-Syncro, Argentina.',
+      footer_platform: 'Plataforma',
+      footer_about:    'Acerca de',
+      footer_features: 'Funcionalidades',
+      footer_access:   'Solicitar acceso',
+      footer_docs:     'Documentación',
+      footer_lab:      'Research Lab ↗',
+      footer_info:     'Información',
+      footer_company:  'Aural-Syncro',
+      footer_contact:  'Contacto',
+      footer_email:    'Solicitar acceso',
+      footer_sitemap:  'Sitemap',
+      footer_rights:   'Todos los derechos reservados.',
+      badge_beta:      'β Beta',
+    },
+    en: {
+      nav_research_lab:      'Research Lab',
+      nav_about:             'About',
+      nav_features:          'Platform',
+      nav_access:            'Access',
+      nav_docs:              'Documentation',
+      nav_company:           'Company',
+      nav_contact:           'Contact',
+      nav_enter_lab:         'Enter the Lab →',
+
+      hero_badge:            'Beta Testing — Invitation-based access',
+      hero_title:            'The <em>collaborative research</em><br/>platform of the future',
+      hero_subtitle:         'An integrated environment for scientific and academic research teams. Manage projects, hypotheses, notes, field logs, and collaborators in one place, powered by artificial intelligence.',
+      hero_cta_lab:          'Access the Research Lab',
+      hero_cta_access:       'Request access',
+
+      stat_version: 'Version',
+      stat_stage:   'Stage',
+      stat_license: 'Open use',
+      stat_avail:   'Availability',
+
+      about_label:       'What is it?',
+      about_title:       'A digital laboratory for modern science',
+      about_img_badge:   'Free-use academic platform',
+      about_p1:          'Aural-Syncro Research Lab is a collaborative web research platform designed for academic and scientific teams that need to centralize, version, and securely share their work in a structured way.',
+      about_p2:          'Unlike generic project management tools, the Research Lab is built specifically for the research workflow: hypotheses, field logs, bibliography management, milestones, knowledge graphs, and synchronization with repositories like GitHub or Obsidian.',
+      about_p3:          'The platform is <strong>free to use</strong> and currently in <strong>beta phase</strong>. Access is available for institutions, research groups, and external collaborators upon request.',
+      about_cta:         'How to get access →',
+
+      features_label: 'Platform',
+      features_title: 'Tools designed for researchers',
+      features_intro: 'Each module was designed with the real workflow of research teams in mind, from hypothesis formulation to publication of results.',
+
+      feat1_title: 'Project management',
+      feat1_desc:  'Create research projects with differentiated roles (Principal Investigator, Collaborator), manage members and permissions with full control.',
+      feat2_title: 'Hypotheses & notes',
+      feat2_desc:  'Record working hypotheses, add evidence, link references, and track status. Collaborative notes with version history.',
+      feat3_title: 'Research journal',
+      feat3_desc:  'Digital field diary with dated entries, automatic versioning, and complete traceability of team activities.',
+      feat4_title: 'Knowledge Graph',
+      feat4_desc:  'Visualize relationships between entities: hypotheses, notes, references, and milestones connect in an interactive semantic knowledge graph.',
+      feat5_title: 'Bibliographic references',
+      feat5_desc:  'Integrated bibliography management with automatic enrichment via DOI (CrossRef / OpenAlex). Export in standard formats.',
+      feat6_title: 'AI Assistant',
+      feat6_desc:  'Contextual chat integrated with Claude AI (Anthropic). Writing assistance, consistency analysis, semantic search, and automation. Requires researcher\'s API key.',
+      feat7_title: 'Obsidian Plugin',
+      feat7_desc:  'Sync your Obsidian vault with the Lab. Work locally and sync in real time. Automatic conflict resolution.',
+      feat8_title: 'GitHub Integration',
+      feat8_desc:  'Connect your project to a GitHub repository. Propose changes, generate changelogs, and publish scientific documentation automatically.',
+      feat9_title: 'Enterprise security',
+      feat9_desc:  'JWT authentication, AES-256-GCM encryption for secrets, granular access control per project and collaborator. Data on your own infrastructure.',
+
+      cta_banner_title:    'Ready to get started?',
+      cta_banner_subtitle: 'Access the Research Lab and explore the features available for your team.',
+      cta_banner_btn:      'Enter the Research Lab →',
+
+      access_label:          'Access',
+      access_title:          'How to get access to the platform',
+      access_beta:           'Beta Testing — Free to use',
+      access_p1:             'The platform is <strong style="color:var(--accent-bright)">free to use</strong> and is in <strong style="color:var(--accent-bright)">beta stage</strong>. It is available for research groups, academic institutions, and external collaborators at no cost.',
+      access_p2:             'Some advanced features, such as the <strong style="color:var(--accent-bright)">AI virtual assistant</strong> (Claude Anthropic), require a personal API key that must be provided and financially covered by the research team.',
+      access_req_title:      '📋 Information required to request access',
+      req_1:                 'Reason for the request and research objective',
+      req_2:                 'Description of the research or project',
+      req_3:                 'List of collaborators (names and institutional emails)',
+      req_4:                 'Name of the project administrator or principal investigator',
+      access_agreement_title:'📜 Usage agreement',
+      agr_1:                 'Upon gaining access, you will receive your login credentials',
+      agr_2:                 'On your first login to the platform, you will be asked to read and digitally sign the usage agreement',
+      agr_3:                 'The agreement establishes the terms of use, data privacy, and responsibilities of the research team',
+      agr_4:                 'The platform may not be used for commercial purposes without express authorization from Aural-Syncro',
+      access_note:           '<strong>Note:</strong> The platform is in active testing stage. Some features may exhibit unexpected behavior. We appreciate bug reports to improve the experience.',
+      contact_title:         'Contact for access request',
+      contact_subtitle:      'Send an email with the required information to the following contact:',
+      contact_email_label:   'Contact email',
+      contact_name_label:    'Responsible',
+      contact_org_label:     'Organization',
+      direct_access_title:   'Already have credentials?',
+      direct_access_desc:    'Log in directly to the platform with your assigned credentials.',
+      direct_access_btn:     '🔬 Enter the Research Lab',
+
+      agreement_label: 'Onboarding process',
+      agreement_title: 'How does the access process work?',
+      agreement_intro: 'Access to the Research Lab follows a simple four-step process to ensure responsible use of the platform.',
+      step1_title: 'Submit request',
+      step1_desc:  'Send an email to <strong>juanpablo.chancay@aural-syncro.com.ar</strong> with the project details: reason, research description, collaborators, and project administrator.',
+      step2_title: 'Review and activation',
+      step2_desc:  'The Aural-Syncro team will review your request and assign the appropriate credentials to the project administrator as soon as possible.',
+      step3_title: 'Usage agreement',
+      step3_desc:  'Upon your first login to the platform, you will be asked to read and digitally complete the usage agreement, which establishes privacy, data use, and team responsibility conditions.',
+      step4_title: 'Start researching!',
+      step4_desc:  'Once the agreement is completed, you can create projects, invite collaborators, and begin using all the features of the Research Lab.',
+
+      docs_label: 'Documentation',
+      docs_title: 'Usage guides and technical reference',
+      docs_intro: 'Complete platform documentation is available inside the Research Lab. Below you will find a summary of the documented modules.',
+      doc1_title: 'Quick start',
+      doc1_desc:  'First steps: create an account, project, and add collaborators',
+      doc2_title: 'Project management',
+      doc2_desc:  'Roles, permissions, members, and advanced configuration',
+      doc3_title: 'Obsidian Plugin',
+      doc3_desc:  'Installation, configuration, and vault synchronization',
+      doc4_title: 'AI Assistant',
+      doc4_desc:  'Claude API configuration, permissions, and features',
+      doc5_title: 'MCP Bridge — Claude Code',
+      doc5_desc:  'Lab integration with Claude Code via Model Context Protocol',
+      doc6_title: 'Security & privacy',
+      doc6_desc:  'Authentication, encryption, access control, and data policy',
+
+      company_label:       'About us',
+      company_title:       'Aural-Syncro',
+      company_tagline:     '"Technology at the service of science"',
+      company_p1:          'Aural-Syncro is a software engineering company specialized in the design and development of complex technological platforms for demanding sectors: scientific research, higher education, industry, and government.',
+      company_p2:          'From Argentina, we develop tailored solutions that combine modern architectures (microservices, containerization, AI) with the real needs of the teams that use them. We specialize in collaborative platforms, knowledge management systems, and AI-powered tools.',
+      company_p3:          'The Research Lab is one of our open-access projects: a commitment to democratizing high-quality research tools by making them freely available to the scientific and academic community.',
+      company_contact_btn: 'Contact the team',
+
+      contactsec_label: 'Contact',
+      contactsec_title: 'Get in touch',
+      contactsec_intro: 'To request access to the platform, report an issue, propose a collaboration, or simply learn more about the Research Lab, contact us through the following channels.',
+      cc_access:        'Platform access',
+      cc_platform:      'Research Lab platform',
+      cc_web:           'Corporate website',
+      cc_location:      'Location',
+      cc_location_val:  'Argentina',
+      form_title:         'Request information',
+      form_subtitle:      'Fill out the form and we will get back to you shortly.',
+      form_name:          'Full name *',
+      form_institution:   'Institution',
+      form_email:         'Email address *',
+      form_subject:       'Reason for contact *',
+      form_select_default:'Select...',
+      form_opt_access:    'Request platform access',
+      form_opt_collab:    'Collaboration proposal',
+      form_opt_bug:       'Bug report',
+      form_opt_info:      'General inquiry',
+      form_message:       'Message *',
+      form_submit:        'Send request',
+      form_note:          'Submitting will open your email client with the information pre-filled.',
+
+      footer_desc:     'Collaborative scientific and academic research platform. Developed and maintained by Aural-Syncro, Argentina.',
+      footer_platform: 'Platform',
+      footer_about:    'About',
+      footer_features: 'Features',
+      footer_access:   'Request access',
+      footer_docs:     'Documentation',
+      footer_lab:      'Research Lab ↗',
+      footer_info:     'Information',
+      footer_company:  'Aural-Syncro',
+      footer_contact:  'Contact',
+      footer_email:    'Request access',
+      footer_sitemap:  'Sitemap',
+      footer_rights:   'All rights reserved.',
+      badge_beta:      'β Beta',
+    }
+  };
+
+  /* ── Apply language ───────────────────────────────────────── */
+  function applyLang(lang) {
+    const strings = STRINGS[lang] || STRINGS.es;
+    document.documentElement.lang = lang;
+    document.documentElement.dataset.lang = lang;
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.dataset.i18n;
+      if (!strings[key]) return;
+      el.innerHTML = strings[key];
+    });
+
+    // Update lang picker label
+    const label = document.getElementById('lang-label');
+    if (label) label.textContent = lang.toUpperCase();
+
+    // Update active option
+    document.querySelectorAll('.lang-option').forEach(opt => {
+      const active = opt.dataset.lang === lang;
+      opt.classList.toggle('active', active);
+      opt.setAttribute('aria-selected', active ? 'true' : 'false');
+    });
+
+    localStorage.setItem('rl_lang', lang);
+  }
+
+  /* ── Language picker ──────────────────────────────────────── */
+  const langBtn      = document.getElementById('lang-btn');
+  const langDropdown = document.getElementById('lang-dropdown');
+
+  function toggleDropdown(open) {
+    langDropdown.classList.toggle('open', open);
+    langBtn.classList.toggle('open', open);
+    langBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  }
+
+  langBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleDropdown(!langDropdown.classList.contains('open'));
+  });
+
+  document.querySelectorAll('.lang-option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      applyLang(opt.dataset.lang);
+      toggleDropdown(false);
+    });
+    opt.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        applyLang(opt.dataset.lang);
+        toggleDropdown(false);
+      }
+    });
+  });
+
+  document.addEventListener('click', () => toggleDropdown(false));
+
+  /* ── Navbar scroll effect ─────────────────────────────────── */
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 20);
+  }, { passive: true });
+
+  /* ── Mobile hamburger ─────────────────────────────────────── */
+  const hamburger   = document.getElementById('hamburger');
+  const navLinkList = document.getElementById('nav-links-list');
+  hamburger.addEventListener('click', () => {
+    const open = navLinkList.classList.toggle('mobile-open');
+    hamburger.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  navLinkList.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinkList.classList.remove('mobile-open');
+      hamburger.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  /* ── Back to top ──────────────────────────────────────────── */
+  const backTop = document.getElementById('back-top');
+  window.addEventListener('scroll', () => {
+    backTop.classList.toggle('show', window.scrollY > 400);
+  }, { passive: true });
+  backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+  /* ── Scroll reveal ────────────────────────────────────────── */
+  const revealObserver = new IntersectionObserver(
+    (entries) => entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObserver.unobserve(e.target); } }),
+    { threshold: 0.12 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  /* ── Contact form — mailto fallback ──────────────────────── */
+  document.getElementById('contact-form').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const lang = document.documentElement.dataset.lang || 'es';
+    const name        = document.getElementById('f-name').value.trim();
+    const institution = document.getElementById('f-institution').value.trim();
+    const email       = document.getElementById('f-email').value.trim();
+    const subject     = document.getElementById('f-subject').value;
+    const message     = document.getElementById('f-message').value.trim();
+
+    if (!name || !email || !subject || !message) {
+      showToast(lang === 'en' ? 'Please fill in all required fields.' : 'Por favor complete todos los campos requeridos.');
+      return;
+    }
+
+    const subjectMap = {
+      access: lang === 'en' ? 'Platform access request' : 'Solicitud de acceso a la plataforma',
+      collab: lang === 'en' ? 'Collaboration proposal'  : 'Propuesta de colaboración',
+      bug:    lang === 'en' ? 'Bug report'              : 'Reporte de problema',
+      info:   lang === 'en' ? 'General inquiry'         : 'Consulta general',
+    };
+
+    const bodyLines = lang === 'en'
+      ? [`Name: ${name}`, institution ? `Institution: ${institution}` : '', `Email: ${email}`, `Subject: ${subjectMap[subject] || subject}`, '', `Message:`, message]
+      : [`Nombre: ${name}`, institution ? `Institución: ${institution}` : '', `Email: ${email}`, `Motivo: ${subjectMap[subject] || subject}`, '', `Mensaje:`, message];
+
+    const mailtoBody = bodyLines.filter(Boolean).join('\n');
+    const mailtoSubject = `[Research Lab] ${subjectMap[subject] || subject}`;
+    const mailto = `mailto:juanpablo.chancay@aural-syncro.com.ar?subject=${encodeURIComponent(mailtoSubject)}&body=${encodeURIComponent(mailtoBody)}`;
+
+    window.location.href = mailto;
+    showToast(lang === 'en' ? 'Opening your email client...' : 'Abriendo su cliente de correo...');
+  });
+
+  /* ── Toast ────────────────────────────────────────────────── */
+  function showToast(msg, duration = 3000) {
+    const toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), duration);
+  }
+
+  /* ── Footer year ──────────────────────────────────────────── */
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ── Init ─────────────────────────────────────────────────── */
+  const savedLang = localStorage.getItem('rl_lang') || 'es';
+  applyLang(savedLang);
+
+})();
+</script>
+</body>
+</html>

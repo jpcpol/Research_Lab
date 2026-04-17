@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /static/avatars/
+Disallow: /static/plugin/
+
+Sitemap: https://researchlab.aural-syncro.com.ar/sitemap.xml
+
+# Aural-Syncro Research Lab
+# https://researchlab.aural-syncro.com.ar

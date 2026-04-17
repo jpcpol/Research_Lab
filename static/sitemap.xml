@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <!-- Landing page -->
+  <url>
+    <loc>https://researchlab.aural-syncro.com.ar/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="es" href="https://researchlab.aural-syncro.com.ar/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://researchlab.aural-syncro.com.ar/"/>
+  </url>
+
+  <!-- Research Lab application -->
+  <url>
+    <loc>https://lab.aural-syncro.com.ar/</loc>
+    <lastmod>2026-04-16</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+</urlset>

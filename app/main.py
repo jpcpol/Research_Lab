@@ -1,8 +1,18 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, RedirectResponse
 import os
+
+# Hostnames that serve the SPA directly
+_LAB_HOSTS = {"lab.aural-syncro.com.ar"}
+
+# Hostnames that serve the landing page
+_LANDING_HOSTS = {"researchlab.aural-syncro.com.ar"}
+
+def _is_lab_host(request: Request) -> bool:
+    host = request.headers.get("host", "").split(":")[0].lower()
+    return host in _LAB_HOSTS
 
 from app.database import engine, Base
 from app.routers import auth, projects, journal, hypotheses, milestones, notes, references, graph, github, documents, plugin, project_config, ai_chat
@@ -120,7 +130,7 @@ app.include_router(plugin.router,         prefix="/api/v1")
 app.include_router(project_config.router, prefix="/api/v1")
 app.include_router(ai_chat.router,        prefix="/api/v1")
 
-# Serve SPA
+# Static files — must be mounted BEFORE catch-all routes
 static_dir = os.path.join(os.path.dirname(__file__), "..", "static")
 if os.path.isdir(static_dir):
     app.mount("/static", StaticFiles(directory=static_dir), name="static")
@@ -133,7 +143,30 @@ if os.path.isdir(static_dir):
     def favicon_png():
         return FileResponse(os.path.join(static_dir, "favicon.png"))
 
+    @app.get("/robots.txt", include_in_schema=False)
+    def robots_txt():
+        return FileResponse(os.path.join(static_dir, "robots.txt"), media_type="text/plain")
+
+    @app.get("/sitemap.xml", include_in_schema=False)
+    def sitemap_xml():
+        return FileResponse(os.path.join(static_dir, "sitemap.xml"), media_type="application/xml")
+
+    # Root: lab.aural-syncro.com.ar → SPA | landing domain → landing page
+    @app.get("/", include_in_schema=False)
+    def root(request: Request):
+        if _is_lab_host(request):
+            return FileResponse(os.path.join(static_dir, "index.html"))
+        return FileResponse(os.path.join(static_dir, "landing.html"))
+
+    # /app always serves the SPA (direct link compatibility)
+    @app.get("/app", include_in_schema=False)
+    @app.get("/app/{full_path:path}", include_in_schema=False)
+    def serve_spa(full_path: str = ""):
+        return FileResponse(os.path.join(static_dir, "index.html"))
+
+    # Catch-all: lab host → SPA | landing host → landing page
     @app.get("/{full_path:path}", include_in_schema=False)
-    def serve_spa(full_path: str):
-        index = os.path.join(static_dir, "index.html")
-        return FileResponse(index)
+    def catch_all(request: Request, full_path: str):
+        if _is_lab_host(request):
+            return FileResponse(os.path.join(static_dir, "index.html"))
+        return FileResponse(os.path.join(static_dir, "landing.html"))

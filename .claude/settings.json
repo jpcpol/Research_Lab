@@ -1,7 +1,19 @@
 {
   "permissions": {
     "allow": [
-      "Bash(dir \"C:\\\\Users\\\\Usuario\\\\.claude\\\\projects\\\\c--Users-Usuario-Documents-Aural-Syncro-Research-Lab\\\\memory\")"
+      "Bash(dir \"C:\\\\Users\\\\Usuario\\\\.claude\\\\projects\\\\c--Users-Usuario-Documents-Aural-Syncro-Research-Lab\\\\memory\")",
+      "Bash(docker exec *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8004/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8004/robots.txt)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8004/sitemap.xml)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:8004/app)",
+      "Bash(curl -s http://localhost:8004/)",
+      "Bash(curl -s http://localhost:8004/app)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" -H \"Host: lab.aural-syncro.com.ar\" http://localhost:8004/)",
+      "Bash(curl -s -H \"Host: lab.aural-syncro.com.ar\" http://localhost:8004/)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" -H \"Host: www.researchlab.aural-syncro.com.ar\" http://localhost:8004/)",
+      "Bash(curl -s -H \"Host: www.researchlab.aural-syncro.com.ar\" http://localhost:8004/)",
+      "Bash(curl -s -H \"Host: researchlab.aural-syncro.com.ar\" http://localhost:8004/)"
     ],
     "additionalDirectories": [
       "c:\\Users\\Usuario\\.claude\\projects\\c--Users-Usuario-Documents-Aural-Syncro-Research-Lab\\memory"
