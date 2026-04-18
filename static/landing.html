@@ -694,7 +694,7 @@
       overflow: hidden;
       box-shadow: var(--shadow-lg);
     }
-    .docs-img img { width: 100%; aspect-ratio: 4/3; object-fit: cover; }
+    .docs-img img { width: 100%; height: auto; object-fit: contain; }
 
     .doc-link-item {
       display: flex;
@@ -1710,6 +1710,12 @@
             <strong>Importante:</strong> Al ingresar por primera vez deberá firmar digitalmente el acuerdo de uso de la plataforma.
           </p>
         </div>
+
+        <div class="note-box" style="background:rgba(255,193,7,.10); border-left-color:var(--accent-bright); margin-top:1rem;">
+          <p style="color:var(--text-muted);" data-i18n="register_pi_note">
+            <strong>Solo Líderes de Proyecto:</strong> El registro está reservado para el <strong>Investigador Principal (PI)</strong> del equipo. Una vez dentro de la plataforma, el PI puede invitar a <em>colaboradores</em> y <em>observadores</em> desde la gestión del proyecto.
+          </p>
+        </div>
       </div>
 
       <!-- Right: access request form -->
@@ -1735,20 +1741,13 @@
               <input type="text" id="f-institution" name="institution" required autocomplete="organization" />
             </div>
             <div class="form-group">
-              <label for="f-role" data-i18n="form_role">Rol *</label>
-              <select id="f-role" name="role" required>
-                <option value="" data-i18n="form_select_default">Seleccione...</option>
-                <option value="PI" data-i18n="form_role_pi">Investigador Principal (PI)</option>
-                <option value="collab" data-i18n="form_role_collab">Colaborador</option>
-                <option value="external" data-i18n="form_role_external">Investigador Externo</option>
-                <option value="other" data-i18n="form_role_other">Otro</option>
-              </select>
+              <label data-i18n="form_role">Rol</label>
+              <div style="padding:10px 14px;background:rgba(26,35,126,.06);border:1px solid rgba(26,35,126,.2);
+                          border-radius:8px;font-size:.95rem;color:var(--primary);font-weight:600;">
+                🔬 Investigador Principal (PI)
+              </div>
+              <input type="hidden" id="f-role" name="role" value="PI" />
             </div>
-          </div>
-
-          <div class="form-group">
-            <label for="f-admin" data-i18n="form_admin">Administrador / Investigador Principal del proyecto *</label>
-            <input type="text" id="f-admin" name="admin" required placeholder="Nombre completo del PI o responsable del proyecto" />
           </div>
 
           <div class="form-group">
@@ -1974,18 +1973,13 @@
       cc_response:      'Tiempo de respuesta',
       cc_response_val:  '24–72 horas hábiles',
       register_note:    '<strong>Importante:</strong> Al ingresar por primera vez deberá firmar digitalmente el acuerdo de uso de la plataforma.',
+      register_pi_note: '<strong>Solo Líderes de Proyecto:</strong> El registro está reservado para el <strong>Investigador Principal (PI)</strong> del equipo. Una vez dentro de la plataforma, el PI puede invitar a <em>colaboradores</em> y <em>observadores</em> desde la gestión del proyecto.',
       form_title:         'Solicitud de registro',
       form_subtitle:      'Complete todos los campos. Su solicitud será procesada y recibirá credenciales de acceso por correo.',
       form_name:          'Nombre completo *',
       form_email:         'Correo institucional *',
       form_institution:   'Institución / Universidad *',
-      form_role:          'Rol *',
-      form_select_default:'Seleccione...',
-      form_role_pi:       'Investigador Principal (PI)',
-      form_role_collab:   'Colaborador',
-      form_role_external: 'Investigador Externo',
-      form_role_other:    'Otro',
-      form_admin:         'Administrador / Investigador Principal del proyecto *',
+      form_role:          'Rol',
       form_motivo:        'Motivo de la solicitud *',
       form_investigacion: 'Descripción de la investigación *',
       form_colaboradores: 'Colaboradores *',
@@ -2136,18 +2130,13 @@
       cc_response:      'Response time',
       cc_response_val:  '24–72 business hours',
       register_note:    '<strong>Important:</strong> Upon your first login you will be asked to digitally sign the platform usage agreement.',
+      register_pi_note: '<strong>Project Leaders only:</strong> Registration is reserved for the <strong>Principal Investigator (PI)</strong> of each team. Once inside the platform, the PI can invite <em>collaborators</em> and <em>observers</em> from the project management panel.',
       form_title:         'Registration request',
       form_subtitle:      'Fill in all fields. Your request will be processed and you will receive access credentials by email.',
       form_name:          'Full name *',
       form_email:         'Institutional email *',
       form_institution:   'Institution / University *',
-      form_role:          'Role *',
-      form_select_default:'Select...',
-      form_role_pi:       'Principal Investigator (PI)',
-      form_role_collab:   'Collaborator',
-      form_role_external: 'External Researcher',
-      form_role_other:    'Other',
-      form_admin:         'Project administrator / Principal Investigator *',
+      form_role:          'Role',
       form_motivo:        'Reason for request *',
       form_investigacion: 'Research description *',
       form_colaboradores: 'Collaborators *',
@@ -2271,13 +2260,12 @@
     const name          = document.getElementById('f-name').value.trim();
     const email         = document.getElementById('f-email').value.trim();
     const institution   = document.getElementById('f-institution').value.trim();
-    const role          = document.getElementById('f-role').value;
-    const admin         = document.getElementById('f-admin').value.trim();
+    const role          = 'PI';
     const motivo        = document.getElementById('f-motivo').value.trim();
     const investigacion = document.getElementById('f-investigacion').value.trim();
     const colaboradores = document.getElementById('f-colaboradores').value.trim();
 
-    if (!name || !email || !institution || !role || !admin || !motivo || !investigacion || !colaboradores) {
+    if (!name || !email || !institution || !motivo || !investigacion || !colaboradores) {
       showToast(lang === 'en' ? 'Please fill in all required fields.' : 'Por favor complete todos los campos obligatorios.');
       return;
     }
@@ -2290,7 +2278,7 @@
       const res = await fetch('/api/v1/register-request', {
         method:  'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, email, institution, role, admin, motivo, investigacion, colaboradores }),
+        body: JSON.stringify({ name, email, institution, role, admin: '', motivo, investigacion, colaboradores }),
       });
 
       if (res.ok) {
