@@ -39,6 +39,9 @@ class User(Base):
     login_pin             = Column(String, nullable=True)
     login_pin_expires_at  = Column(DateTime(timezone=True), nullable=True)
 
+    # MCP integration token (long-lived, for claude.ai integrations)
+    mcp_token    = Column(String, unique=True, nullable=True)
+
     # Perfil profesional / institucional
     title        = Column(String, nullable=True)   # Dr., Mg., Lic., Ing., Prof., etc.
     institution  = Column(String, nullable=True)   # Universidad / Centro de investigación

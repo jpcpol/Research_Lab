@@ -7,7 +7,7 @@
   <meta name="keywords" content="investigación, research, colaboración científica, plataforma académica, hipótesis, knowledge graph, Aural-Syncro, Argentina" />
   <meta name="author" content="Aural-Syncro" />
   <meta name="robots" content="index, follow" />
-  <meta name="theme-color" content="#1a237e" />
+  <meta name="theme-color" content="#0B1F3A" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
@@ -25,9 +25,9 @@
   <link rel="canonical" href="https://researchlab.aural-syncro.com.ar/" />
 
   <!-- Favicons -->
-  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon.png?v=3" />
-  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=3" />
-  <link rel="apple-touch-icon" href="/static/favicon.png?v=3" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/static/favicon.png?v=4" />
+  <link rel="icon" type="image/x-icon" href="/favicon.ico?v=4" />
+  <link rel="apple-touch-icon" href="/static/favicon.png?v=4" />
 
   <!-- Structured Data -->
   <script type="application/ld+json">
@@ -51,32 +51,34 @@
   </script>
 
   <title>Aural-Syncro Research Lab</title>
+  <link rel="stylesheet" href="/static/brand.css">
 
   <style>
-    /* ── Variables ───────────────────────────────────────────── */
+    /* ── Variables ─── ResearchLab Brand Identity ────────────── */
     :root {
-      --primary:       #1a237e;
-      --primary-dark:  #0d1554;
-      --primary-mid:   #283593;
-      --primary-light: #3949ab;
-      --accent:        #c8930a;
-      --accent-bright: #ffc107;
-      --bg:            #eaf3ea;
-      --surface:       #ffffff;
-      --surface-alt:   #d6ecd6;
-      --text:          #1c1c2e;
-      --text-muted:    #4a6a4a;
-      --text-light:    #7da87d;
-      --border:        #b8d8b8;
-      --shadow-sm:     0 2px 8px rgba(26,35,126,.08);
-      --shadow-md:     0 6px 24px rgba(26,35,126,.13);
-      --shadow-lg:     0 16px 48px rgba(26,35,126,.18);
+      --primary:       #0B1F3A;
+      --primary-dark:  #060f1e;
+      --primary-mid:   #0F2A4D;
+      --primary-light: #7A5CFF;
+      --accent:        #00D4FF;
+      --accent-bright: #7A5CFF;
+      --bg:            #0B1F3A;
+      --surface:       #0F2A4D;
+      --surface-alt:   #112235;
+      --text:          #E6EAF0;
+      --text-muted:    #AAB3C5;
+      --text-light:    #8093AC;
+      --border:        rgba(0,212,255,.12);
+      --shadow-sm:     0 2px 12px rgba(0,0,0,.35);
+      --shadow-md:     0 6px 28px rgba(0,0,0,.45);
+      --shadow-lg:     0 16px 56px rgba(0,0,0,.55);
       --r:             8px;
       --r-lg:          16px;
       --r-xl:          24px;
       --nav-h:         72px;
       --max-w:         1200px;
       --section-py:    96px;
+      --brand-gradient: linear-gradient(135deg, #00D4FF 0%, #7A5CFF 100%);
     }
 
     /* ── Reset ───────────────────────────────────────────────── */
@@ -96,9 +98,9 @@
 
     /* ── Typography ──────────────────────────────────────────── */
     h1, h2, h3, h4 {
-      font-family: Georgia, 'Times New Roman', serif;
+      font-family: 'Inter', system-ui, sans-serif;
       line-height: 1.25;
-      color: var(--primary-dark);
+      color: var(--text);
     }
     h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
     h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
@@ -129,11 +131,11 @@
     .section--alt { background: var(--surface-alt); }
     .section--dark {
       background: var(--primary-dark);
-      color: #e8eaf6;
+      color: var(--text);
     }
-    .section--dark h2, .section--dark h3, .section--dark h4 { color: #e8eaf6; }
-    .section--dark .label { color: var(--accent-bright); }
-    .section--dark .section-intro { color: #9fa8da; }
+    .section--dark h2, .section--dark h3, .section--dark h4 { color: var(--text); }
+    .section--dark .label { color: var(--accent); }
+    .section--dark .section-intro { color: var(--text-muted); }
 
     .grid-2 {
       display: grid;
@@ -168,14 +170,14 @@
       white-space: nowrap;
     }
     .btn-primary {
-      background: var(--accent-bright);
-      color: var(--primary-dark);
-      box-shadow: 0 4px 16px rgba(255,193,7,.35);
+      background: var(--brand-gradient);
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(0,212,255,.28);
     }
     .btn-primary:hover {
-      background: #ffca28;
+      filter: brightness(1.1);
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(255,193,7,.45);
+      box-shadow: 0 8px 28px rgba(0,212,255,.40);
     }
     .btn-outline {
       border: 2px solid rgba(255,255,255,.6);
@@ -186,14 +188,16 @@
       border-color: #fff;
     }
     .btn-dark {
-      background: var(--primary);
-      color: #fff;
+      background: var(--surface);
+      color: var(--accent);
+      border: 1px solid var(--border);
       box-shadow: var(--shadow-sm);
     }
     .btn-dark:hover {
-      background: var(--primary-mid);
+      border-color: var(--accent);
+      background: rgba(0,212,255,.08);
       transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
+      box-shadow: 0 6px 20px rgba(0,212,255,.2);
     }
     .btn-lg { padding: 1rem 2.25rem; font-size: 1.05rem; border-radius: var(--r-lg); }
 
@@ -230,10 +234,10 @@
       top: 0;
       z-index: 1000;
       height: var(--nav-h);
-      background: rgba(26,35,126,.97);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,.08);
+      background: rgba(6,15,30,.96);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(0,212,255,.12);
       transition: box-shadow .3s;
     }
     #navbar.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,.25); }
@@ -267,7 +271,7 @@
       font-family: system-ui, sans-serif;
       font-size: .7rem;
       font-weight: 400;
-      color: #9fa8da;
+      color: var(--text-muted);
       letter-spacing: .04em;
     }
 
@@ -279,12 +283,12 @@
     .nav-links a {
       padding: .45rem .9rem;
       border-radius: var(--r);
-      color: #c5cae9;
+      color: var(--text-muted);
       font-size: .875rem;
       font-weight: 500;
       transition: background .2s, color .2s;
     }
-    .nav-links a:hover { background: rgba(255,255,255,.1); color: #fff; }
+    .nav-links a:hover { background: rgba(0,212,255,.08); color: var(--accent); }
 
     .nav-actions { display: flex; align-items: center; gap: .75rem; }
 
@@ -298,15 +302,15 @@
       gap: .4rem;
       padding: .4rem .8rem;
       border-radius: var(--r);
-      color: #c5cae9;
+      color: var(--text-muted);
       font-size: .8rem;
       font-weight: 600;
-      border: 1px solid rgba(255,255,255,.15);
-      background: rgba(255,255,255,.05);
+      border: 1px solid var(--border);
+      background: rgba(0,212,255,.04);
       transition: all .2s;
       letter-spacing: .04em;
     }
-    .lang-btn:hover { background: rgba(255,255,255,.12); color: #fff; border-color: rgba(255,255,255,.3); }
+    .lang-btn:hover { background: rgba(0,212,255,.1); color: var(--accent); border-color: rgba(0,212,255,.35); }
     .lang-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
     .lang-btn .caret { font-size: .6rem; margin-left: .1rem; transition: transform .2s; }
     .lang-btn.open .caret { transform: rotate(180deg); }
@@ -343,7 +347,7 @@
       cursor: pointer;
     }
     .lang-option:hover { background: var(--surface-alt); }
-    .lang-option.active { color: var(--primary); font-weight: 700; }
+    .lang-option.active { color: var(--accent); font-weight: 700; }
     .lang-option .flag { font-size: 1rem; }
 
     .nav-cta {
@@ -354,12 +358,12 @@
       border-radius: var(--r);
       font-size: .85rem;
       transition: all .2s;
-      box-shadow: 0 2px 8px rgba(255,193,7,.3);
+      box-shadow: 0 2px 8px rgba(0,212,255,.25);
     }
     .nav-cta:hover {
-      background: #ffca28 !important;
+      filter: brightness(1.15) !important;
       transform: translateY(-1px);
-      box-shadow: 0 4px 16px rgba(255,193,7,.45);
+      box-shadow: 0 4px 20px rgba(0,212,255,.40);
     }
 
     /* hamburger */
@@ -393,7 +397,7 @@
       inset: 0;
       background-image:
         radial-gradient(circle at 15% 50%, rgba(255,255,255,.05) 0%, transparent 55%),
-        radial-gradient(circle at 85% 20%, rgba(255,193,7,.07) 0%, transparent 45%),
+        radial-gradient(circle at 85% 20%, rgba(122,92,255,.12) 0%, transparent 45%),
         url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Ccircle cx='30' cy='30' r='1' fill='rgba(255,255,255,.05)'/%3E%3C/svg%3E");
       background-size: auto, auto, 60px 60px;
     }
@@ -428,6 +432,7 @@
       0%, 100% { opacity: .85; transform: scale(1); }
       50%       { opacity: 1;   transform: scale(1.08); }
     }
+    @keyframes e-d { 0%,100%{opacity:1} 50%{opacity:.16} }
     @keyframes dot-travel {
       0%   { stroke-dashoffset: 200; }
       100% { stroke-dashoffset: 0; }
@@ -480,14 +485,14 @@
       border-radius: var(--r-lg);
       font-weight: 800;
       font-size: 1.1rem;
-      box-shadow: 0 6px 24px rgba(255,193,7,.45), 0 2px 8px rgba(0,0,0,.2);
+      box-shadow: 0 6px 24px rgba(0,212,255,.30), 0 2px 8px rgba(0,0,0,.3);
       transition: all .25s;
       border: 2px solid transparent;
     }
     .hero-access-btn:hover {
-      background: #ffca28;
+      filter: brightness(1.12);
       transform: translateY(-3px);
-      box-shadow: 0 12px 40px rgba(255,193,7,.55);
+      box-shadow: 0 12px 40px rgba(0,212,255,.45);
     }
     .hero-access-btn .arrow { font-size: 1.2rem; transition: transform .2s; }
     .hero-access-btn:hover .arrow { transform: translateX(4px); }
@@ -550,8 +555,9 @@
 
     /* ── Access ──────────────────────────────────────────────── */
     #access {
-      background: linear-gradient(135deg, var(--primary-dark) 0%, #1a237e 100%);
-      color: #e8eaf6;
+      background: linear-gradient(135deg, var(--primary-dark) 0%, #0b1f3a 100%);
+      border-top: 1px solid rgba(0,212,255,.12);
+      color: var(--text);
     }
     .access-grid {
       display: grid;
@@ -559,9 +565,9 @@
       gap: 4rem;
       align-items: start;
     }
-    .access-left h2, .access-left h3 { color: #e8eaf6; }
-    .access-left p { color: #9fa8da; margin-bottom: 1rem; }
-    .access-left .label { color: var(--accent-bright); }
+    .access-left h2, .access-left h3 { color: var(--text); }
+    .access-left p { color: var(--text-muted); margin-bottom: 1rem; }
+    .access-left .label { color: var(--accent); }
 
     .access-info-card {
       background: rgba(255,255,255,.06);
@@ -684,7 +690,7 @@
       flex-shrink: 0;
       margin-top: .15rem;
     }
-    .step-body h4 { color: var(--primary); margin-bottom: .25rem; }
+    .step-body h4 { color: var(--accent); margin-bottom: .25rem; }
     .step-body p { color: var(--text-muted); font-size: .9rem; margin-bottom: 0; }
 
     /* ── Docs ────────────────────────────────────────────────── */
@@ -692,9 +698,18 @@
     .docs-img {
       border-radius: var(--r-xl);
       overflow: hidden;
-      box-shadow: var(--shadow-lg);
+      background: var(--surface);
+      border: 1px solid rgba(0,212,255,.18);
+      box-shadow: 0 0 40px rgba(0,212,255,.10), var(--shadow-md);
+      padding: 1.25rem;
     }
-    .docs-img img { width: 100%; height: auto; object-fit: contain; }
+    .docs-img img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+      display: block;
+      border-radius: calc(var(--r-xl) - 8px);
+    }
 
     .doc-link-item {
       display: flex;
@@ -725,7 +740,7 @@
       flex-shrink: 0;
     }
     .doc-link-item .txt { flex: 1; min-width: 0; }
-    .doc-link-item .txt strong { display: block; font-size: .9rem; color: var(--primary); }
+    .doc-link-item .txt strong { display: block; font-size: .9rem; color: var(--text); }
     .doc-link-item .txt small { font-size: .78rem; color: var(--text-muted); }
     .doc-link-item .arrow-r { color: var(--text-light); font-size: .9rem; }
 
@@ -740,7 +755,7 @@
     .company-logo-wrap img {
       max-width: 420px;
       width: 100%;
-      filter: drop-shadow(0 4px 20px rgba(26,35,126,.15));
+      filter: drop-shadow(0 4px 20px rgba(0,212,255,.15));
     }
     .company-tagline {
       font-family: Georgia, serif;
@@ -786,12 +801,12 @@
       font-size: 1.1rem;
       flex-shrink: 0;
     }
-    .contact-card-text strong { display: block; font-size: .875rem; color: var(--primary); }
+    .contact-card-text strong { display: block; font-size: .875rem; color: var(--text); }
     .contact-card-text a, .contact-card-text span {
       font-size: .9rem;
       color: var(--text-muted);
     }
-    .contact-card-text a:hover { color: var(--primary); }
+    .contact-card-text a:hover { color: var(--accent); }
 
     .contact-form-panel {
       background: var(--surface);
@@ -925,13 +940,12 @@
       box-shadow: 0 8px 32px rgba(200,147,10,.3);
     }
     .lab-cta-banner h3 {
-      color: var(--primary-dark);
+      color: #fff;
       margin-bottom: .35rem;
       font-size: 1.4rem;
     }
     .lab-cta-banner p {
-      color: var(--primary-dark);
-      opacity: .8;
+      color: rgba(255,255,255,.82);
       font-size: .9rem;
       margin: 0;
     }
@@ -1037,6 +1051,20 @@
 </head>
 <body>
 
+<!-- ── Brand SVG defs (inline — permite url(#brand-ig) en toda la página) ── -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <linearGradient id="brand-ig" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#7A5CFF"/>
+    </linearGradient>
+    <linearGradient id="brand-ig-h" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#7A5CFF"/>
+    </linearGradient>
+  </defs>
+</svg>
+
 <!-- ═══════════════════════════════════════════════════════════
      NAVBAR
 ═══════════════════════════════════════════════════════════ -->
@@ -1044,7 +1072,22 @@
   <div class="container nav-inner">
     <!-- Logo -->
     <a href="#hero" class="nav-logo" aria-label="Aural-Syncro Research Lab home">
-      <img src="/static/favicon.png?v=3" alt="Aural-Syncro Research Lab logo" width="36" height="36" />
+      <svg viewBox="0 0 40 40" fill="none" width="48" height="48" aria-hidden="true">
+        <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="rgba(0,212,255,.08)" stroke="url(#brand-ig)" stroke-width="1.5"/>
+        <circle cx="20" cy="11" r="2.5" fill="url(#brand-ig)"/>
+        <circle cx="29" cy="16" r="2"   fill="#7A5CFF" opacity=".85"/>
+        <circle cx="29" cy="24" r="2"   fill="#00D4FF" opacity=".85"/>
+        <circle cx="20" cy="29" r="2.5" fill="url(#brand-ig)"/>
+        <circle cx="11" cy="24" r="2"   fill="#7A5CFF" opacity=".85"/>
+        <circle cx="11" cy="16" r="2"   fill="#00D4FF" opacity=".85"/>
+        <line x1="20" y1="13.5" x2="27" y2="17.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+        <line x1="27" y1="17.5" x2="27" y2="22.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+        <line x1="27" y1="22.5" x2="20" y2="26.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+        <line x1="20" y1="26.5" x2="13" y2="22.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+        <line x1="13" y1="22.5" x2="13" y2="17.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+        <line x1="13" y1="17.5" x2="20" y2="13.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+        <text x="20" y="24" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="800" fill="url(#brand-ig)" letter-spacing="-.5">R</text>
+      </svg>
       <span>
         Aural-Syncro
         <small data-i18n="nav_research_lab">Research Lab</small>
@@ -1129,155 +1172,124 @@
         </div>
       </div>
 
-      <!-- Right: Research Knowledge Graph SVG -->
+      <!-- Right: Atom — electrons orbiting the Research Lab nucleus -->
       <div class="hero-visual" aria-hidden="true">
-        <svg viewBox="0 0 520 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Research knowledge graph visualization">
+        <svg viewBox="0 0 520 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Atom visualization — Research Lab">
           <defs>
-            <radialGradient id="glow-center" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#ffc107" stop-opacity=".25"/>
-              <stop offset="100%" stop-color="#ffc107" stop-opacity="0"/>
+            <radialGradient id="gc2" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#00D4FF" stop-opacity=".22"/>
+              <stop offset="100%" stop-color="#7A5CFF" stop-opacity="0"/>
             </radialGradient>
-            <radialGradient id="node-gold" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#ffca28"/>
-              <stop offset="100%" stop-color="#f9a825"/>
+            <radialGradient id="ng2" cx="38%" cy="30%" r="66%">
+              <stop offset="0%" stop-color="#60eeff"/>
+              <stop offset="55%" stop-color="#007e9a"/>
+              <stop offset="100%" stop-color="#040d1a"/>
             </radialGradient>
-            <radialGradient id="node-blue" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#5c6bc0"/>
-              <stop offset="100%" stop-color="#3949ab"/>
+            <radialGradient id="ec2" cx="36%" cy="28%" r="64%">
+              <stop offset="0%" stop-color="#88f2ff"/>
+              <stop offset="100%" stop-color="#003a50"/>
             </radialGradient>
-            <radialGradient id="node-teal" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#26a69a"/>
-              <stop offset="100%" stop-color="#00897b"/>
+            <radialGradient id="ev2" cx="36%" cy="28%" r="64%">
+              <stop offset="0%" stop-color="#c2b0ff"/>
+              <stop offset="100%" stop-color="#241060"/>
             </radialGradient>
-            <filter id="blur-glow">
-              <feGaussianBlur stdDeviation="8" result="blur"/>
-              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            <filter id="nglow2">
+              <feGaussianBlur stdDeviation="8" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
-            <filter id="shadow-node">
-              <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="rgba(0,0,0,.4)"/>
+            <filter id="eglow2">
+              <feGaussianBlur stdDeviation="3.5" result="b"/>
+              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
             </filter>
+            <!-- Ellipse orbit path in local space (centered at origin) rx=165, ry=78 -->
+            <path id="op2" d="M 165,0 A 165,78,0,1,1,-165,0 A 165,78,0,1,1,165,0"/>
           </defs>
 
-          <!-- Background glow at center -->
-          <circle cx="260" cy="240" r="140" fill="url(#glow-center)"/>
+          <!-- Ambient glow -->
+          <circle cx="260" cy="240" r="172" fill="url(#gc2)"/>
 
-          <!-- ── Connection lines ── -->
-          <!-- Central → Hipótesis -->
-          <line x1="260" y1="240" x2="120" y2="110" stroke="rgba(255,193,7,.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
-          <!-- Central → Notas -->
-          <line x1="260" y1="240" x2="400" y2="110" stroke="rgba(99,125,229,.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
-          <!-- Central → Bitácora -->
-          <line x1="260" y1="240" x2="440" y2="240" stroke="rgba(38,166,154,.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
-          <!-- Central → Referencias -->
-          <line x1="260" y1="240" x2="400" y2="370" stroke="rgba(255,193,7,.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
-          <!-- Central → Knowledge Graph -->
-          <line x1="260" y1="240" x2="120" y2="370" stroke="rgba(99,125,229,.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
-          <!-- Central → IA -->
-          <line x1="260" y1="240" x2="80" y2="240" stroke="rgba(38,166,154,.35)" stroke-width="1.5" stroke-dasharray="6 4"/>
-          <!-- Secondary connections -->
-          <line x1="120" y1="110" x2="400" y2="110" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="4 6"/>
-          <line x1="400" y1="110" x2="440" y2="240" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="4 6"/>
-          <line x1="440" y1="240" x2="400" y2="370" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="4 6"/>
-          <line x1="400" y1="370" x2="120" y2="370" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="4 6"/>
-          <line x1="120" y1="370" x2="80" y2="240" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="4 6"/>
-          <line x1="80" y1="240" x2="120" y2="110" stroke="rgba(255,255,255,.08)" stroke-width="1" stroke-dasharray="4 6"/>
+          <!-- ── Orbital rings ── -->
+          <ellipse cx="260" cy="240" rx="165" ry="78" fill="none"
+                   stroke="rgba(0,212,255,.20)" stroke-width="1.2" stroke-dasharray="5 4"
+                   transform="rotate(0 260 240)"/>
+          <ellipse cx="260" cy="240" rx="165" ry="78" fill="none"
+                   stroke="rgba(122,92,255,.28)" stroke-width="1.2" stroke-dasharray="5 4"
+                   transform="rotate(-55 260 240)"/>
+          <ellipse cx="260" cy="240" rx="165" ry="78" fill="none"
+                   stroke="rgba(0,212,255,.20)" stroke-width="1.2" stroke-dasharray="5 4"
+                   transform="rotate(55 260 240)"/>
 
-          <!-- ── Animated travel dots ── -->
-          <circle r="3.5" fill="#ffc107" opacity=".9">
-            <animateMotion dur="3s" repeatCount="indefinite" begin="0s">
-              <mpath href="#path-to-hip"/>
-            </animateMotion>
-          </circle>
-          <circle r="3" fill="#7986cb" opacity=".85">
-            <animateMotion dur="3.5s" repeatCount="indefinite" begin="1.2s">
-              <mpath href="#path-to-ref"/>
-            </animateMotion>
-          </circle>
-          <circle r="3" fill="#4db6ac" opacity=".85">
-            <animateMotion dur="2.8s" repeatCount="indefinite" begin="0.6s">
-              <mpath href="#path-to-ia"/>
-            </animateMotion>
-          </circle>
+          <!-- ── Orbit A (0°, 7s) ── -->
+          <g transform="translate(260,240) rotate(0)" style="animation:e-d 7s linear infinite">
+            <g><animateMotion dur="7s" repeatCount="indefinite"><mpath href="#op2"/></animateMotion>
+              <circle r="18" fill="url(#ec2)" filter="url(#eglow2)"/>
+            </g>
+          </g>
+          <g transform="translate(260,240) rotate(0)" style="animation:e-d 7s linear infinite;animation-delay:-3.5s">
+            <g><animateMotion dur="7s" repeatCount="indefinite" begin="-3.5s"><mpath href="#op2"/></animateMotion>
+              <circle r="18" fill="url(#ev2)" filter="url(#eglow2)"/>
+            </g>
+          </g>
 
-          <!-- Hidden paths for animateMotion -->
-          <defs>
-            <path id="path-to-hip" d="M260,240 L120,110"/>
-            <path id="path-to-ref" d="M260,240 L400,370"/>
-            <path id="path-to-ia"  d="M260,240 L80,240"/>
-          </defs>
+          <!-- ── Orbit B (-55°, 5s) ── -->
+          <g transform="translate(260,240) rotate(-55)" style="animation:e-d 5s linear infinite">
+            <g><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#op2"/></animateMotion>
+              <circle r="18" fill="url(#ev2)" filter="url(#eglow2)"/>
+            </g>
+          </g>
+          <g transform="translate(260,240) rotate(-55)" style="animation:e-d 5s linear infinite;animation-delay:-2.5s">
+            <g><animateMotion dur="5s" repeatCount="indefinite" begin="-2.5s"><mpath href="#op2"/></animateMotion>
+              <circle r="18" fill="url(#ec2)" filter="url(#eglow2)"/>
+            </g>
+          </g>
 
-          <!-- ── Central node — RESEARCH LAB ── -->
-          <circle cx="260" cy="240" r="58" fill="url(#node-gold)" filter="url(#shadow-node)" style="animation: node-pulse 3s ease-in-out infinite;"/>
-          <circle cx="260" cy="240" r="52" fill="none" stroke="rgba(255,255,255,.25)" stroke-width="1.5"/>
-          <!-- Microscope icon simplified -->
-          <text x="260" y="228" text-anchor="middle" font-size="22" fill="#1a237e">🔬</text>
-          <text x="260" y="248" text-anchor="middle" font-size="10" font-weight="800" fill="#1a237e" letter-spacing="1" font-family="Georgia,serif">RESEARCH</text>
-          <text x="260" y="261" text-anchor="middle" font-size="9" font-weight="700" fill="#1a237e" opacity=".8" letter-spacing=".5">LAB</text>
+          <!-- ── Orbit C (+55°, 9s) ── -->
+          <g transform="translate(260,240) rotate(55)" style="animation:e-d 9s linear infinite">
+            <g><animateMotion dur="9s" repeatCount="indefinite"><mpath href="#op2"/></animateMotion>
+              <circle r="18" fill="url(#ec2)" filter="url(#eglow2)"/>
+            </g>
+          </g>
+          <g transform="translate(260,240) rotate(55)" style="animation:e-d 9s linear infinite;animation-delay:-4.5s">
+            <g><animateMotion dur="9s" repeatCount="indefinite" begin="-4.5s"><mpath href="#op2"/></animateMotion>
+              <circle r="18" fill="url(#ev2)" filter="url(#eglow2)"/>
+            </g>
+          </g>
 
-          <!-- ── Satellite nodes ── -->
-          <!-- Hipótesis (top-left) -->
-          <circle cx="120" cy="110" r="38" fill="url(#node-blue)" filter="url(#shadow-node)" style="animation: node-pulse 3.4s ease-in-out infinite; animation-delay:.4s;"/>
-          <circle cx="120" cy="110" r="32" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-          <text x="120" y="102" text-anchor="middle" font-size="16" fill="#fff">💡</text>
-          <text x="120" y="118" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" letter-spacing=".5">HIPÓTESIS</text>
-
-          <!-- Notas (top-right) -->
-          <circle cx="400" cy="110" r="36" fill="url(#node-teal)" filter="url(#shadow-node)" style="animation: node-pulse 2.9s ease-in-out infinite; animation-delay:.8s;"/>
-          <circle cx="400" cy="110" r="30" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-          <text x="400" y="103" text-anchor="middle" font-size="15" fill="#fff">📝</text>
-          <text x="400" y="118" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" letter-spacing=".5">NOTAS</text>
-
-          <!-- Bitácora (right) -->
-          <circle cx="440" cy="240" r="36" fill="url(#node-blue)" filter="url(#shadow-node)" style="animation: node-pulse 3.2s ease-in-out infinite; animation-delay:.2s;"/>
-          <circle cx="440" cy="240" r="30" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-          <text x="440" y="234" text-anchor="middle" font-size="15" fill="#fff">📔</text>
-          <text x="440" y="249" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" letter-spacing=".3">BITÁCORA</text>
-
-          <!-- Referencias (bottom-right) -->
-          <circle cx="400" cy="370" r="36" fill="url(#node-teal)" filter="url(#shadow-node)" style="animation: node-pulse 3.6s ease-in-out infinite; animation-delay:1s;"/>
-          <circle cx="400" cy="370" r="30" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-          <text x="400" y="363" text-anchor="middle" font-size="15" fill="#fff">📚</text>
-          <text x="400" y="378" text-anchor="middle" font-size="8" font-weight="700" fill="#fff" letter-spacing=".3">REFERENCIAS</text>
-
-          <!-- Knowledge Graph (bottom-left) -->
-          <circle cx="120" cy="370" r="36" fill="url(#node-blue)" filter="url(#shadow-node)" style="animation: node-pulse 2.7s ease-in-out infinite; animation-delay:.6s;"/>
-          <circle cx="120" cy="370" r="30" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-          <text x="120" y="363" text-anchor="middle" font-size="15" fill="#fff">🔗</text>
-          <text x="120" y="375" text-anchor="middle" font-size="7.5" font-weight="700" fill="#fff" letter-spacing=".3">KNOWLEDGE</text>
-          <text x="120" y="386" text-anchor="middle" font-size="7.5" font-weight="700" fill="#fff" letter-spacing=".3">GRAPH</text>
-
-          <!-- IA Assistant (left) -->
-          <circle cx="80" cy="240" r="36" fill="url(#node-teal)" filter="url(#shadow-node)" style="animation: node-pulse 3.1s ease-in-out infinite; animation-delay:1.4s;"/>
-          <circle cx="80" cy="240" r="30" fill="none" stroke="rgba(255,255,255,.2)" stroke-width="1"/>
-          <text x="80" y="234" text-anchor="middle" font-size="15" fill="#fff">🤖</text>
-          <text x="80" y="249" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" letter-spacing=".3">IA</text>
+          <!-- ── NUCLEUS ── -->
+          <circle cx="260" cy="240" r="60" fill="rgba(0,212,255,.05)" style="animation:node-pulse 3.5s ease-in-out infinite"/>
+          <circle cx="260" cy="240" r="48" fill="url(#ng2)" filter="url(#nglow2)"/>
+          <circle cx="260" cy="240" r="42" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.1"/>
+          <ellipse cx="247" cy="226" rx="9" ry="5.5" fill="rgba(255,255,255,.12)"/>
+          <!-- Mini atom icon inside nucleus -->
+          <ellipse cx="260" cy="226" rx="11" ry="4" fill="none" stroke="rgba(0,212,255,.40)" stroke-width="1"/>
+          <ellipse cx="260" cy="226" rx="11" ry="4" fill="none" stroke="rgba(0,212,255,.28)" stroke-width="1" transform="rotate(60 260 226)"/>
+          <ellipse cx="260" cy="226" rx="11" ry="4" fill="none" stroke="rgba(122,92,255,.38)" stroke-width="1" transform="rotate(-60 260 226)"/>
+          <circle cx="260" cy="226" r="3" fill="url(#brand-ig)"/>
+          <text x="260" y="244" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="800" fill="#E6EAF0" letter-spacing="1.5">RESEARCH</text>
+          <text x="260" y="256" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" font-weight="700" fill="#AAB3C5" letter-spacing="2.5">LAB</text>
 
           <!-- ── Floating micro-particles ── -->
-          <circle cx="200" cy="60" r="3" fill="rgba(255,193,7,.5)">
-            <animate attributeName="cy" values="60;45;60" dur="4s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".5;.9;.5" dur="4s" repeatCount="indefinite"/>
+          <circle cx="200" cy="58" r="2.5" fill="rgba(0,212,255,.50)">
+            <animate attributeName="cy" values="58;44;58" dur="4s" repeatCount="indefinite"/>
+            <animate attributeName="opacity" values=".4;.8;.4" dur="4s" repeatCount="indefinite"/>
           </circle>
-          <circle cx="340" cy="50" r="2" fill="rgba(121,134,203,.6)">
-            <animate attributeName="cy" values="50;38;50" dur="3.3s" repeatCount="indefinite" begin=".8s"/>
+          <circle cx="345" cy="50" r="2" fill="rgba(122,92,255,.55)">
+            <animate attributeName="cy" values="50;37;50" dur="3.2s" repeatCount="indefinite" begin=".8s"/>
           </circle>
-          <circle cx="480" cy="170" r="2.5" fill="rgba(77,182,172,.5)">
-            <animate attributeName="cy" values="170;155;170" dur="3.8s" repeatCount="indefinite" begin="1.2s"/>
+          <circle cx="470" cy="170" r="2.2" fill="rgba(0,212,255,.40)">
+            <animate attributeName="cy" values="170;155;170" dur="3.7s" repeatCount="indefinite" begin="1.2s"/>
           </circle>
-          <circle cx="490" cy="320" r="2" fill="rgba(255,193,7,.4)">
-            <animate attributeName="cy" values="320;308;320" dur="4.2s" repeatCount="indefinite" begin=".3s"/>
+          <circle cx="50" cy="300" r="1.8" fill="rgba(122,92,255,.45)">
+            <animate attributeName="cy" values="300;315;300" dur="5s" repeatCount="indefinite" begin=".5s"/>
           </circle>
-          <circle cx="50" cy="160" r="2.5" fill="rgba(121,134,203,.5)">
-            <animate attributeName="cy" values="160;148;160" dur="3.5s" repeatCount="indefinite" begin="1.8s"/>
+          <circle cx="480" cy="330" r="2" fill="rgba(0,212,255,.35)">
+            <animate attributeName="cy" values="330;320;330" dur="4.5s" repeatCount="indefinite" begin="2s"/>
           </circle>
-          <circle cx="30" cy="330" r="2" fill="rgba(77,182,172,.4)">
-            <animate attributeName="cy" values="330;318;330" dur="4.5s" repeatCount="indefinite" begin=".9s"/>
-          </circle>
-          <circle cx="260" cy="430" r="2.5" fill="rgba(255,193,7,.4)">
-            <animate attributeName="cy" values="430;418;430" dur="3.7s" repeatCount="indefinite" begin="2s"/>
+          <circle cx="260" cy="430" r="2.2" fill="rgba(0,212,255,.38)">
+            <animate attributeName="cy" values="430;418;430" dur="3.7s" repeatCount="indefinite" begin="1.5s"/>
           </circle>
 
-          <!-- ── Corner label: AURAL-SYNCRO ── -->
-          <text x="260" y="462" text-anchor="middle" font-size="9" fill="rgba(255,255,255,.3)" letter-spacing="3" font-family="Georgia,serif">AURAL-SYNCRO · RESEARCH PLATFORM</text>
+          <text x="260" y="463" text-anchor="middle" font-size="8.5" fill="rgba(170,179,197,.65)" letter-spacing="3" font-family="system-ui,sans-serif">AURAL-SYNCRO · RESEARCH PLATFORM</text>
         </svg>
       </div>
     </div>
@@ -1705,13 +1717,13 @@
           </div>
         </div>
 
-        <div class="note-box" style="background:rgba(26,35,126,.06); border-left-color:var(--primary); margin-top:1.5rem;">
+        <div class="note-box" style="background:rgba(0,212,255,.06); border-left-color:var(--accent); margin-top:1.5rem;">
           <p style="color:var(--text-muted);" data-i18n="register_note">
             <strong>Importante:</strong> Al ingresar por primera vez deberá firmar digitalmente el acuerdo de uso de la plataforma.
           </p>
         </div>
 
-        <div class="note-box" style="background:rgba(255,193,7,.10); border-left-color:var(--accent-bright); margin-top:1rem;">
+        <div class="note-box" style="background:rgba(0,212,255,.08); border-left-color:var(--accent); margin-top:1rem;">
           <p style="color:var(--text-muted);" data-i18n="register_pi_note">
             <strong>Solo Líderes de Proyecto:</strong> El registro está reservado para el <strong>Investigador Principal (PI)</strong> del equipo. Una vez dentro de la plataforma, el PI puede invitar a <em>colaboradores</em> y <em>observadores</em> desde la gestión del proyecto.
           </p>
@@ -1742,8 +1754,8 @@
             </div>
             <div class="form-group">
               <label data-i18n="form_role">Rol</label>
-              <div style="padding:10px 14px;background:rgba(26,35,126,.06);border:1px solid rgba(26,35,126,.2);
-                          border-radius:8px;font-size:.95rem;color:var(--primary);font-weight:600;">
+              <div style="padding:10px 14px;background:rgba(0,212,255,.05);border:1px solid rgba(0,212,255,.2);
+                          border-radius:8px;font-size:.95rem;color:var(--text);font-weight:600;">
                 🔬 Investigador Principal (PI)
               </div>
               <input type="hidden" id="f-role" name="role" value="PI" />
@@ -1785,8 +1797,23 @@
     <div class="footer-grid">
       <!-- Brand -->
       <div class="footer-brand">
-        <a href="#hero" class="nav-logo" style="color:#fff;" aria-label="Aural-Syncro Research Lab">
-          <img src="/static/favicon.png?v=3" alt="" width="32" height="32" />
+        <a href="#hero" class="nav-logo" aria-label="Aural-Syncro Research Lab">
+          <svg viewBox="0 0 40 40" fill="none" width="30" height="30" aria-hidden="true">
+            <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="rgba(0,212,255,.08)" stroke="url(#brand-ig)" stroke-width="1.5"/>
+            <circle cx="20" cy="11" r="2.5" fill="url(#brand-ig)"/>
+            <circle cx="29" cy="16" r="2"   fill="#7A5CFF" opacity=".85"/>
+            <circle cx="29" cy="24" r="2"   fill="#00D4FF" opacity=".85"/>
+            <circle cx="20" cy="29" r="2.5" fill="url(#brand-ig)"/>
+            <circle cx="11" cy="24" r="2"   fill="#7A5CFF" opacity=".85"/>
+            <circle cx="11" cy="16" r="2"   fill="#00D4FF" opacity=".85"/>
+            <line x1="20" y1="13.5" x2="27" y2="17.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+            <line x1="27" y1="17.5" x2="27" y2="22.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+            <line x1="27" y1="22.5" x2="20" y2="26.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+            <line x1="20" y1="26.5" x2="13" y2="22.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+            <line x1="13" y1="22.5" x2="13" y2="17.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+            <line x1="13" y1="17.5" x2="20" y2="13.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+            <text x="20" y="24" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="800" fill="url(#brand-ig)" letter-spacing="-.5">R</text>
+          </svg>
           <span>Aural-Syncro Research Lab</span>
         </a>
         <p data-i18n="footer_desc">
@@ -2287,7 +2314,7 @@
         panel.innerHTML = `
           <div style="text-align:center; padding:2rem 1rem;">
             <div style="font-size:3.5rem; margin-bottom:1rem;">✅</div>
-            <h3 style="color:var(--primary); margin-bottom:.75rem;">
+            <h3 style="color:var(--text); margin-bottom:.75rem;">
               ${lang === 'en' ? 'Request sent!' : '¡Solicitud enviada!'}
             </h3>
             <p style="color:var(--text-muted); max-width:38ch; margin-inline:auto;">

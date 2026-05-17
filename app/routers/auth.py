@@ -1,5 +1,6 @@
 import os
 import random
+import secrets
 import logging
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
@@ -327,6 +328,42 @@ def confirm_email_change(
     db.commit()
     db.refresh(user)
     return user
+
+
+# ── Invitation flow ────────────────────────────────────────────────────────────
+
+# ── MCP token ─────────────────────────────────────────────────────────────────
+
+_MCP_BASE_URL = os.getenv("MCP_BASE_URL", "https://lab.aural-syncro.com.ar")
+
+
+@router.get("/mcp-token")
+def get_mcp_token(
+    user: models.User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Return the researcher's personal MCP token (generated on first call)."""
+    if not user.mcp_token:
+        user.mcp_token = secrets.token_urlsafe(32)
+        db.commit()
+    return {
+        "mcp_token": user.mcp_token,
+        "mcp_url": f"{_MCP_BASE_URL}/mcp?token={user.mcp_token}",
+    }
+
+
+@router.post("/mcp-token/regenerate")
+def regenerate_mcp_token(
+    user: models.User = Depends(get_current_user),
+    db: Session = Depends(get_db),
+):
+    """Invalidate the current MCP token and issue a new one."""
+    user.mcp_token = secrets.token_urlsafe(32)
+    db.commit()
+    return {
+        "mcp_token": user.mcp_token,
+        "mcp_url": f"{_MCP_BASE_URL}/mcp?token={user.mcp_token}",
+    }
 
 
 # ── Invitation flow ────────────────────────────────────────────────────────────

@@ -6,17 +6,20 @@
 <title>Aural-Syncro · Research Lab</title>
 <link rel="icon" type="image/x-icon" href="/favicon.ico">
 <link rel="icon" type="image/png" href="/favicon.png">
+<link rel="stylesheet" href="/static/brand.css">
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/d3@7/dist/d3.min.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
-  --bg:#0a0f14; --surface:#0f1923; --surface2:#141f2e; --surface3:#1a2840;
-  --border:rgba(148,210,189,.1); --border2:rgba(148,210,189,.22);
-  --teal:#4dd9ac; --teal2:#2ecc8e; --cyan:#38bdf8;
-  --text:#e2efe8; --muted:#7aaa92; --muted2:#a8c4b4;
-  --danger:#f87171; --warn:#fbbf24; --success:#4dd9ac;
+  /* ── ResearchLab Brand Identity ── */
+  --bg:#0B1F3A; --surface:#0F2A4D; --surface2:#0b1f3a; --surface3:#112235;
+  --border:rgba(0,212,255,.10); --border2:rgba(0,212,255,.22);
+  --teal:#00D4FF; --teal2:#7A5CFF; --cyan:#00D4FF;
+  --text:#E6EAF0; --muted:#AAB3C5; --muted2:#8093AC;
+  --danger:#FF4D4F; --warn:#FFB020; --success:#00E676;
   --r:8px; --rl:12px;
+  --brand-gradient:linear-gradient(135deg,#00D4FF 0%,#7A5CFF 100%);
 }
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--text);font-family:'Inter',system-ui,sans-serif;font-size:14px;line-height:1.6;overflow-x:hidden}
@@ -51,7 +54,7 @@ button{font-family:inherit;cursor:pointer}
 .fg label{font-size:11px;font-weight:600;color:var(--muted2);text-transform:uppercase;letter-spacing:.06em}
 .fg input{background:var(--surface2);border:0.5px solid var(--border2);border-radius:var(--r);padding:9px 12px;color:var(--text);outline:none;transition:border-color .2s}
 .fg input:focus{border-color:var(--teal)}
-.btn-primary{background:var(--teal2);color:#0a0f14;font-weight:600;font-size:13px;padding:10px 20px;border:none;border-radius:var(--r);transition:all .2s;display:inline-flex;align-items:center;gap:6px}
+.btn-primary{background:var(--teal2);color:#0B1F3A;font-weight:600;font-size:13px;padding:10px 20px;border:none;border-radius:var(--r);transition:all .2s;display:inline-flex;align-items:center;gap:6px}
 .btn-primary:hover{background:var(--teal);filter:brightness(1.05)}
 .btn-ghost{background:transparent;border:0.5px solid var(--border2);color:var(--muted2);font-size:12px;padding:7px 14px;border-radius:var(--r);transition:all .2s}
 .btn-ghost:hover{border-color:var(--teal);color:var(--teal)}
@@ -113,7 +116,7 @@ button{font-family:inherit;cursor:pointer}
   display:flex;align-items:center;padding:0 1.25rem;gap:1rem;flex-shrink:0;
 }
 .topbar-logo{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;color:var(--teal);letter-spacing:.05em;white-space:nowrap}
-.topbar-logo svg{width:24px;height:24px}
+.topbar-logo svg{width:40px;height:40px}
 .topbar-sep{width:0.5px;height:20px;background:var(--border);margin:0 4px}
 .topbar-project-name{font-size:13px;font-weight:600;color:var(--text)}
 .topbar-right{margin-left:auto;display:flex;align-items:center;gap:10px}
@@ -220,20 +223,20 @@ button{font-family:inherit;cursor:pointer}
 .ai-chat-widget.visible{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 .ai-chat-fab{width:44px;height:44px;border-radius:50%;background:var(--teal);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.45);transition:transform .15s,box-shadow .15s;flex-shrink:0}
 .ai-chat-fab:hover{transform:scale(1.08);box-shadow:0 6px 20px rgba(77,217,172,.4)}
-.ai-chat-fab svg{color:#0a0f14}
+.ai-chat-fab svg{color:#0B1F3A}
 .ai-chat-panel{width:340px;background:var(--surface);border:0.5px solid var(--border2);border-radius:12px;box-shadow:0 12px 40px rgba(0,0,0,.6);display:none;flex-direction:column;overflow:hidden;max-height:480px}
 .ai-chat-panel.open{display:flex}
 .ai-chat-panel-header{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;border-bottom:0.5px solid var(--border);background:var(--surface2)}
 .ai-chat-panel-title{font-size:12px;font-weight:600;color:var(--text);display:flex;align-items:center;gap:7px}
 .ai-chat-messages{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px;min-height:160px}
 .ai-msg{max-width:88%;padding:8px 12px;border-radius:10px;font-size:12px;line-height:1.6;white-space:pre-wrap}
-.ai-msg.user{align-self:flex-end;background:var(--teal);color:#0a0f14;border-bottom-right-radius:3px}
+.ai-msg.user{align-self:flex-end;background:var(--teal);color:#0B1F3A;border-bottom-right-radius:3px}
 .ai-msg.assistant{align-self:flex-start;background:var(--surface2);color:var(--text);border-bottom-left-radius:3px}
 .ai-msg.thinking{opacity:.6;font-style:italic}
 .ai-chat-input-row{display:flex;gap:8px;padding:10px 12px;border-top:0.5px solid var(--border)}
 .ai-chat-input{flex:1;background:var(--surface2);border:0.5px solid var(--border2);border-radius:8px;padding:7px 10px;color:var(--text);font-size:12px;outline:none;resize:none;min-height:34px;max-height:100px;line-height:1.5;font-family:inherit}
 .ai-chat-input:focus{border-color:var(--teal)}
-.ai-chat-send{background:var(--teal);border:none;border-radius:8px;padding:7px 12px;cursor:pointer;color:#0a0f14;font-size:11px;font-weight:700;flex-shrink:0;transition:opacity .15s}
+.ai-chat-send{background:var(--teal);border:none;border-radius:8px;padding:7px 12px;cursor:pointer;color:#0B1F3A;font-size:11px;font-weight:700;flex-shrink:0;transition:opacity .15s}
 .ai-chat-send:hover{opacity:.85}
 /* ── Config / Tools tabs ── */
 .config-section-title{font-size:11px;font-weight:700;color:var(--muted2);text-transform:uppercase;letter-spacing:.08em;margin:1.25rem 0 .75rem}
@@ -392,7 +395,7 @@ img.profile-avatar{background:transparent}
 .milestone-header:hover{background:var(--surface3)}
 .milestone-check{width:18px;height:18px;border-radius:50%;border:2px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .2s;cursor:pointer}
 .milestone-check.done{background:var(--teal);border-color:var(--teal)}
-.milestone-check.done::after{content:'✓';color:#0a0f14;font-size:10px;font-weight:700}
+.milestone-check.done::after{content:'✓';color:#0B1F3A;font-size:10px;font-weight:700}
 .milestone-info{flex:1}
 .milestone-title{font-size:13px;font-weight:600}
 .milestone-title.done-text{text-decoration:line-through;color:var(--muted)}
@@ -402,7 +405,7 @@ img.profile-avatar{background:transparent}
 .req-item{display:flex;align-items:center;gap:8px;padding:6px 10px;border-radius:6px;background:var(--surface);font-size:12px}
 .req-check{width:14px;height:14px;border-radius:3px;border:1.5px solid var(--border2);flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .15s}
 .req-check.done{background:var(--teal);border-color:var(--teal)}
-.req-check.done::after{content:'✓';color:#0a0f14;font-size:8px;font-weight:700}
+.req-check.done::after{content:'✓';color:#0B1F3A;font-size:8px;font-weight:700}
 .req-check.blocked{background:rgba(248,113,113,.2);border-color:var(--danger)}
 .req-title{flex:1}
 .req-title.done-text{text-decoration:line-through;color:var(--muted)}
@@ -614,11 +617,37 @@ img.profile-avatar{background:transparent}
 </head>
 <body>
 
+<!-- ── Brand SVG sprite + gradient defs (inline para que url(#brand-ig) resuelva) ── -->
+<svg aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden">
+  <defs>
+    <linearGradient id="brand-ig" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"   stop-color="#00D4FF"/>
+      <stop offset="100%" stop-color="#7A5CFF"/>
+    </linearGradient>
+    <filter id="brand-glow"><feGaussianBlur stdDeviation="1.5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+  </defs>
+</svg>
+
 <!-- ══════════════ AUTH SCREEN ══════════════ -->
 <div id="auth-screen">
   <div class="auth-card">
     <div class="auth-logo">
-      <svg viewBox="0 0 36 36" fill="none"><rect width="36" height="36" rx="9" fill="rgba(77,217,172,.12)" stroke="rgba(77,217,172,.35)" stroke-width="0.8"/><path d="M18 7L10 12v11l8 6 8-6V12L18 7z" stroke="#4dd9ac" stroke-width="1.5" fill="none"/><circle cx="18" cy="19" r="4" fill="rgba(77,217,172,.2)" stroke="#4dd9ac" stroke-width="1"/><path d="M18 15v8M14 19h8" stroke="#4dd9ac" stroke-width="1"/></svg>
+      <svg viewBox="0 0 40 40" fill="none" width="38" height="38">
+        <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="rgba(0,212,255,.08)" stroke="url(#brand-ig)" stroke-width="1.5"/>
+        <circle cx="20" cy="11" r="2.5" fill="url(#brand-ig)"/>
+        <circle cx="29" cy="16" r="2"   fill="#7A5CFF" opacity=".8"/>
+        <circle cx="29" cy="24" r="2"   fill="#00D4FF" opacity=".8"/>
+        <circle cx="20" cy="29" r="2.5" fill="url(#brand-ig)"/>
+        <circle cx="11" cy="24" r="2"   fill="#7A5CFF" opacity=".8"/>
+        <circle cx="11" cy="16" r="2"   fill="#00D4FF" opacity=".8"/>
+        <line x1="20" y1="13.5" x2="27" y2="17.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+        <line x1="27" y1="17.5" x2="27" y2="22.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+        <line x1="27" y1="22.5" x2="20" y2="26.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+        <line x1="20" y1="26.5" x2="13" y2="22.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+        <line x1="13" y1="22.5" x2="13" y2="17.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+        <line x1="13" y1="17.5" x2="20" y2="13.5" stroke="url(#brand-ig)" stroke-width="1" opacity=".6"/>
+        <text x="20" y="24" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="800" fill="url(#brand-ig)" letter-spacing="-.5">R</text>
+      </svg>
       <div class="auth-logo-text">AURAL-SYNCRO · RESEARCH LAB</div>
     </div>
     <h2 class="auth-title">Plataforma de Investigación</h2>
@@ -715,7 +744,22 @@ img.profile-avatar{background:transparent}
   <!-- Top bar -->
   <div class="topbar">
     <div class="topbar-logo">
-      <svg viewBox="0 0 24 24" fill="none"><rect width="24" height="24" rx="6" fill="rgba(77,217,172,.12)" stroke="rgba(77,217,172,.35)" stroke-width="0.6"/><path d="M12 4L7 7v7l5 3 5-3V7L12 4z" stroke="#4dd9ac" stroke-width="1.2" fill="none"/></svg>
+      <svg viewBox="0 0 40 40" fill="none" width="44" height="44">
+        <polygon points="20,2 36,11 36,29 20,38 4,29 4,11" fill="rgba(0,212,255,.07)" stroke="url(#brand-ig)" stroke-width="1.4"/>
+        <circle cx="20" cy="11" r="2.2" fill="url(#brand-ig)"/>
+        <circle cx="29" cy="16" r="1.7" fill="#7A5CFF" opacity=".85"/>
+        <circle cx="29" cy="24" r="1.7" fill="#00D4FF" opacity=".85"/>
+        <circle cx="20" cy="29" r="2.2" fill="url(#brand-ig)"/>
+        <circle cx="11" cy="24" r="1.7" fill="#7A5CFF" opacity=".85"/>
+        <circle cx="11" cy="16" r="1.7" fill="#00D4FF" opacity=".85"/>
+        <line x1="20" y1="13.2" x2="27.3" y2="17.2" stroke="url(#brand-ig)" stroke-width=".9" opacity=".55"/>
+        <line x1="27.3" y1="17.2" x2="27.3" y2="22.8" stroke="url(#brand-ig)" stroke-width=".9" opacity=".55"/>
+        <line x1="27.3" y1="22.8" x2="20" y2="26.8" stroke="url(#brand-ig)" stroke-width=".9" opacity=".55"/>
+        <line x1="20" y1="26.8" x2="12.7" y2="22.8" stroke="url(#brand-ig)" stroke-width=".9" opacity=".55"/>
+        <line x1="12.7" y1="22.8" x2="12.7" y2="17.2" stroke="url(#brand-ig)" stroke-width=".9" opacity=".55"/>
+        <line x1="12.7" y1="17.2" x2="20" y2="13.2" stroke="url(#brand-ig)" stroke-width=".9" opacity=".55"/>
+        <text x="20" y="23.5" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="800" fill="url(#brand-ig)" letter-spacing="-.5">R</text>
+      </svg>
       <span>RESEARCH LAB</span>
     </div>
     <div class="topbar-sep"></div>
@@ -944,6 +988,10 @@ img.profile-avatar{background:transparent}
               <button class="menu-item" onclick="openHelpSection('ai-guide');closeMenus()">
                 <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M6 12.5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1h-3a.5.5 0 0 1-.5-.5zM3 8.062C3 6.76 4.235 5.765 5.53 5.886a26.58 26.58 0 0 0 4.94 0C11.765 5.765 13 6.76 13 8.062v1.157a.933.933 0 0 1-.765.935c-.845.147-2.34.346-4.235.346-1.895 0-3.39-.2-4.235-.346A.933.933 0 0 1 3 9.219V8.062zm4.5-.5a.5.5 0 0 0-.5.5v1a.5.5 0 0 0 1 0v-.5h.5a.5.5 0 0 0 0-1H7.5z"/></svg>
                 Asistente IA
+              </button>
+              <button class="menu-item" onclick="openHelpSection('mcp-claude');closeMenus()">
+                <svg width="12" height="12" viewBox="0 0 16 16" fill="currentColor"><path d="M8 1a7 7 0 1 0 0 14A7 7 0 0 0 8 1zm0-1a8 8 0 1 1 0 16A8 8 0 0 1 8 0z"/><path d="M6.646 6.646a.5.5 0 0 1 .708 0L8 7.293l.646-.647a.5.5 0 0 1 .708.708L8.707 8l.647.646a.5.5 0 0 1-.708.708L8 8.707l-.646.647a.5.5 0 0 1-.708-.708L7.293 8l-.647-.646a.5.5 0 0 1 0-.708zM4.5 8a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1H5a.5.5 0 0 1-.5-.5zm5 0a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 0 1h-1a.5.5 0 0 1-.5-.5zM8 11a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 8 11zm0-7a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1A.5.5 0 0 1 8 4z"/></svg>
+                Claude AI — Integración MCP
               </button>
               <div class="menu-sep"></div>
               <button class="menu-item" onclick="openHelpSection('about');closeMenus()" data-i18n="menu_about">
@@ -1792,6 +1840,7 @@ img.profile-avatar{background:transparent}
   <div id="hs-title-github">Configurar GitHub App</div>
   <div id="hs-title-obsidian-guide">Plugin Obsidian</div>
   <div id="hs-title-ai-guide">Asistente IA</div>
+  <div id="hs-title-mcp-claude">Claude AI — Integración MCP</div>
   <div id="hs-title-about">Acerca de</div>
 
     <!-- MANUAL DE USO -->
@@ -2027,6 +2076,97 @@ img.profile-avatar{background:transparent}
       </ul>
 
       <p class="help-p" style="margin-top:1rem;font-size:11px;color:var(--muted)">v1.0.0 · Aural-Syncro © 2026</p>
+    </div>
+
+    <!-- CLAUDE AI — INTEGRACIÓN MCP -->
+    <div class="help-section" id="help-mcp-claude">
+      <div class="help-h2">¿Qué es la integración MCP?</div>
+      <p class="help-p">El Research Lab funciona como un <strong>servidor MCP</strong> (Model Context Protocol). Esto significa que podés conectar tu sesión de <strong>Claude Pro o Max</strong> directamente al Lab sin necesitar una API key de Anthropic. Tu suscripción de claude.ai es el motor de IA; el Lab expone tus datos de investigación como herramientas que Claude puede leer y escribir.</p>
+      <p class="help-p">El resultado es que Claude conoce tus proyectos, hipótesis, bitácora y referencias en tiempo real, y cualquier cambio que haga se refleja inmediatamente en la interfaz web.</p>
+
+      <div class="help-h2" style="margin-top:1.25rem">Paso 1 — Obtener tu token MCP personal</div>
+      <ol class="help-steps">
+        <li>En el Lab, abrí el menú <strong>Herramientas → Token MCP</strong> desde el panel lateral izquierdo.</li>
+        <li>Copiá la URL personalizada que aparece. Tiene la forma:<br>
+          <code class="help-code">https://lab.aural-syncro.com.ar/mcp?token=TU_TOKEN</code>
+        </li>
+        <li>Este token es <strong>personal y permanente</strong> — no expira como el token de sesión. Guardalo de forma segura.</li>
+        <li>Si necesitás invalidarlo (por ejemplo, si se filtró), usá el botón <strong>Regenerar token</strong>. El token anterior quedará inutilizable inmediatamente.</li>
+      </ol>
+      <div class="help-note">Solo el PI puede habilitar la función <em>IA Local</em>. Si no ves la opción Token MCP, pedile al PI que te habilite desde Configuración → Acceso por usuario.</div>
+
+      <div class="help-h2" style="margin-top:1.25rem">Paso 2a — Conectar desde claude.ai (versión web)</div>
+      <ol class="help-steps">
+        <li>Ingresá a <strong>claude.ai</strong> con tu cuenta Pro o Max.</li>
+        <li>Abrí <strong>Settings → Integrations</strong> (o <em>Configuración → Integraciones</em>).</li>
+        <li>Hacé clic en <strong>Add integration</strong> y pegá la URL de tu token:<br>
+          <code class="help-code">https://lab.aural-syncro.com.ar/mcp?token=TU_TOKEN</code>
+        </li>
+        <li>Dale un nombre descriptivo, por ejemplo: <em>Research Lab — Aural Syncro</em>.</li>
+        <li>Guardá. Claude detectará automáticamente las herramientas disponibles del Lab.</li>
+        <li>En cualquier chat nuevo, activá la integración con el botón <strong>Search &amp; tools</strong> y seleccioná <em>Research Lab</em>.</li>
+      </ol>
+      <div class="help-note">La integración web es por chat: hay que activarla en cada conversación donde quieras que Claude tenga acceso al Lab.</div>
+
+      <div class="help-h2" style="margin-top:1.25rem">Paso 2b — Conectar desde Claude Desktop (Mac)</div>
+      <ol class="help-steps">
+        <li>Asegurate de tener <strong>Claude Desktop</strong> instalado y actualizado (versión con soporte MCP).</li>
+        <li>Cerrá Claude Desktop si está abierto.</li>
+        <li>Abrí el archivo de configuración:<br>
+          <code class="help-code">~/Library/Application Support/Claude/claude_desktop_config.json</code>
+          Si no existe, crealo.
+        </li>
+        <li>Agregá (o modificá) la sección <code style="font-size:11px;background:var(--surface2);padding:1px 5px;border-radius:3px">mcpServers</code>:<br>
+          <code class="help-code">{
+  "mcpServers": {
+    "research-lab": {
+      "url": "https://lab.aural-syncro.com.ar/mcp?token=TU_TOKEN"
+    }
+  }
+}</code>
+        </li>
+        <li>Guardá el archivo y volvé a abrir Claude Desktop.</li>
+        <li>Verificá que aparezca <strong>research-lab</strong> en la lista de servidores MCP activos (ícono de herramienta en el chat).</li>
+      </ol>
+
+      <div class="help-h2" style="margin-top:1.25rem">Paso 2b — Conectar desde Claude Desktop (Windows)</div>
+      <ol class="help-steps">
+        <li>Cerrá Claude Desktop si está abierto.</li>
+        <li>Abrí el archivo de configuración en:<br>
+          <code class="help-code">%APPDATA%\Claude\claude_desktop_config.json</code>
+          Podés pegarlo directamente en el explorador de archivos o en la barra de direcciones del explorador. Si no existe, crealo.
+        </li>
+        <li>Agregá la sección <code style="font-size:11px;background:var(--surface2);padding:1px 5px;border-radius:3px">mcpServers</code>:<br>
+          <code class="help-code">{
+  "mcpServers": {
+    "research-lab": {
+      "url": "https://lab.aural-syncro.com.ar/mcp?token=TU_TOKEN"
+    }
+  }
+}</code>
+        </li>
+        <li>Guardá el archivo y volvé a abrir Claude Desktop.</li>
+        <li>El servidor aparecerá listado en la sección de herramientas del chat.</li>
+      </ol>
+      <div class="help-note">Si Claude Desktop muestra un error de conexión, verificá que la URL incluya el token correctamente y que tengas conexión a internet.</div>
+
+      <div class="help-h2" style="margin-top:1.25rem">Herramientas disponibles</div>
+      <p class="help-p">Una vez conectado, Claude puede usar las siguientes herramientas sobre tus proyectos del Lab:</p>
+      <ul class="help-ul">
+        <li><strong>list_projects</strong> — lista todos los proyectos a los que pertenecés</li>
+        <li><strong>get_project_overview</strong> — resumen completo de un proyecto (hipótesis, hitos, miembros)</li>
+        <li><strong>list_hypotheses</strong> — lista hipótesis con estado y prioridad</li>
+        <li><strong>get_hypothesis</strong> — detalle completo de una hipótesis</li>
+        <li><strong>create_hypothesis</strong> — crea una hipótesis nueva <em>(requiere rol PI o Colaborador)</em></li>
+        <li><strong>list_journal</strong> — entradas recientes de la bitácora</li>
+        <li><strong>add_journal_entry</strong> — agrega una entrada a la bitácora <em>(requiere rol PI o Colaborador)</em></li>
+        <li><strong>search_notes</strong> — busca en las notas del proyecto por palabra clave</li>
+        <li><strong>list_references</strong> — lista la bibliografía del proyecto</li>
+      </ul>
+
+      <div class="help-h2" style="margin-top:1.25rem">Sincronización con la interfaz web</div>
+      <p class="help-p">Cualquier cambio que Claude realice a través de MCP (crear hipótesis, agregar entradas de bitácora) se guarda directamente en la base de datos del Lab. La próxima vez que recargues la sección correspondiente en la web, verás los cambios reflejados.</p>
+      <div class="help-note">El token MCP es de larga duración y no depende de la sesión web del Lab. Podés mantener la integración activa en Claude Desktop aunque no tengas el Lab abierto en el navegador.</div>
     </div>
 </div>
 

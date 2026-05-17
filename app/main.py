@@ -15,7 +15,7 @@ def _is_lab_host(request: Request) -> bool:
     return host in _LAB_HOSTS
 
 from app.database import engine, Base
-from app.routers import auth, projects, journal, hypotheses, milestones, notes, references, graph, github, documents, plugin, project_config, ai_chat, register
+from app.routers import auth, projects, journal, hypotheses, milestones, notes, references, graph, github, documents, plugin, project_config, ai_chat, register, mcp
 
 # Create all tables on startup
 Base.metadata.create_all(bind=engine)
@@ -36,6 +36,7 @@ def _run_migrations() -> None:
         "ALTER TABLE users ADD COLUMN IF NOT EXISTS orcid VARCHAR",
         "ALTER TABLE users ADD COLUMN IF NOT EXISTS bio TEXT",
         "ALTER TABLE users ADD COLUMN IF NOT EXISTS website VARCHAR",
+        "ALTER TABLE users ADD COLUMN IF NOT EXISTS mcp_token VARCHAR UNIQUE",
         "ALTER TABLE projects ADD COLUMN IF NOT EXISTS github_token_enc VARCHAR",
         "ALTER TABLE projects ADD COLUMN IF NOT EXISTS github_installation_id VARCHAR",
         "ALTER TABLE projects ADD COLUMN IF NOT EXISTS github_owner VARCHAR",
@@ -130,6 +131,7 @@ app.include_router(plugin.router,         prefix="/api/v1")
 app.include_router(project_config.router, prefix="/api/v1")
 app.include_router(ai_chat.router,        prefix="/api/v1")
 app.include_router(register.router,       prefix="/api/v1")
+app.include_router(mcp.router)   # /mcp — no prefix, must be before static catch-all
 
 # Static files — must be mounted BEFORE catch-all routes
 static_dir = os.path.join(os.path.dirname(__file__), "..", "static")
