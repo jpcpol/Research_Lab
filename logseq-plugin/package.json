@@ -1,0 +1,13 @@
+{
+  "name": "logseq-sspa-research-lab",
+  "version": "1.0.0",
+  "description": "Sincroniza tu grafo de Logseq con SSPA Research Lab",
+  "main": "index.js",
+  "author": "Aural-Syncro",
+  "license": "UNLICENSED",
+  "logseq": {
+    "id": "logseq-sspa-research-lab",
+    "title": "SSPA Research Lab",
+    "icon": "icon.png"
+  }
+}

@@ -25,7 +25,8 @@ def _ensure_postgres_db():
 
 _ensure_postgres_db()
 
-engine = create_engine(DATABASE_URL, connect_args=connect_args)
+_pool_kwargs = {} if DATABASE_URL.startswith("sqlite") else {"pool_size": 10, "max_overflow": 20}
+engine = create_engine(DATABASE_URL, connect_args=connect_args, **_pool_kwargs)
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 

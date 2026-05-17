@@ -22,6 +22,9 @@ _MAIN_JS       = os.path.join(_STATIC_DIR, "main.js")
 _INSTALLER_DIR = os.path.join(os.path.dirname(__file__), "..", "..", "installer")
 _INSTALLER_TPL = os.path.join(_INSTALLER_DIR, "install-lab-tools.mjs")
 _MCP_BRIDGE    = os.path.join(os.path.dirname(__file__), "..", "..", "obsidian-plugin", "mcp-lab-bridge.mjs")
+_LOGSEQ_DIR    = os.path.join(os.path.dirname(__file__), "..", "..", "logseq-plugin")
+_LOGSEQ_JS     = os.path.join(_LOGSEQ_DIR, "index.js")
+_LOGSEQ_PKG    = os.path.join(_LOGSEQ_DIR, "package.json")
 
 
 def _read_manifest() -> dict:
@@ -70,6 +73,32 @@ def mcp_bridge_download(current_user=Depends(get_current_user)):
         media_type="application/javascript",
         filename="mcp-lab-bridge.mjs",
         headers={"Content-Disposition": 'attachment; filename="mcp-lab-bridge.mjs"'},
+    )
+
+
+# GET /api/v1/plugin/logseq  — serve Logseq index.js (auth required)
+@router.get("/plugin/logseq", include_in_schema=False)
+def logseq_plugin_download(current_user=Depends(get_current_user)):
+    if not os.path.isfile(_LOGSEQ_JS):
+        raise HTTPException(404, "Logseq plugin not available")
+    return FileResponse(
+        _LOGSEQ_JS,
+        media_type="application/javascript",
+        filename="index.js",
+        headers={"Content-Disposition": 'attachment; filename="index.js"'},
+    )
+
+
+# GET /api/v1/plugin/logseq/manifest  — serve Logseq package.json (auth required)
+@router.get("/plugin/logseq/manifest", include_in_schema=False)
+def logseq_plugin_manifest(current_user=Depends(get_current_user)):
+    if not os.path.isfile(_LOGSEQ_PKG):
+        raise HTTPException(404, "Logseq plugin manifest not found")
+    return FileResponse(
+        _LOGSEQ_PKG,
+        media_type="application/json",
+        filename="package.json",
+        headers={"Content-Disposition": 'attachment; filename="package.json"'},
     )
 
 
