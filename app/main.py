@@ -147,11 +147,22 @@ if os.path.isdir(static_dir):
         return FileResponse(os.path.join(static_dir, "favicon.png"))
 
     @app.get("/robots.txt", include_in_schema=False)
-    def robots_txt():
+    def robots_txt(request: Request):
+        # lab.aural-syncro.com.ar is a private app — disallow all crawlers
+        if _is_lab_host(request):
+            from fastapi.responses import PlainTextResponse
+            return PlainTextResponse(
+                "User-agent: *\nDisallow: /\n",
+                media_type="text/plain",
+            )
         return FileResponse(os.path.join(static_dir, "robots.txt"), media_type="text/plain")
 
     @app.get("/sitemap.xml", include_in_schema=False)
-    def sitemap_xml():
+    def sitemap_xml(request: Request):
+        # Sitemap only for the public landing domain
+        if _is_lab_host(request):
+            from fastapi.responses import Response as HTTPResponse
+            return HTTPResponse(status_code=404)
         return FileResponse(os.path.join(static_dir, "sitemap.xml"), media_type="application/xml")
 
     # Root: lab.aural-syncro.com.ar → SPA | landing domain → landing page

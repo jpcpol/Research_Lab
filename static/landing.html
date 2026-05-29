@@ -102,7 +102,7 @@
       line-height: 1.25;
       color: var(--text);
     }
-    h1 { font-size: clamp(2rem, 5vw, 3.5rem); }
+    h1 { font-size: clamp(1.5rem, 3.5vw, 2.6rem); }
     h2 { font-size: clamp(1.6rem, 3.5vw, 2.4rem); }
     h3 { font-size: clamp(1.2rem, 2.5vw, 1.6rem); }
     h4 { font-size: 1.1rem; }
@@ -229,6 +229,7 @@
     .card p  { color: var(--text-muted); font-size: .9rem; }
 
     /* ── Nav ─────────────────────────────────────────────────── */
+    #navbar .container { max-width: 960px; }
     #navbar {
       position: sticky;
       top: 0;
@@ -402,47 +403,22 @@
       background-size: auto, auto, 60px 60px;
     }
     .hero-inner {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 3rem;
+      display: flex;
+      flex-direction: column;
       align-items: center;
+      text-align: center;
       width: 100%;
+      max-width: 780px;
+      margin-inline: auto;
       padding-block: 80px;
     }
     .hero-content {
       position: relative;
       z-index: 2;
       color: #fff;
-    }
-    /* Research graph SVG visual */
-    .hero-visual {
-      position: relative;
-      z-index: 2;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-    .hero-visual svg {
       width: 100%;
-      max-width: 520px;
-      filter: drop-shadow(0 16px 48px rgba(0,0,0,.35));
     }
-    /* SVG node pulse animation */
-    @keyframes node-pulse {
-      0%, 100% { opacity: .85; transform: scale(1); }
-      50%       { opacity: 1;   transform: scale(1.08); }
-    }
-    @keyframes e-d { 0%,100%{opacity:1} 50%{opacity:.16} }
-    @keyframes dot-travel {
-      0%   { stroke-dashoffset: 200; }
-      100% { stroke-dashoffset: 0; }
-    }
-    @keyframes float-in {
-      from { opacity: 0; transform: translateY(10px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .hero-visual svg { animation: float-in .8s ease both; animation-delay: .3s; opacity: 0; }
-    .hero-badge {
+.hero-badge {
       display: inline-flex;
       align-items: center;
       gap: .5rem;
@@ -458,22 +434,24 @@
       margin-bottom: 1.5rem;
     }
     .hero-badge span { font-size: .9rem; }
-    .hero-content h1 { color: #fff; margin-bottom: 1.25rem; }
+    .hero-content h1 { color: #fff; margin-bottom: 1.25rem; font-size: clamp(1.4rem, 3vw, 2.2rem); }
     .hero-content h1 em {
       font-style: normal;
       color: var(--accent-bright);
     }
     .hero-content > p {
-      font-size: 1.15rem;
+      font-size: 1rem;
       color: #c5cae9;
       margin-bottom: 2.5rem;
-      max-width: 56ch;
+      max-width: 60ch;
+      margin-inline: auto;
     }
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 1rem;
       margin-bottom: 3rem;
+      justify-content: center;
     }
     .hero-access-btn {
       display: inline-flex;
@@ -745,25 +723,6 @@
     .doc-link-item .arrow-r { color: var(--text-light); font-size: .9rem; }
 
     /* ── Company ─────────────────────────────────────────────── */
-    #company .grid-2 { align-items: center; gap: 4rem; }
-    .company-logo-wrap {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    .company-logo-wrap img {
-      max-width: 420px;
-      width: 100%;
-      filter: drop-shadow(0 4px 20px rgba(0,212,255,.15));
-    }
-    .company-tagline {
-      font-family: Georgia, serif;
-      font-size: 1rem;
-      color: var(--text-muted);
-      text-align: center;
-      font-style: italic;
-    }
     .company-text h2 { margin-bottom: 1rem; }
     .company-text p { color: var(--text-muted); margin-bottom: 1.25rem; }
 
@@ -927,31 +886,8 @@
       letter-spacing: .05em;
     }
 
-    /* ── Lab CTA Banner ──────────────────────────────────────── */
-    .lab-cta-banner {
-      background: linear-gradient(135deg, var(--accent) 0%, var(--accent-bright) 100%);
-      border-radius: var(--r-xl);
-      padding: 2.5rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 2rem;
-      margin-top: 3rem;
-      box-shadow: 0 8px 32px rgba(200,147,10,.3);
-    }
-    .lab-cta-banner h3 {
-      color: #fff;
-      margin-bottom: .35rem;
-      font-size: 1.4rem;
-    }
-    .lab-cta-banner p {
-      color: rgba(255,255,255,.82);
-      font-size: .9rem;
-      margin: 0;
-    }
-    .lab-cta-banner .btn-dark { white-space: nowrap; }
 
-    /* ── Scroll-reveal ───────────────────────────────────────── */
+/* ── Scroll-reveal ───────────────────────────────────────── */
     .reveal {
       opacity: 0;
       transform: translateY(24px);
@@ -994,9 +930,7 @@
       .access-grid { grid-template-columns: 1fr; }
       .contact-grid { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
-      .hero-inner { grid-template-columns: 1fr; }
-      .hero-visual { display: none; }
-      .about-img-wrap, .docs-img { order: -1; }
+      .about-img-wrap { order: -1; }
     }
     @media (max-width: 768px) {
       :root { --section-py: 64px; }
@@ -1017,7 +951,6 @@
       .grid-3 { grid-template-columns: 1fr; }
       .grid-4 { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr; }
-      .lab-cta-banner { flex-direction: column; text-align: center; padding: 2rem; }
       .hero-stats { gap: 1.5rem; }
       .form-row { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; text-align: center; }
@@ -1172,126 +1105,6 @@
         </div>
       </div>
 
-      <!-- Right: Atom — electrons orbiting the Research Lab nucleus -->
-      <div class="hero-visual" aria-hidden="true">
-        <svg viewBox="0 0 520 480" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Atom visualization — Research Lab">
-          <defs>
-            <radialGradient id="gc2" cx="50%" cy="50%" r="50%">
-              <stop offset="0%" stop-color="#00D4FF" stop-opacity=".22"/>
-              <stop offset="100%" stop-color="#7A5CFF" stop-opacity="0"/>
-            </radialGradient>
-            <radialGradient id="ng2" cx="38%" cy="30%" r="66%">
-              <stop offset="0%" stop-color="#60eeff"/>
-              <stop offset="55%" stop-color="#007e9a"/>
-              <stop offset="100%" stop-color="#040d1a"/>
-            </radialGradient>
-            <radialGradient id="ec2" cx="36%" cy="28%" r="64%">
-              <stop offset="0%" stop-color="#88f2ff"/>
-              <stop offset="100%" stop-color="#003a50"/>
-            </radialGradient>
-            <radialGradient id="ev2" cx="36%" cy="28%" r="64%">
-              <stop offset="0%" stop-color="#c2b0ff"/>
-              <stop offset="100%" stop-color="#241060"/>
-            </radialGradient>
-            <filter id="nglow2">
-              <feGaussianBlur stdDeviation="8" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <filter id="eglow2">
-              <feGaussianBlur stdDeviation="3.5" result="b"/>
-              <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-            </filter>
-            <!-- Ellipse orbit path in local space (centered at origin) rx=165, ry=78 -->
-            <path id="op2" d="M 165,0 A 165,78,0,1,1,-165,0 A 165,78,0,1,1,165,0"/>
-          </defs>
-
-          <!-- Ambient glow -->
-          <circle cx="260" cy="240" r="172" fill="url(#gc2)"/>
-
-          <!-- ── Orbital rings ── -->
-          <ellipse cx="260" cy="240" rx="165" ry="78" fill="none"
-                   stroke="rgba(0,212,255,.20)" stroke-width="1.2" stroke-dasharray="5 4"
-                   transform="rotate(0 260 240)"/>
-          <ellipse cx="260" cy="240" rx="165" ry="78" fill="none"
-                   stroke="rgba(122,92,255,.28)" stroke-width="1.2" stroke-dasharray="5 4"
-                   transform="rotate(-55 260 240)"/>
-          <ellipse cx="260" cy="240" rx="165" ry="78" fill="none"
-                   stroke="rgba(0,212,255,.20)" stroke-width="1.2" stroke-dasharray="5 4"
-                   transform="rotate(55 260 240)"/>
-
-          <!-- ── Orbit A (0°, 7s) ── -->
-          <g transform="translate(260,240) rotate(0)" style="animation:e-d 7s linear infinite">
-            <g><animateMotion dur="7s" repeatCount="indefinite"><mpath href="#op2"/></animateMotion>
-              <circle r="18" fill="url(#ec2)" filter="url(#eglow2)"/>
-            </g>
-          </g>
-          <g transform="translate(260,240) rotate(0)" style="animation:e-d 7s linear infinite;animation-delay:-3.5s">
-            <g><animateMotion dur="7s" repeatCount="indefinite" begin="-3.5s"><mpath href="#op2"/></animateMotion>
-              <circle r="18" fill="url(#ev2)" filter="url(#eglow2)"/>
-            </g>
-          </g>
-
-          <!-- ── Orbit B (-55°, 5s) ── -->
-          <g transform="translate(260,240) rotate(-55)" style="animation:e-d 5s linear infinite">
-            <g><animateMotion dur="5s" repeatCount="indefinite"><mpath href="#op2"/></animateMotion>
-              <circle r="18" fill="url(#ev2)" filter="url(#eglow2)"/>
-            </g>
-          </g>
-          <g transform="translate(260,240) rotate(-55)" style="animation:e-d 5s linear infinite;animation-delay:-2.5s">
-            <g><animateMotion dur="5s" repeatCount="indefinite" begin="-2.5s"><mpath href="#op2"/></animateMotion>
-              <circle r="18" fill="url(#ec2)" filter="url(#eglow2)"/>
-            </g>
-          </g>
-
-          <!-- ── Orbit C (+55°, 9s) ── -->
-          <g transform="translate(260,240) rotate(55)" style="animation:e-d 9s linear infinite">
-            <g><animateMotion dur="9s" repeatCount="indefinite"><mpath href="#op2"/></animateMotion>
-              <circle r="18" fill="url(#ec2)" filter="url(#eglow2)"/>
-            </g>
-          </g>
-          <g transform="translate(260,240) rotate(55)" style="animation:e-d 9s linear infinite;animation-delay:-4.5s">
-            <g><animateMotion dur="9s" repeatCount="indefinite" begin="-4.5s"><mpath href="#op2"/></animateMotion>
-              <circle r="18" fill="url(#ev2)" filter="url(#eglow2)"/>
-            </g>
-          </g>
-
-          <!-- ── NUCLEUS ── -->
-          <circle cx="260" cy="240" r="60" fill="rgba(0,212,255,.05)" style="animation:node-pulse 3.5s ease-in-out infinite"/>
-          <circle cx="260" cy="240" r="48" fill="url(#ng2)" filter="url(#nglow2)"/>
-          <circle cx="260" cy="240" r="42" fill="none" stroke="rgba(255,255,255,.18)" stroke-width="1.1"/>
-          <ellipse cx="247" cy="226" rx="9" ry="5.5" fill="rgba(255,255,255,.12)"/>
-          <!-- Mini atom icon inside nucleus -->
-          <ellipse cx="260" cy="226" rx="11" ry="4" fill="none" stroke="rgba(0,212,255,.40)" stroke-width="1"/>
-          <ellipse cx="260" cy="226" rx="11" ry="4" fill="none" stroke="rgba(0,212,255,.28)" stroke-width="1" transform="rotate(60 260 226)"/>
-          <ellipse cx="260" cy="226" rx="11" ry="4" fill="none" stroke="rgba(122,92,255,.38)" stroke-width="1" transform="rotate(-60 260 226)"/>
-          <circle cx="260" cy="226" r="3" fill="url(#brand-ig)"/>
-          <text x="260" y="244" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" font-weight="800" fill="#E6EAF0" letter-spacing="1.5">RESEARCH</text>
-          <text x="260" y="256" text-anchor="middle" font-family="system-ui,sans-serif" font-size="8.5" font-weight="700" fill="#AAB3C5" letter-spacing="2.5">LAB</text>
-
-          <!-- ── Floating micro-particles ── -->
-          <circle cx="200" cy="58" r="2.5" fill="rgba(0,212,255,.50)">
-            <animate attributeName="cy" values="58;44;58" dur="4s" repeatCount="indefinite"/>
-            <animate attributeName="opacity" values=".4;.8;.4" dur="4s" repeatCount="indefinite"/>
-          </circle>
-          <circle cx="345" cy="50" r="2" fill="rgba(122,92,255,.55)">
-            <animate attributeName="cy" values="50;37;50" dur="3.2s" repeatCount="indefinite" begin=".8s"/>
-          </circle>
-          <circle cx="470" cy="170" r="2.2" fill="rgba(0,212,255,.40)">
-            <animate attributeName="cy" values="170;155;170" dur="3.7s" repeatCount="indefinite" begin="1.2s"/>
-          </circle>
-          <circle cx="50" cy="300" r="1.8" fill="rgba(122,92,255,.45)">
-            <animate attributeName="cy" values="300;315;300" dur="5s" repeatCount="indefinite" begin=".5s"/>
-          </circle>
-          <circle cx="480" cy="330" r="2" fill="rgba(0,212,255,.35)">
-            <animate attributeName="cy" values="330;320;330" dur="4.5s" repeatCount="indefinite" begin="2s"/>
-          </circle>
-          <circle cx="260" cy="430" r="2.2" fill="rgba(0,212,255,.38)">
-            <animate attributeName="cy" values="430;418;430" dur="3.7s" repeatCount="indefinite" begin="1.5s"/>
-          </circle>
-
-          <text x="260" y="463" text-anchor="middle" font-size="8.5" fill="rgba(170,179,197,.65)" letter-spacing="3" font-family="system-ui,sans-serif">AURAL-SYNCRO · RESEARCH PLATFORM</text>
-        </svg>
-      </div>
     </div>
   </div>
 </section>
@@ -1392,19 +1205,6 @@
       </div>
     </div>
 
-    <!-- Lab CTA Banner -->
-    <div class="lab-cta-banner reveal">
-      <div>
-        <h3 data-i18n="cta_banner_title">¿Listo para comenzar?</h3>
-        <p data-i18n="cta_banner_subtitle">Acceda al Research Lab y explore las funcionalidades disponibles para su equipo.</p>
-      </div>
-      <a href="https://lab.aural-syncro.com.ar/app"
-         class="btn btn-dark btn-lg"
-         target="_blank" rel="noopener"
-         data-i18n="cta_banner_btn">
-        Ingresar al Research Lab →
-      </a>
-    </div>
   </div>
 </section>
 
@@ -1491,23 +1291,9 @@
         <div style="margin-top:2rem; padding-top:2rem; border-top:1px solid rgba(255,255,255,.1);">
           <a href="#register"
              class="btn btn-primary btn-lg"
-             style="width:100%; justify-content:center; font-size:1rem; margin-bottom:.875rem;">
+             style="width:100%; justify-content:center; font-size:1rem;">
             <span data-i18n="go_to_form_btn">📋 Completar formulario de registro</span>
           </a>
-          <div style="border-top:1px solid rgba(255,255,255,.08); padding-top:1.5rem; margin-top:.5rem;">
-            <h3 style="color:#e8eaf6; margin-bottom:.75rem; font-size:1rem;" data-i18n="direct_access_title">
-              ¿Ya tiene credenciales?
-            </h3>
-            <p style="color:#9fa8da; font-size:.875rem; margin-bottom:1.25rem;" data-i18n="direct_access_desc">
-              Ingrese directamente a la plataforma con sus credenciales asignadas.
-            </p>
-            <a href="https://lab.aural-syncro.com.ar/app"
-               class="btn btn-outline btn-lg"
-               target="_blank" rel="noopener"
-               style="width:100%; justify-content:center; font-size:.95rem;">
-              <span data-i18n="direct_access_btn">🔬 Ingresar al Research Lab</span>
-            </a>
-          </div>
         </div>
       </div>
     </div>
@@ -1566,15 +1352,14 @@
 ═══════════════════════════════════════════════════════════ -->
 <section id="docs" class="section" aria-labelledby="docs-title">
   <div class="container">
-    <div class="grid-2">
-      <div class="docs-text reveal">
-        <span class="label" data-i18n="docs_label">Documentación</span>
-        <h2 id="docs-title" class="section-title" data-i18n="docs_title">
-          Guías de uso y referencia técnica
-        </h2>
-        <p class="section-intro" data-i18n="docs_intro">
-          La documentación completa de la plataforma está disponible dentro del Research Lab. A continuación encontrará un resumen de los módulos documentados.
-        </p>
+    <div class="docs-text reveal" style="max-width:680px; margin-inline:auto;">
+      <span class="label" data-i18n="docs_label">Documentación</span>
+      <h2 id="docs-title" class="section-title" data-i18n="docs_title">
+        Guías de uso y referencia técnica
+      </h2>
+      <p class="section-intro" data-i18n="docs_intro">
+        La documentación completa de la plataforma está disponible dentro del Research Lab. A continuación encontrará un resumen de los módulos documentados.
+      </p>
 
         <a href="https://lab.aural-syncro.com.ar/app" target="_blank" rel="noopener" class="doc-link-item">
           <div class="icon">🚀</div>
@@ -1624,12 +1409,6 @@
           </div>
           <span class="arrow-r">›</span>
         </a>
-      </div>
-      <div class="docs-img reveal reveal-delay-2">
-        <img src="/static/img/doc-search.png"
-             alt="Vista de búsqueda y documentación de la plataforma"
-             loading="lazy" />
-      </div>
     </div>
   </div>
 </section>
@@ -1639,35 +1418,20 @@
 ═══════════════════════════════════════════════════════════ -->
 <section id="company" class="section section--alt" aria-labelledby="company-title">
   <div class="container">
-    <div class="grid-2">
-      <div class="company-logo-wrap reveal">
-        <img src="/static/img/aural-logo.png"
-             alt="Aural-Syncro — Procesamiento en el origen para soluciones en tiempo real"
-             loading="lazy" />
-        <p class="company-tagline" data-i18n="company_tagline">
-          "Tecnología al servicio de la ciencia"
-        </p>
-      </div>
-      <div class="company-text reveal reveal-delay-1">
-        <span class="label" data-i18n="company_label">Sobre nosotros</span>
-        <h2 id="company-title" class="section-title" data-i18n="company_title">
-          Aural-Syncro
-        </h2>
-        <p data-i18n="company_p1">
-          Aural-Syncro es una empresa de ingeniería de software especializada en el diseño y desarrollo de plataformas tecnológicas complejas para sectores de alta exigencia: investigación científica, educación superior, industria y gobierno.
-        </p>
-        <p data-i18n="company_p2">
-          Desde Argentina, desarrollamos soluciones a medida que combinan arquitecturas modernas (microservicios, containerización, IA) con las necesidades reales de los equipos que las utilizan. Nos especializamos en plataformas colaborativas, sistemas de gestión de conocimiento y herramientas potenciadas por inteligencia artificial.
-        </p>
-        <p data-i18n="company_p3">
-          El Research Lab es uno de nuestros proyectos open-access: una apuesta por democratizar las herramientas de investigación de alta calidad, disponibilizándolas libremente a la comunidad científica y académica.
-        </p>
-        <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1.5rem;">
-          <a href="#register" class="btn btn-dark" data-i18n="company_contact_btn">
-            Solicitar acceso al Lab
-          </a>
-        </div>
-      </div>
+    <div class="company-text reveal" style="max-width:680px; margin-inline:auto;">
+      <span class="label" data-i18n="company_label">Sobre nosotros</span>
+      <h2 id="company-title" class="section-title" data-i18n="company_title">
+        Aural-Syncro
+      </h2>
+      <p data-i18n="company_p1">
+        Aural-Syncro es una empresa de ingeniería de software especializada en el diseño y desarrollo de plataformas tecnológicas complejas para sectores de alta exigencia: investigación científica, educación superior, industria y gobierno.
+      </p>
+      <p data-i18n="company_p2">
+        Desde Argentina, desarrollamos soluciones a medida que combinan arquitecturas modernas (microservicios, containerización, IA) con las necesidades reales de los equipos que las utilizan. Nos especializamos en plataformas colaborativas, sistemas de gestión de conocimiento y herramientas potenciadas por inteligencia artificial.
+      </p>
+      <p data-i18n="company_p3">
+        El Research Lab es uno de nuestros proyectos open-access: una apuesta por democratizar las herramientas de investigación de alta calidad, disponibilizándolas libremente a la comunidad científica y académica.
+      </p>
     </div>
   </div>
 </section>
