@@ -1,7 +1,7 @@
 """mcp.py — MCP server with Streamable HTTP transport for claude.ai integration.
 
 Each researcher connects claude.ai to:
-  https://lab.aural-syncro.com.ar/mcp?token=<mcp_token>
+  https://app.researchlab.com.ar/mcp?token=<mcp_token>
 
 No Anthropic API key needed — the researcher's own Claude Pro/Max subscription
 handles inference. This server provides the data tools.

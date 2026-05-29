@@ -5,10 +5,10 @@ from fastapi.responses import FileResponse, RedirectResponse
 import os
 
 # Hostnames that serve the SPA directly
-_LAB_HOSTS = {"lab.aural-syncro.com.ar"}
+_LAB_HOSTS = {"app.researchlab.com.ar"}
 
 # Hostnames that serve the landing page
-_LANDING_HOSTS = {"researchlab.aural-syncro.com.ar"}
+_LANDING_HOSTS = {"www.researchlab.com.ar", "researchlab.com.ar"}
 
 def _is_lab_host(request: Request) -> bool:
     host = request.headers.get("host", "").split(":")[0].lower()
@@ -148,7 +148,7 @@ if os.path.isdir(static_dir):
 
     @app.get("/robots.txt", include_in_schema=False)
     def robots_txt(request: Request):
-        # lab.aural-syncro.com.ar is a private app — disallow all crawlers
+        # app.researchlab.com.ar is a private app — disallow all crawlers
         if _is_lab_host(request):
             from fastapi.responses import PlainTextResponse
             return PlainTextResponse(
@@ -165,7 +165,7 @@ if os.path.isdir(static_dir):
             return HTTPResponse(status_code=404)
         return FileResponse(os.path.join(static_dir, "sitemap.xml"), media_type="application/xml")
 
-    # Root: lab.aural-syncro.com.ar → SPA | landing domain → landing page
+    # Root: app.researchlab.com.ar → SPA | landing domain → landing page
     @app.get("/", include_in_schema=False)
     def root(request: Request):
         if _is_lab_host(request):

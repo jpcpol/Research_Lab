@@ -1939,7 +1939,7 @@ img.profile-avatar{background:transparent}
         <li>
           Completá los campos obligatorios:<br>
           <strong>GitHub App name:</strong> un nombre único (ej. <em>Mi-Lab-Investigacion</em>)<br>
-          <strong>Homepage URL:</strong> la URL del Lab (ej. <code style="font-size:10px;background:var(--surface2);padding:0 4px;border-radius:3px">https://lab.aural-syncro.com.ar</code>)<br>
+          <strong>Homepage URL:</strong> la URL del Lab (ej. <code style="font-size:10px;background:var(--surface2);padding:0 4px;border-radius:3px">https://app.researchlab.com.ar</code>)<br>
           <strong>Webhook → Active:</strong> desmarcar (no se necesita)
         </li>
         <li>
@@ -2073,7 +2073,7 @@ Windows:        %APPDATA%\Logseq\plugins\sspa-research-lab\</code>
         <li>
           Abrí la configuración del plugin (<strong>⚙</strong> junto al nombre) y completá:
           <ul class="help-ul" style="margin-top:.4rem;margin-bottom:0">
-            <li><strong>Lab URL</strong>: <code style="font-size:11px;background:var(--surface2);padding:1px 5px;border-radius:3px">https://lab.aural-syncro.com.ar</code></li>
+            <li><strong>Lab URL</strong>: <code style="font-size:11px;background:var(--surface2);padding:1px 5px;border-radius:3px">https://app.researchlab.com.ar</code></li>
             <li><strong>Token JWT</strong>: copialo desde <strong>Herramientas → Token personal</strong> en el Lab</li>
             <li><strong>Project ID</strong>: el UUID del proyecto (visible en la URL o en Herramientas)</li>
           </ul>
@@ -2164,7 +2164,7 @@ Windows:        %APPDATA%\Logseq\plugins\sspa-research-lab\</code>
       <ol class="help-steps">
         <li>En el Lab, abrí el menú <strong>Herramientas → Token MCP</strong> desde el panel lateral izquierdo.</li>
         <li>Copiá la URL personalizada que aparece. Tiene la forma:<br>
-          <code class="help-code">https://lab.aural-syncro.com.ar/mcp?token=TU_TOKEN</code>
+          <code class="help-code">https://app.researchlab.com.ar/mcp?token=TU_TOKEN</code>
         </li>
         <li>Este token es <strong>personal y permanente</strong> — no expira como el token de sesión. Guardalo de forma segura.</li>
         <li>Si necesitás invalidarlo (por ejemplo, si se filtró), usá el botón <strong>Regenerar token</strong>. El token anterior quedará inutilizable inmediatamente.</li>
@@ -2176,7 +2176,7 @@ Windows:        %APPDATA%\Logseq\plugins\sspa-research-lab\</code>
         <li>Ingresá a <strong>claude.ai</strong> con tu cuenta Pro o Max.</li>
         <li>Abrí <strong>Settings → Integrations</strong> (o <em>Configuración → Integraciones</em>).</li>
         <li>Hacé clic en <strong>Add integration</strong> y pegá la URL de tu token:<br>
-          <code class="help-code">https://lab.aural-syncro.com.ar/mcp?token=TU_TOKEN</code>
+          <code class="help-code">https://app.researchlab.com.ar/mcp?token=TU_TOKEN</code>
         </li>
         <li>Dale un nombre descriptivo, por ejemplo: <em>Research Lab — Aural Syncro</em>.</li>
         <li>Guardá. Claude detectará automáticamente las herramientas disponibles del Lab.</li>
@@ -2196,7 +2196,7 @@ Windows:        %APPDATA%\Logseq\plugins\sspa-research-lab\</code>
           <code class="help-code">{
   "mcpServers": {
     "research-lab": {
-      "url": "https://lab.aural-syncro.com.ar/mcp?token=TU_TOKEN"
+      "url": "https://app.researchlab.com.ar/mcp?token=TU_TOKEN"
     }
   }
 }</code>
@@ -2216,7 +2216,7 @@ Windows:        %APPDATA%\Logseq\plugins\sspa-research-lab\</code>
           <code class="help-code">{
   "mcpServers": {
     "research-lab": {
-      "url": "https://lab.aural-syncro.com.ar/mcp?token=TU_TOKEN"
+      "url": "https://app.researchlab.com.ar/mcp?token=TU_TOKEN"
     }
   }
 }</code>

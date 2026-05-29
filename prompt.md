@@ -13,7 +13,7 @@ El Research Lab vive en `investigacion/` dentro del monorepo SSPA:
   - Plugin Obsidian: `obsidian-plugin/` (TypeScript, esbuild)
   - MCP Bridge: `obsidian-plugin/mcp-lab-bridge.mjs` (Node.js MCP server)
   - Docker: servicios en el `docker-compose.yml` principal de SSPA
-  - Dominio objetivo: `lab.aural-syncro.com.ar`
+  - Dominio objetivo: `app.researchlab.com.ar`
 
 ──────────────────────────────────────────────────────
 OBJETIVOS DE ESTA SESIÓN

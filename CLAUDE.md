@@ -2,7 +2,7 @@
 
 ## Descripción
 
-SPA colaborativa para equipos de investigación científica. Gestiona hipótesis, bitácora inmutable, referencias bibliográficas, milestones, grafo de conocimiento semántico y sincronización con Obsidian. Forma parte del ecosistema SSPA en `lab.aural-syncro.com.ar`.
+SPA colaborativa para equipos de investigación científica. Gestiona hipótesis, bitácora inmutable, referencias bibliográficas, milestones, grafo de conocimiento semántico y sincronización con Obsidian. Forma parte del ecosistema SSPA en `app.researchlab.com.ar`.
 
 ## Stack
 

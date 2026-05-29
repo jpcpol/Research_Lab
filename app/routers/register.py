@@ -58,9 +58,9 @@ def _admin_body(req: RegisterRequest) -> str:
 # ── HTML confirmation email for the applicant ─────────────────────────────────
 def _confirmation_html(req: RegisterRequest) -> str:
     role_label = _ROLE_LABELS.get(req.role, req.role)
-    app_url    = os.environ.get("APP_URL", "https://lab.aural-syncro.com.ar")
-    logo_url   = "https://researchlab.aural-syncro.com.ar/static/img/aural-logo.png"
-    icon_url   = "https://researchlab.aural-syncro.com.ar/static/favicon.png"
+    app_url    = os.environ.get("APP_URL", "https://app.researchlab.com.ar")
+    logo_url   = "https://www.researchlab.com.ar/static/img/aural-logo.png"
+    icon_url   = "https://www.researchlab.com.ar/static/favicon.png"
 
     def row(label: str, value: str) -> str:
         return f"""
@@ -202,7 +202,7 @@ def _confirmation_html(req: RegisterRequest) -> str:
 
 def _confirmation_plain(req: RegisterRequest) -> str:
     role_label = _ROLE_LABELS.get(req.role, req.role)
-    app_url    = os.environ.get("APP_URL", "https://lab.aural-syncro.com.ar")
+    app_url    = os.environ.get("APP_URL", "https://app.researchlab.com.ar")
     return (
         f"Aural-Syncro Research Lab\n"
         f"{'=' * 44}\n\n"

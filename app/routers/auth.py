@@ -334,7 +334,7 @@ def confirm_email_change(
 
 # ── MCP token ─────────────────────────────────────────────────────────────────
 
-_MCP_BASE_URL = os.getenv("MCP_BASE_URL", "https://lab.aural-syncro.com.ar")
+_MCP_BASE_URL = os.getenv("MCP_BASE_URL", "https://app.researchlab.com.ar")
 
 
 @router.get("/mcp-token")

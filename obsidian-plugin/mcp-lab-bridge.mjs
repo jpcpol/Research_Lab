@@ -17,7 +17,7 @@
  *
  * Environment variables (or pass via .mcp.json env block):
  *   VAULT_PATH       — absolute path to the Obsidian vault
- *   LAB_URL          — Research Lab base URL (e.g. https://lab.aural-syncro.com.ar)
+ *   LAB_URL          — Research Lab base URL (e.g. https://app.researchlab.com.ar)
  *   LAB_TOKEN        — JWT access token (same as in Obsidian plugin settings)
  *   LAB_PROJECT_ID   — project UUID
  *

@@ -1,7 +1,7 @@
 # Aural-Syncro Research Lab
 
 > Plataforma de investigación colaborativa para equipos científicos.  
-> Parte del ecosistema **SSPA (Aural-Syncro)** · Dominio: `lab.aural-syncro.com.ar`
+> Parte del ecosistema **SSPA (Aural-Syncro)** · Dominio: `app.researchlab.com.ar`
 
 ---
 
@@ -119,7 +119,7 @@ La plataforma expone un **MCP Server** en `/api/v1/mcp` (Streamable HTTP transpo
   "mcpServers": {
     "research-lab": {
       "type": "http",
-      "url": "https://lab.aural-syncro.com.ar/api/v1/mcp",
+      "url": "https://app.researchlab.com.ar/api/v1/mcp",
       "headers": {
         "Authorization": "Bearer <mcp_token_del_usuario>"
       }
@@ -164,7 +164,7 @@ Herramientas: `read_note`, `write_note`, `list_notes`, `search_notes`.
       "args": ["<ruta>/obsidian-plugin/mcp-lab-bridge.mjs"],
       "env": {
         "VAULT_PATH": "<ruta-absoluta-a-la-boveda>",
-        "LAB_URL": "https://lab.aural-syncro.com.ar",
+        "LAB_URL": "https://app.researchlab.com.ar",
         "LAB_TOKEN": "<jwt-del-usuario>",
         "LAB_PROJECT_ID": "<uuid-del-proyecto>"
       }
@@ -189,7 +189,7 @@ Herramientas: `read_note`, `write_note`, `list_notes`, `search_notes`.
 | IA | Anthropic Claude API (`claude-sonnet-4-6` por defecto) |
 | Seguridad | JWT HS256, bcrypt, AES-256-GCM (API keys), RSA-2048 (GitHub App) |
 | Infraestructura | Docker, red compartida `sspa_infra` |
-| Dominio | `lab.aural-syncro.com.ar` via Cloudflare Tunnel |
+| Dominio | `app.researchlab.com.ar` via Cloudflare Tunnel |
 
 ---
 
@@ -203,7 +203,7 @@ Internet
    ▼
 Cloudflare Tunnel (sspa-cloudflare-tunnel)
    │
-   ├─── lab.aural-syncro.com.ar  ──►  sspa_research_lab:8004
+   ├─── app.researchlab.com.ar  ──►  sspa_research_lab:8004
    ├─── api.aural-syncro.com.ar  ──►  sspa_management_backend:8000
    └─── ...
 ```

@@ -32,7 +32,7 @@ const SETTINGS_SCHEMA = [
     type:        'string',
     title:       'Lab URL',
     description: 'URL base del Research Lab',
-    default:     'https://lab.aural-syncro.com.ar',
+    default:     'https://app.researchlab.com.ar',
   },
   {
     key:         'jwtToken',

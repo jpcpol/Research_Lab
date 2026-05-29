@@ -22,7 +22,7 @@ async function sha256(text: string): Promise<string> {
 // ── Settings ──────────────────────────────────────────────────────────────────
 
 interface LabPluginSettings {
-  serverUrl:  string;   // e.g. https://lab.aural-syncro.com.ar
+  serverUrl:  string;   // e.g. https://app.researchlab.com.ar
   jwtToken:   string;
   projectId:  string;
   // Map: vault relative path → Lab document id
@@ -293,10 +293,10 @@ class LabSettingTab extends PluginSettingTab {
 
     new Setting(containerEl)
       .setName("Server URL")
-      .setDesc("URL base del Lab (ej. https://lab.aural-syncro.com.ar)")
+      .setDesc("URL base del Lab (ej. https://app.researchlab.com.ar)")
       .addText((t) =>
         t
-          .setPlaceholder("https://lab.aural-syncro.com.ar")
+          .setPlaceholder("https://app.researchlab.com.ar")
           .setValue(this.plugin.settings.serverUrl)
           .onChange(async (v) => {
             this.plugin.settings.serverUrl = v.trim();
